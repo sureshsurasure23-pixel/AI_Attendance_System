@@ -1,0 +1,1402 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Settings | AI Attendance Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="../public/admin.css"
+    >
+
+</head>
+
+
+<body>
+
+<div class="admin-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside
+        class="admin-sidebar"
+        aria-label="Administrator sidebar"
+    >
+
+
+        <!-- BRAND -->
+
+        <div class="admin-brand">
+
+            <div
+                class="admin-brand-icon"
+                aria-hidden="true"
+            >
+                AI
+            </div>
+
+            <div class="admin-brand-text">
+
+                <strong>
+                    AI Attendance
+                </strong>
+
+                <span>
+                    Admin Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NAVIGATION
+             ================================================= -->
+
+        <nav
+            class="admin-navigation"
+            aria-label="Admin navigation"
+        >
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="dashboard.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    🏠
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+
+            <!-- STUDENTS -->
+
+            <a
+                href="students.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    🎓
+                </span>
+
+                <span>
+                    Students
+                </span>
+
+            </a>
+
+
+
+            <!-- FACULTY -->
+
+            <a
+                href="faculty.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    👨‍🏫
+                </span>
+
+                <span>
+                    Faculty
+                </span>
+
+            </a>
+
+
+
+            <!-- ATTENDANCE -->
+
+            <a
+                href="attendance.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    ✓
+                </span>
+
+                <span>
+                    Attendance
+                </span>
+
+            </a>
+
+
+
+            <!-- SUBJECTS -->
+
+            <a
+                href="subjects.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    ▤
+                </span>
+
+                <span>
+                    Subjects
+                </span>
+
+            </a>
+
+
+
+            <!-- FEES -->
+
+            <a
+                href="fees.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    💰
+                </span>
+
+                <span>
+                    Fees
+                </span>
+
+            </a>
+
+
+
+            <!-- AI ANALYTICS -->
+
+            <a
+                href="ai-analytics.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    🤖
+                </span>
+
+                <span>
+                    AI Analytics
+                </span>
+
+            </a>
+
+
+
+            <!-- NOTIFICATIONS -->
+
+            <a
+                href="alerts.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    🔔
+                </span>
+
+                <span>
+                    Notifications
+                </span>
+
+            </a>
+
+
+
+            <!-- SETTINGS -->
+
+            <a
+                href="settings.html"
+                class="admin-nav-item active"
+                aria-current="page"
+            >
+
+                <span aria-hidden="true">
+                    ⚙
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =================================================
+             ADMIN USER
+             ================================================= -->
+
+        <div
+            class="admin-sidebar-bottom"
+            aria-label="Administrator account"
+        >
+
+
+            <div class="admin-user">
+
+
+                <div
+                    class="admin-avatar"
+                    aria-hidden="true"
+                >
+                    A
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span>
+                        System Admin
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="button"
+                id="logoutBtn"
+                class="admin-logout-btn"
+                aria-label="Log out of administrator account"
+            >
+
+                <span aria-hidden="true">
+                    ↪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+    <!-- MOBILE SIDEBAR OVERLAY -->
+<div
+    id="mobileNavOverlay"
+    class="admin-mobile-overlay"
+    aria-hidden="true"
+></div>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+   <main
+    id="main-content"
+    class="admin-main"
+>
+<button
+    type="button"
+    id="mobileMenuBtn"
+    class="admin-mobile-menu-btn"
+    aria-label="Open navigation menu"
+    aria-controls="adminSidebar"
+    aria-expanded="false"
+>
+    ☰
+</button>
+
+
+        <!-- =================================================
+             TOP BAR
+             ================================================= -->
+
+        <header
+            class="admin-topbar"
+            aria-labelledby="page-title"
+        >
+
+
+            <div>
+
+                <div class="admin-eyebrow">
+                    ADMIN PORTAL
+                </div>
+
+
+                <h1 id="page-title">
+                    Settings
+                </h1>
+
+
+                <p>
+                    Configure your AI Attendance Monitoring System.
+                </p>
+
+            </div>
+
+
+            <div
+                class="admin-topbar-user"
+                aria-label="Currently signed in administrator"
+            >
+
+
+                <div
+                    class="admin-avatar"
+                    aria-hidden="true"
+                >
+                    A
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span>
+                        System Administrator
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section
+            class="admin-page-header"
+            aria-labelledby="settings-page-heading"
+        >
+
+
+            <div>
+
+                <div class="admin-section-label">
+                    SYSTEM CONFIGURATION
+                </div>
+
+
+                <h2 id="settings-page-heading">
+                    Admin Settings
+                </h2>
+
+
+                <p>
+                    Manage administrator information,
+                    attendance rules, notifications and
+                    system preferences.
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SETTINGS FORM
+             ================================================= -->
+
+        <form
+            id="settingsForm"
+            aria-labelledby="settings-page-heading"
+        >
+
+
+            <!-- =================================================
+                 ADMIN PROFILE
+                 ================================================= -->
+
+            <section
+                class="admin-content-card"
+                aria-labelledby="profile-settings-heading"
+            >
+
+
+                <div class="admin-content-header">
+
+
+                    <div>
+
+                        <div class="admin-section-label">
+                            ADMINISTRATOR
+                        </div>
+
+
+                        <h2 id="profile-settings-heading">
+                            Profile Settings
+                        </h2>
+
+
+                        <p>
+                            Update administrator account information.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="admin-settings-grid">
+
+
+                    <!-- ADMIN NAME -->
+
+                    <div class="admin-form-group">
+
+                        <label for="adminName">
+                            Administrator Name
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="adminName"
+                            name="adminName"
+                            autocomplete="name"
+                            placeholder="Enter administrator name"
+                            required
+                        >
+
+
+                    </div>
+
+
+
+                    <!-- ADMIN EMAIL -->
+
+                    <div class="admin-form-group">
+
+                        <label for="adminEmail">
+                            Administrator Email
+                        </label>
+
+
+                        <input
+                            type="email"
+                            id="adminEmail"
+                            name="adminEmail"
+                            autocomplete="email"
+                            placeholder="Enter administrator email"
+                            required
+                        >
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ATTENDANCE RULES
+                 ================================================= -->
+
+            <section
+                class="admin-content-card"
+                aria-labelledby="attendance-rules-heading"
+            >
+
+
+                <div class="admin-content-header">
+
+
+                    <div>
+
+                        <div class="admin-section-label">
+                            ATTENDANCE
+                        </div>
+
+
+                        <h2 id="attendance-rules-heading">
+                            Attendance Rules
+                        </h2>
+
+
+                        <p>
+                            Configure attendance thresholds used
+                            by the monitoring system.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="admin-settings-grid">
+
+
+                    <!-- MINIMUM ATTENDANCE -->
+
+                    <div class="admin-form-group">
+
+
+                        <label for="minimumAttendance">
+                            Minimum Attendance (%)
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="minimumAttendance"
+                            name="minimumAttendance"
+                            min="0"
+                            max="100"
+                            step="1"
+                            inputmode="numeric"
+                            aria-describedby="minimumAttendanceHelp"
+                            required
+                        >
+
+
+                        <small id="minimumAttendanceHelp">
+                            Students below this percentage
+                            may be considered attendance shortage.
+                        </small>
+
+
+                    </div>
+
+
+
+                    <!-- WARNING ATTENDANCE -->
+
+                    <div class="admin-form-group">
+
+
+                        <label for="warningAttendance">
+                            Warning Attendance (%)
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="warningAttendance"
+                            name="warningAttendance"
+                            min="0"
+                            max="100"
+                            step="1"
+                            inputmode="numeric"
+                            aria-describedby="warningAttendanceHelp"
+                            required
+                        >
+
+
+                        <small id="warningAttendanceHelp">
+                            Percentage used to identify students
+                            who require attendance monitoring.
+                        </small>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 NOTIFICATION PREFERENCES
+                 ================================================= -->
+
+            <section
+                class="admin-content-card"
+                aria-labelledby="notification-preferences-heading"
+            >
+
+
+                <div class="admin-content-header">
+
+
+                    <div>
+
+                        <div class="admin-section-label">
+                            NOTIFICATIONS
+                        </div>
+
+
+                        <h2 id="notification-preferences-heading">
+                            Notification Preferences
+                        </h2>
+
+
+                        <p>
+                            Control which notification categories
+                            are enabled in the system.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="admin-settings-grid">
+
+
+                    <!-- ATTENDANCE ALERTS -->
+
+                    <label class="admin-checkbox-label">
+
+
+                        <input
+                            type="checkbox"
+                            id="enableAttendanceAlerts"
+                            name="enableAttendanceAlerts"
+                        >
+
+
+                        <span>
+
+                            <strong>
+                                Attendance Alerts
+                            </strong>
+
+                            <small>
+                                Enable alerts for attendance
+                                shortage and risk.
+                            </small>
+
+                        </span>
+
+
+                    </label>
+
+
+
+                    <!-- GENERAL NOTIFICATIONS -->
+
+                    <label class="admin-checkbox-label">
+
+
+                        <input
+                            type="checkbox"
+                            id="enableNotifications"
+                            name="enableNotifications"
+                        >
+
+
+                        <span>
+
+                            <strong>
+                                General Notifications
+                            </strong>
+
+                            <small>
+                                Enable general system notifications.
+                            </small>
+
+                        </span>
+
+
+                    </label>
+
+
+
+                    <!-- ATTENDANCE NOTIFICATIONS -->
+
+                    <label class="admin-checkbox-label">
+
+
+                        <input
+                            type="checkbox"
+                            id="enableAttendanceNotifications"
+                            name="enableAttendanceNotifications"
+                        >
+
+
+                        <span>
+
+                            <strong>
+                                Attendance Notifications
+                            </strong>
+
+                            <small>
+                                Enable attendance-related notifications.
+                            </small>
+
+                        </span>
+
+
+                    </label>
+
+
+
+                    <!-- FEE NOTIFICATIONS -->
+
+                    <label class="admin-checkbox-label">
+
+
+                        <input
+                            type="checkbox"
+                            id="enableFeeNotifications"
+                            name="enableFeeNotifications"
+                        >
+
+
+                        <span>
+
+                            <strong>
+                                Fee Notifications
+                            </strong>
+
+                            <small>
+                                Enable student fee reminders
+                                and payment notifications.
+                            </small>
+
+                        </span>
+
+
+                    </label>
+
+
+
+                    <!-- AI NOTIFICATIONS -->
+
+                    <label class="admin-checkbox-label">
+
+
+                        <input
+                            type="checkbox"
+                            id="enableAINotifications"
+                            name="enableAINotifications"
+                        >
+
+
+                        <span>
+
+                            <strong>
+                                AI Notifications
+                            </strong>
+
+                            <small>
+                                Enable AI-generated risk
+                                and prediction notifications.
+                            </small>
+
+                        </span>
+
+
+                    </label>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SYSTEM PREFERENCES
+                 ================================================= -->
+
+            <section
+                class="admin-content-card"
+                aria-labelledby="system-preferences-heading"
+            >
+
+
+                <div class="admin-content-header">
+
+
+                    <div>
+
+                        <div class="admin-section-label">
+                            SYSTEM
+                        </div>
+
+
+                        <h2 id="system-preferences-heading">
+                            System Preferences
+                        </h2>
+
+
+                        <p>
+                            Configure the academic year,
+                            default semester and appearance.
+                        </p>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="admin-settings-grid">
+
+
+                    <!-- ACADEMIC YEAR -->
+
+                    <div class="admin-form-group">
+
+
+                        <label for="academicYear">
+                            Academic Year
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="academicYear"
+                            name="academicYear"
+                            autocomplete="off"
+                            placeholder="Example: 2026-27"
+                            aria-describedby="academicYearHelp"
+                            required
+                        >
+
+
+                        <small id="academicYearHelp">
+                            Enter the current academic year.
+                        </small>
+
+
+                    </div>
+
+
+
+                    <!-- DEFAULT SEMESTER -->
+
+                    <div class="admin-form-group">
+
+
+                        <label for="defaultSemester">
+                            Default Semester
+                        </label>
+
+
+                        <select
+                            id="defaultSemester"
+                            name="defaultSemester"
+                        >
+
+                            <option value="1">
+                                Semester 1
+                            </option>
+
+                            <option value="2">
+                                Semester 2
+                            </option>
+
+                            <option value="3">
+                                Semester 3
+                            </option>
+
+                            <option value="4">
+                                Semester 4
+                            </option>
+
+                            <option value="5">
+                                Semester 5
+                            </option>
+
+                            <option value="6">
+                                Semester 6
+                            </option>
+
+                            <option value="7">
+                                Semester 7
+                            </option>
+
+                            <option value="8">
+                                Semester 8
+                            </option>
+
+                        </select>
+
+
+                    </div>
+
+
+
+                    <!-- THEME -->
+
+                    <div class="admin-form-group">
+
+
+                        <label for="theme">
+                            Theme
+                        </label>
+
+
+                        <select
+                            id="theme"
+                            name="theme"
+                        >
+
+                            <option value="light">
+                                Light
+                            </option>
+
+                            <option value="dark">
+                                Dark
+                            </option>
+
+                        </select>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 SAVE / RESET
+                 ================================================= -->
+
+            <section
+                class="admin-content-card"
+                aria-labelledby="settings-actions-heading"
+            >
+
+
+                <h2
+                    id="settings-actions-heading"
+                    class="sr-only"
+                >
+                    Settings Actions
+                </h2>
+
+
+                <div class="admin-settings-actions">
+
+
+                    <button
+                        type="submit"
+                        id="saveSettingsBtn"
+                        class="admin-primary-btn"
+                    >
+
+                        <span aria-hidden="true">
+                            💾
+                        </span>
+
+                        <span>
+                            Save Settings
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        id="resetSettingsBtn"
+                        class="admin-secondary-btn"
+                    >
+
+                        <span aria-hidden="true">
+                            ↻
+                        </span>
+
+                        <span>
+                            Reset
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+                <div
+                    id="settingsMessage"
+                    class="admin-settings-message"
+                    role="status"
+                    aria-live="polite"
+                    aria-atomic="true"
+                >
+                </div>
+
+
+            </section>
+
+
+        </form>
+
+
+
+        <!-- =================================================
+             SYSTEM INFORMATION
+             ================================================= -->
+
+        <section
+            class="admin-content-card"
+            aria-labelledby="system-information-heading"
+        >
+
+
+            <div class="admin-content-header">
+
+
+                <div>
+
+                    <div class="admin-section-label">
+                        SYSTEM INFORMATION
+                    </div>
+
+
+                    <h2 id="system-information-heading">
+                        AI Attendance Monitoring System
+                    </h2>
+
+
+                    <p>
+                        Current system configuration and
+                        application information.
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="admin-settings-grid">
+
+
+                <!-- APPLICATION -->
+
+                <div class="admin-form-group">
+
+                    <label for="applicationInfo">
+                        Application
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="applicationInfo"
+                        value="AI Attendance Monitoring System"
+                        readonly
+                    >
+
+
+                </div>
+
+
+
+                <!-- PORTAL -->
+
+                <div class="admin-form-group">
+
+                    <label for="portalInfo">
+                        Portal
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="portalInfo"
+                        value="Administrator Portal"
+                        readonly
+                    >
+
+
+                </div>
+
+
+
+                <!-- BACKEND -->
+
+                <div class="admin-form-group">
+
+                    <label for="backendInfo">
+                        Backend
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="backendInfo"
+                        value="Django REST Framework"
+                        readonly
+                    >
+
+
+                </div>
+
+
+
+                <!-- AUTHENTICATION -->
+
+                <div class="admin-form-group">
+
+                    <label for="authenticationInfo">
+                        Authentication
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="authenticationInfo"
+                        value="JWT Authentication"
+                        readonly
+                    >
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer
+            class="admin-footer"
+            aria-label="System footer"
+        >
+
+            AI Attendance Monitoring System
+            ·
+            Administrator Settings
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="settings.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("adminSidebar");
+
+    const overlay =
+        document.getElementById("mobileNavOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        console.warn(
+            "⚠️ Mobile navigation elements not found."
+        );
+
+        return;
+    }
+
+
+    function openMobileMenu() {
+
+        sidebar.classList.add("mobile-open");
+
+        overlay.classList.add("active");
+
+        document.body.classList.add(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        menuButton.textContent = "×";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+    }
+
+
+    function closeMobileMenu() {
+
+        sidebar.classList.remove("mobile-open");
+
+        overlay.classList.remove("active");
+
+        document.body.classList.remove(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        menuButton.textContent = "☰";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+    }
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            } else {
+
+                openMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+    sidebar
+        .querySelectorAll(".admin-nav-item")
+        .forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                closeMobileMenu
+            );
+
+        });
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 768) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "📱 Settings mobile navigation initialized."
+    );
+
+});
+
+</script>
+</body>
+
+</html>

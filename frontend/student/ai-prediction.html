@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Prediction | AI Attend</title>
+
+    <link rel="stylesheet" href="./ai-prediction.css">
+</head>
+
+<body>
+
+<div class="app-shell">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">AI</div>
+
+            <div class="brand-text">
+                <strong>AI Attend</strong>
+                <span>Student Portal</span>
+            </div>
+        </div>
+
+        <div class="menu-title">MAIN MENU</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="./dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="./attendance.html" class="nav-item">
+                <span class="nav-icon">◷</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="./academic.html" class="nav-item">
+                <span class="nav-icon">▤</span>
+                <span>Academic</span>
+            </a>
+
+            <a href="./ai-prediction.html" class="nav-item active">
+                <span class="nav-icon">✦</span>
+                <span>AI Prediction</span>
+            </a>
+
+            <a href="./alerts.html" class="nav-item">
+                <span class="nav-icon">⚠</span>
+                <span>Alerts</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a href="./profile.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Profile</span>
+            </a>
+
+            <button class="nav-item logout-btn" id="logoutBtn">
+                <span class="nav-icon">↪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div class="page-heading">
+
+                <span class="eyebrow">
+                    STUDENT PORTAL
+                </span>
+
+                <h1>AI Prediction</h1>
+
+                <p>
+                    AI-powered analysis of your attendance and academic performance.
+                </p>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button class="refresh-btn" id="refreshBtn">
+                    <span>↻</span>
+                    Refresh
+                </button>
+
+                <div class="student-chip">
+
+                    <div class="student-avatar" id="studentAvatar">
+                        S
+                    </div>
+
+                    <div class="student-chip-info">
+                        <strong id="topStudentName">Student</strong>
+                        <span>Student</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= LOADING ================= -->
+        <section id="loadingState" class="state-card">
+
+            <div class="loading-animation">
+                <div class="loading-ring"></div>
+                <div class="loading-ai">AI</div>
+            </div>
+
+            <div>
+                <h2>Analyzing your academic data</h2>
+
+                <p>
+                    Please wait while the AI prediction is being generated.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- ================= ERROR ================= -->
+        <section id="errorState" class="state-card error-state hidden">
+
+            <div class="error-icon">
+                !
+            </div>
+
+            <div>
+                <h2>Unable to load AI prediction</h2>
+
+                <p id="errorMessage">
+                    Something went wrong while loading your academic analysis.
+                </p>
+
+                <button id="retryBtn" class="primary-btn">
+                    Try Again
+                </button>
+            </div>
+
+        </section>
+
+
+        <!-- ================= CONTENT ================= -->
+        <section id="predictionContent" class="prediction-content hidden">
+
+
+            <!-- AI HERO -->
+            <div class="ai-hero">
+
+                <div class="ai-hero-content">
+
+                    <div class="hero-badge">
+                        <span class="pulse-dot"></span>
+                        AI ANALYSIS
+                    </div>
+
+                    <h2>
+                        Academic Risk Prediction
+                    </h2>
+
+                    <p>
+                        Your attendance and academic performance have been
+                        analyzed to identify your current academic risk level.
+                    </p>
+
+                    <div class="analysis-status">
+                        <span class="status-dot"></span>
+                        <span id="predictionStatus">
+                            AI Analysis Complete
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="hero-ai-icon">
+                    ✦
+                </div>
+
+            </div>
+
+
+            <!-- ================= KPI CARDS ================= -->
+            <div class="kpi-grid">
+
+
+                <!-- RISK -->
+                <div class="kpi-card risk-card" id="riskCard">
+
+                    <div class="kpi-top">
+
+                        <div class="kpi-icon risk-icon">
+                            !
+                        </div>
+
+                        <span class="kpi-label">
+                            AI RISK LEVEL
+                        </span>
+
+                    </div>
+
+                    <div class="kpi-value risk-level" id="riskLevel">
+                        --
+                    </div>
+
+                    <div class="kpi-footer">
+                        Current prediction
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIDENCE -->
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+
+                        <div class="kpi-icon confidence-icon">
+                            ✓
+                        </div>
+
+                        <span class="kpi-label">
+                            AI CONFIDENCE
+                        </span>
+
+                    </div>
+
+                    <div class="kpi-value">
+                        <span id="confidence">--</span>%
+                    </div>
+
+                    <div class="mini-progress">
+                        <div
+                            id="confidenceBar"
+                            class="mini-progress-fill">
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- ATTENDANCE -->
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+
+                        <div class="kpi-icon attendance-icon">
+                            ◷
+                        </div>
+
+                        <span class="kpi-label">
+                            ATTENDANCE
+                        </span>
+
+                    </div>
+
+                    <div class="kpi-value">
+                        <span id="attendancePercentage">--</span>%
+                    </div>
+
+                    <div class="kpi-footer">
+                        Required: 75%
+                    </div>
+
+                </div>
+
+
+                <!-- ACADEMIC -->
+                <div class="kpi-card">
+
+                    <div class="kpi-top">
+
+                        <div class="kpi-icon academic-icon">
+                            ★
+                        </div>
+
+                        <span class="kpi-label">
+                            ACADEMIC PERFORMANCE
+                        </span>
+
+                    </div>
+
+                    <div class="kpi-value">
+                        <span id="averageMarks">--</span>%
+                    </div>
+
+                    <div class="kpi-footer">
+                        Average marks
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= MAIN GRID ================= -->
+            <div class="dashboard-grid">
+
+
+                <!-- AI ASSESSMENT -->
+                <section class="panel assessment-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="section-label">
+                                AI INSIGHT
+                            </span>
+
+                            <h3>
+                                AI Assessment
+                            </h3>
+                        </div>
+
+                        <div class="panel-icon">
+                            ✦
+                        </div>
+
+                    </div>
+
+
+                    <div class="assessment-box">
+
+                        <div class="assessment-status">
+
+                            <span class="status-indicator"></span>
+
+                            <strong>
+                                Prediction Result
+                            </strong>
+
+                        </div>
+
+                        <h2 id="aiRisk">
+                            --
+                        </h2>
+
+                        <p id="predictionReason">
+                            Analyzing your academic data...
+                        </p>
+
+                    </div>
+
+
+                    <div class="recommendation-box">
+
+                        <div class="recommendation-icon">
+                            💡
+                        </div>
+
+                        <div>
+                            <strong>Recommendation</strong>
+
+                            <p id="recommendationText">
+                                Maintain regular attendance and monitor
+                                your academic progress.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ATTENDANCE RISK -->
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="section-label">
+                                ATTENDANCE
+                            </span>
+
+                            <h3>
+                                Attendance Risk
+                            </h3>
+                        </div>
+
+                        <div class="panel-icon">
+                            ◷
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="attendance-risk-card"
+                        id="attendanceRiskCard">
+
+                        <div class="risk-circle">
+
+                            <span id="attendanceRiskPercentage">
+                                --
+                            </span>
+
+                            <small>%</small>
+
+                        </div>
+
+                        <div>
+
+                            <span class="small-label">
+                                CURRENT STATUS
+                            </span>
+
+                            <strong id="attendanceRisk">
+                                --
+                            </strong>
+
+                            <p>
+                                Based on current attendance
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="attendance-stats">
+
+                        <div class="stat-item">
+                            <span>Total Classes</span>
+                            <strong id="totalClasses">--</strong>
+                        </div>
+
+                        <div class="stat-item">
+                            <span>Present</span>
+                            <strong class="present-text" id="presentClasses">
+                                --
+                            </strong>
+                        </div>
+
+                        <div class="stat-item">
+                            <span>Absent</span>
+                            <strong class="absent-text" id="absentClasses">
+                                --
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ATTENDANCE OVERVIEW -->
+                <section class="panel attendance-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="section-label">
+                                ATTENDANCE ANALYTICS
+                            </span>
+
+                            <h3>
+                                Attendance Overview
+                            </h3>
+                        </div>
+
+                        <span class="target-badge">
+                            Target 75%
+                        </span>
+
+                    </div>
+
+
+                    <div class="large-progress-wrapper">
+
+                        <div class="progress-info">
+
+                            <div>
+                                <span>
+                                    Current Attendance
+                                </span>
+
+                                <strong>
+                                    <span id="currentAttendance">
+                                        --
+                                    </span>%
+                                </strong>
+                            </div>
+
+                            <div class="target-value">
+                                Target
+                                <strong>
+                                    <span id="targetAttendance">
+                                        75
+                                    </span>%
+                                </strong>
+                            </div>
+
+                        </div>
+
+
+                        <div class="large-progress">
+
+                            <div
+                                id="attendanceProgressBar"
+                                class="large-progress-fill">
+                            </div>
+
+                            <div class="target-line"></div>
+
+                        </div>
+
+
+                        <div class="progress-caption">
+
+                            <span>
+                                0%
+                            </span>
+
+                            <span>
+                                75% required
+                            </span>
+
+                            <span>
+                                100%
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- RECOVERY PLAN -->
+                <section class="panel recovery-panel">
+
+                    <div class="panel-header">
+
+                        <div>
+                            <span class="section-label">
+                                ACTION PLAN
+                            </span>
+
+                            <h3>
+                                Attendance Recovery
+                            </h3>
+                        </div>
+
+                        <div class="panel-icon">
+                            ↑
+                        </div>
+
+                    </div>
+
+
+                    <div class="recovery-number">
+
+                        <strong id="classesToAttend">
+                            --
+                        </strong>
+
+                        <span>
+                            classes
+                        </span>
+
+                    </div>
+
+                    <p id="shortageMessage" class="recovery-message">
+                        Attend upcoming classes consistently to reach
+                        the required attendance percentage.
+                    </p>
+
+
+                    <div class="recovery-meter">
+
+                        <div class="recovery-meter-top">
+
+                            <span>
+                                Current
+                            </span>
+
+                            <strong>
+                                <span id="currentAttendanceRecovery">
+                                    --
+                                </span>%
+                            </strong>
+
+                        </div>
+
+                        <div class="recovery-bar">
+
+                            <div
+                                id="recoveryProgressBar"
+                                class="recovery-fill">
+                            </div>
+
+                        </div>
+
+                        <div class="recovery-target">
+
+                            <span>
+                                Target
+                            </span>
+
+                            <strong>
+                                75%
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        id="targetStatus"
+                        class="target-status">
+                        Improvement required
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- ================= STUDENT INFORMATION ================= -->
+            <section class="student-information">
+
+                <div class="student-info-left">
+
+                    <div
+                        class="large-avatar"
+                        id="studentLargeAvatar">
+                        S
+                    </div>
+
+                    <div>
+
+                        <span class="section-label">
+                            STUDENT PROFILE
+                        </span>
+
+                        <h3 id="studentName">
+                            Student
+                        </h3>
+
+                        <p>
+                            Student ID:
+                            <strong id="studentId">
+                                --
+                            </strong>
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="updated-info">
+
+                    <span>
+                        Last updated
+                    </span>
+
+                    <strong id="lastUpdated">
+                        Just now
+                    </strong>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="footer">
+
+            © 2026 AI Student Attendance Monitoring System
+
+            <span>
+                AI-Powered Student Analytics
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="./ai-prediction.js"></script>
+
+</body>
+</html>

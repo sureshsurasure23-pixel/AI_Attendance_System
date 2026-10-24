@@ -1,0 +1,1858 @@
+/* =========================================================
+   AI ATTEND - ACADEMIC PAGE
+   Modern Student Academic Dashboard
+   ========================================================= */
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    font-family:
+        Inter,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background: #f6f7fb;
+    color: #1f2937;
+
+    /* IMPORTANT:
+       Do NOT use zoom or transform scale here.
+    */
+}
+
+/* =========================================================
+   APP LAYOUT
+   ========================================================= */
+
+.app {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 24px 16px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #17112f 0%,
+            #211645 55%,
+            #18122f 100%
+        );
+
+    color: #ffffff;
+
+    z-index: 1000;
+
+    overflow-y: auto;
+}
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 4px 10px 28px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #6d28d9
+        );
+
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    box-shadow:
+        0 8px 20px rgba(
+            124,
+            58,
+            237,
+            0.35
+        );
+}
+
+.logo-text {
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 800;
+
+    letter-spacing: -0.3px;
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.nav-title {
+    margin: 6px 10px 10px;
+
+    color: #a9a0c7;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+
+    min-height: 46px;
+
+    padding: 0 14px;
+
+    gap: 12px;
+
+    border-radius: 11px;
+
+    color: #c9c2dc;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.nav-item:hover {
+    background: rgba(
+        139,
+        92,
+        246,
+        0.14
+    );
+
+    color: #ffffff;
+
+    transform: translateX(2px);
+}
+
+.nav-item.active {
+    background:
+        linear-gradient(
+            135deg,
+            #7c3aed,
+            #8b5cf6
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 20px rgba(
+            124,
+            58,
+            237,
+            0.25
+        );
+}
+
+.nav-icon {
+    width: 22px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 17px;
+
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.sidebar-bottom {
+    margin-top: auto;
+
+    padding-top: 20px;
+}
+
+.nav-item.logout {
+    color: #fca5a5;
+}
+
+.nav-item.logout:hover {
+    color: #ffffff;
+
+    background: rgba(
+        239,
+        68,
+        68,
+        0.15
+    );
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.main {
+    width: calc(100% - 250px);
+
+    min-height: 100vh;
+
+    margin-left: 250px;
+
+    padding: 0 34px 40px;
+
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.topbar {
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #e7e8ef;
+
+    margin-bottom: 28px;
+}
+
+.topbar-left {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.welcome-small {
+    color: #8b8fa3;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+
+    gap: 18px;
+}
+
+/* =========================================================
+   REFRESH BUTTON
+   ========================================================= */
+
+.refresh-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 38px;
+
+    padding: 0 15px;
+
+    border: 1px solid #ded9f5;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #6d28d9;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.refresh-btn:hover {
+    background: #f5f3ff;
+
+    border-color: #c4b5fd;
+
+    transform: translateY(-1px);
+}
+
+.refresh-btn:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+/* =========================================================
+   PROFILE
+   ========================================================= */
+
+.profile {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8b5cf6,
+            #6d28d9
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+.profile-info strong {
+    color: #222333;
+
+    font-size: 14px;
+}
+
+.profile-info span {
+    color: #8b8fa3;
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   ACADEMIC HERO
+   ========================================================= */
+
+.academic-hero {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    min-height: 205px;
+
+    margin-bottom: 26px;
+
+    padding: 34px 38px;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5b21b6 0%,
+            #7c3aed 45%,
+            #9333ea 100%
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 16px 35px rgba(
+            91,
+            33,
+            182,
+            0.22
+        );
+}
+
+.academic-hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 240px;
+    height: 240px;
+
+    right: -80px;
+    top: -90px;
+
+    border-radius: 50%;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.08
+    );
+}
+
+.academic-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    right: 120px;
+    bottom: -110px;
+
+    border-radius: 50%;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.06
+    );
+}
+
+.academic-hero-content {
+    position: relative;
+
+    z-index: 1;
+
+    max-width: 720px;
+}
+
+.academic-label {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: #ddd6fe;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.academic-hero h1 {
+    margin-bottom: 8px;
+
+    color: #ffffff;
+
+    font-size: clamp(
+        26px,
+        3vw,
+        38px
+    );
+
+    font-weight: 800;
+
+    letter-spacing: -1px;
+}
+
+.academic-hero p {
+    max-width: 650px;
+
+    color: #ede9fe;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+.academic-score {
+    position: relative;
+
+    z-index: 1;
+
+    min-width: 155px;
+
+    text-align: right;
+}
+
+.academic-score strong {
+    display: block;
+
+    color: #ffffff;
+
+    font-size: 42px;
+    font-weight: 850;
+
+    line-height: 1;
+}
+
+.academic-score span {
+    display: block;
+
+    margin-top: 8px;
+
+    color: #ddd6fe;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   ACADEMIC GRID
+   ========================================================= */
+
+.academic-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 26px;
+}
+
+.academic-card {
+    min-width: 0;
+
+    padding: 24px;
+
+    border: 1px solid #e7e8ef;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 22px rgba(
+            31,
+            41,
+            55,
+            0.05
+        );
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.academic-card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 14px 30px rgba(
+            31,
+            41,
+            55,
+            0.09
+        );
+}
+
+.academic-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 22px;
+}
+
+.academic-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #f3efff;
+
+    color: #7c3aed;
+
+    font-size: 18px;
+}
+
+.academic-card h3 {
+    margin: 0;
+
+    color: #242536;
+
+    font-size: 29px;
+    font-weight: 800;
+}
+
+.academic-card .card-title {
+    color: #8b8fa3;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    letter-spacing: 0.6px;
+
+    text-transform: uppercase;
+}
+
+.academic-card p {
+    color: #8b8fa3;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+/* =========================================================
+   ACADEMIC SECTION
+   ========================================================= */
+
+.academic-section {
+    margin-bottom: 26px;
+
+    padding: 26px;
+
+    border: 1px solid #e7e8ef;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 7px 22px rgba(
+            31,
+            41,
+            55,
+            0.04
+        );
+}
+
+.academic-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    margin-bottom: 22px;
+}
+
+.academic-section-header h2 {
+    margin: 0 0 5px;
+
+    color: #252637;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.academic-section-header p {
+    color: #8b8fa3;
+
+    font-size: 13px;
+}
+
+/* =========================================================
+   RISK BADGE
+   ========================================================= */
+
+.risk-badge-academic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 32px;
+
+    padding: 0 13px;
+
+    border-radius: 999px;
+
+    background: #ecfdf3;
+
+    color: #15803d;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   SUBJECT TABLE
+   ========================================================= */
+
+.subject-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+.subject-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    min-width: 650px;
+}
+
+.subject-table thead {
+    background: #f8f7fc;
+}
+
+.subject-table th {
+    padding: 14px 16px;
+
+    border-bottom: 1px solid #e7e8ef;
+
+    color: #777b8d;
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 0.7px;
+
+    text-align: left;
+
+    text-transform: uppercase;
+}
+
+.subject-table td {
+    padding: 18px 16px;
+
+    border-bottom: 1px solid #eeeeF3;
+
+    color: #4b4d5c;
+
+    font-size: 13px;
+}
+
+.subject-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.subject-table tbody tr:hover {
+    background: #faf9ff;
+}
+
+.subject-name {
+    max-width: 430px;
+
+    color: #272938 !important;
+
+    font-weight: 700;
+}
+
+.mark-value {
+    color: #6d28d9 !important;
+
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   PERFORMANCE
+   ========================================================= */
+
+.subject-performance {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    min-width: 220px;
+}
+
+.progress-small {
+    width: 150px;
+    height: 8px;
+
+    overflow: hidden;
+
+    border-radius: 999px;
+
+    background: #ececf2;
+}
+
+.progress-fill {
+    height: 100%;
+
+    min-width: 2px;
+
+    border-radius: inherit;
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c3aed,
+            #a855f7
+        );
+
+    transition: width 0.5s ease;
+}
+
+.subject-performance span {
+    min-width: 65px;
+
+    color: #606373;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   ACADEMIC SUMMARY
+   ========================================================= */
+
+.academic-summary-box {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+.summary-item {
+    padding: 18px;
+
+    border: 1px solid #eceaf4;
+
+    border-radius: 12px;
+
+    background: #faf9ff;
+}
+
+.summary-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #85889a;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+.summary-value {
+    color: #272938;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.subject-info-message {
+    grid-column: 1 / -1;
+
+    display: flex;
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 18px;
+
+    border: 1px solid #ddd6fe;
+
+    border-radius: 12px;
+
+    background: #faf8ff;
+
+    color: #5b21b6;
+}
+
+.info-icon {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #ede9fe;
+
+    color: #7c3aed;
+
+    font-weight: 800;
+}
+
+.subject-info-message strong {
+    display: block;
+
+    margin-bottom: 5px;
+
+    font-size: 13px;
+}
+
+.subject-info-message p {
+    color: #77718c;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+/* =========================================================
+   ACADEMIC MESSAGE
+   ========================================================= */
+
+.academic-message {
+    padding: 18px 20px;
+
+    border-left: 4px solid #7c3aed;
+
+    border-radius: 10px;
+
+    background: #faf8ff;
+
+    color: #555867;
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+/* =========================================================
+   LOADING / EMPTY STATE
+   ========================================================= */
+
+.loading-state {
+    padding: 30px;
+
+    border: 1px dashed #d9d6e5;
+
+    border-radius: 12px;
+
+    background: #fafafa;
+
+    text-align: center;
+}
+
+.loading-state strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #373846;
+
+    font-size: 14px;
+}
+
+.loading-state p {
+    color: #85889a;
+
+    font-size: 12px;
+
+    line-height: 1.6;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    padding: 18px 0;
+
+    color: #9699a8;
+
+    font-size: 11px;
+
+    text-align: center;
+}
+
+/* =========================================================
+   RESPONSIVE - TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main {
+        width: calc(100% - 220px);
+
+        margin-left: 220px;
+
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .academic-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .academic-score strong {
+        font-size: 34px;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+        height: auto;
+
+        min-height: auto;
+
+        padding: 15px;
+    }
+
+    .app {
+        display: block;
+    }
+
+    .main {
+        width: 100%;
+
+        margin-left: 0;
+
+        padding: 0 18px 30px;
+    }
+
+    .navigation {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .sidebar-bottom {
+        margin-top: 12px;
+    }
+
+    .academic-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .academic-summary-box {
+        grid-template-columns:
+            1fr;
+    }
+
+    .academic-hero {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 25px;
+    }
+
+    .academic-score {
+        text-align: left;
+    }
+}
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .main {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .topbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        gap: 12px;
+
+        padding: 18px 0;
+    }
+
+    .top-actions {
+        width: 100%;
+
+        justify-content: space-between;
+    }
+
+    .navigation {
+        grid-template-columns: 1fr;
+    }
+
+    .academic-hero {
+        padding: 25px 22px;
+
+        border-radius: 16px;
+    }
+
+    .academic-hero h1 {
+        font-size: 27px;
+    }
+
+    .academic-score strong {
+        font-size: 32px;
+    }
+
+    .academic-section {
+        padding: 18px;
+    }
+
+    .academic-section-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .subject-table {
+        min-width: 600px;
+    }
+
+    .progress-small {
+        width: 100px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible {
+    outline: 3px solid rgba(
+        124,
+        58,
+        237,
+        0.35
+    );
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   AI ATTENDANCE - ACADEMIC PAGE
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: Inter, Arial, sans-serif;
+    background: #f5f7fb;
+    color: #172033;
+}
+
+body {
+    overflow-x: hidden;
+}
+
+/* =========================================================
+   MAIN APP
+   ========================================================= */
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: #ffffff;
+    border-right: 1px solid #e8ebf0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.logo {
+    height: 78px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.logo-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #5b5ce2, #7567f8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 800;
+    color: #20243a;
+}
+
+.navigation {
+    padding: 25px 14px;
+}
+
+.nav-title {
+    margin: 0 12px 12px;
+    font-size: 10px;
+    font-weight: 700;
+    color: #9aa2b1;
+    letter-spacing: 1.2px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    padding: 0 14px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    color: #697386;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.nav-item:hover {
+    background: #f2f3ff;
+    color: #5b5ce2;
+}
+
+.nav-item.active {
+    background: #eeeeff;
+    color: #5b5ce2;
+}
+
+.nav-icon {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.sidebar-bottom {
+    margin-top: auto;
+    padding: 14px;
+    border-top: 1px solid #edf0f4;
+}
+
+.logout {
+    color: #e45b68;
+}
+
+.logout:hover {
+    background: #fff0f1;
+    color: #df4352;
+}
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+}
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.topbar {
+    height: 78px;
+    background: #ffffff;
+    border-bottom: 1px solid #e8ebf0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+}
+
+.welcome-small {
+    margin: 0;
+    color: #8a93a3;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.top-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.refresh-btn {
+    border: 1px solid #e1e4eb;
+    background: #ffffff;
+    color: #596274;
+    border-radius: 9px;
+    padding: 9px 15px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.refresh-btn:hover {
+    background: #f4f4ff;
+    border-color: #c9c8ff;
+    color: #5b5ce2;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #e9e8ff;
+    color: #5b5ce2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+}
+
+.profile-info strong {
+    display: block;
+    font-size: 12px;
+    color: #252a3a;
+}
+
+/* =========================================================
+   ACADEMIC PAGE
+   ========================================================= */
+
+.academic-hero {
+    margin: 28px 32px 20px;
+    min-height: 170px;
+    border-radius: 18px;
+    padding: 30px 34px;
+    background: linear-gradient(135deg, #5b5ce2, #7168ef);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+    position: relative;
+}
+
+.academic-hero::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    right: -80px;
+    top: -100px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.academic-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.academic-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.academic-hero h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.academic-hero p {
+    margin: 8px 0 0;
+    font-size: 13px;
+    opacity: 0.85;
+}
+
+.academic-score {
+    position: relative;
+    z-index: 2;
+    text-align: right;
+}
+
+.academic-score strong {
+    display: block;
+    font-size: 42px;
+    line-height: 1;
+    font-weight: 800;
+}
+
+.academic-score span {
+    font-size: 11px;
+    opacity: 0.8;
+}
+
+/* =========================================================
+   ANALYTICS CARDS
+   ========================================================= */
+
+.academic-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    padding: 0 32px;
+}
+
+.academic-card {
+    background: #ffffff;
+    border: 1px solid #e9ecf2;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 16px rgba(30, 38, 60, 0.04);
+}
+
+.academic-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.academic-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    background: #f0efff;
+    color: #5b5ce2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.academic-card h3 {
+    margin: 20px 0 3px;
+    font-size: 24px;
+    color: #1e2434;
+}
+
+.academic-card p,
+.summary-label {
+    margin: 0;
+    color: #8991a1;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+#academicRisk {
+    text-transform: uppercase;
+    color: #23936c;
+    font-size: 21px;
+}
+
+/* =========================================================
+   SECTIONS
+   ========================================================= */
+
+.academic-section {
+    margin: 22px 32px 0;
+    background: #ffffff;
+    border: 1px solid #e9ecf2;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 16px rgba(30, 38, 60, 0.035);
+}
+
+.academic-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.academic-section-header h2 {
+    margin: 0;
+    font-size: 17px;
+    color: #202638;
+}
+
+.academic-section-header p {
+    margin: 5px 0 0;
+    color: #8a92a2;
+    font-size: 11px;
+}
+
+/* =========================================================
+   RISK BADGE
+   ========================================================= */
+
+.risk-badge-academic {
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #e9f8f1;
+    color: #258a67;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+/* =========================================================
+   SUBJECT TABLE
+   ========================================================= */
+
+.subject-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.subject-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.subject-table th {
+    padding: 13px 14px;
+    background: #f8f9fc;
+    color: #7f8798;
+    font-size: 10px;
+    font-weight: 800;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #e9ecf2;
+}
+
+.subject-table td {
+    padding: 16px 14px;
+    border-bottom: 1px solid #eef0f4;
+    color: #50596b;
+    font-size: 12px;
+}
+
+.subject-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.subject-table tbody tr:hover {
+    background: #fafaff;
+}
+
+.subject-name {
+    font-weight: 700;
+    color: #252b3b !important;
+}
+
+.mark-value {
+    font-weight: 800;
+    color: #5b5ce2 !important;
+}
+
+/* =========================================================
+   SUBJECT PERFORMANCE
+   ========================================================= */
+
+.subject-performance {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 170px;
+}
+
+.progress-small {
+    width: 90px;
+    height: 7px;
+    background: #eceef3;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #5b5ce2, #8179f4);
+    border-radius: 20px;
+}
+
+.subject-performance span {
+    color: #2b8d6b;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* =========================================================
+   ACADEMIC MESSAGE
+   ========================================================= */
+
+.academic-message {
+    background: #f6f5ff;
+    border: 1px solid #e4e1ff;
+    border-radius: 12px;
+    padding: 16px 18px;
+    color: #555c70;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.academic-message strong {
+    color: #4e4ab4;
+}
+
+/* =========================================================
+   SUMMARY / NO SUBJECT DATA
+   ========================================================= */
+
+.academic-summary-box {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+.summary-item {
+    padding: 16px;
+    background: #f8f9fc;
+    border-radius: 11px;
+}
+
+.summary-value {
+    display: block;
+    margin-top: 7px;
+    font-size: 19px;
+    color: #242a3b;
+}
+
+.subject-info-message {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    background: #fffaf0;
+    border: 1px solid #f1dfb7;
+    border-radius: 11px;
+    color: #6c6049;
+    font-size: 12px;
+}
+
+.subject-info-message p {
+    margin: 6px 0 0;
+    line-height: 1.6;
+}
+
+.info-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #f3d99d;
+    color: #705b2c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.loading-state {
+    padding: 35px;
+    text-align: center;
+    color: #8b93a3;
+    font-size: 12px;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.academic-footer,
+footer {
+    padding: 25px 32px;
+    text-align: center;
+    color: #9aa1af;
+    font-size: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main {
+        margin-left: 210px;
+        width: calc(100% - 210px);
+    }
+
+    .academic-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .academic-summary-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+    }
+
+    .app {
+        display: block;
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .navigation {
+        padding: 10px;
+    }
+
+    .sidebar-bottom {
+        display: none;
+    }
+
+    .topbar {
+        padding: 0 18px;
+    }
+
+    .academic-hero {
+        margin: 18px;
+        padding: 24px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .academic-score {
+        text-align: left;
+    }
+
+    .academic-grid {
+        padding: 0 18px;
+    }
+
+    .academic-section {
+        margin: 18px;
+        padding: 18px;
+    }
+
+    .academic-section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .subject-table {
+        min-width: 650px;
+    }
+}

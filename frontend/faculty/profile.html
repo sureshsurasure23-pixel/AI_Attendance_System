@@ -1,0 +1,553 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | AI Attend Faculty Portal</title>
+
+<link rel="stylesheet" href="./faculty.css"></head>
+
+<body>
+
+<div class="faculty-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                AI
+            </div>
+
+            <div>
+                <strong>AI Attend</strong>
+                <span>Faculty Portal</span>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="navigation">
+
+            <a href="dashboard.html" class="nav-item">
+
+                <span aria-hidden="true">
+                    &#x1F4CA;
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="attendance.html" class="nav-item">
+
+                <span aria-hidden="true">
+                    &#x1F4CB;
+                </span>
+
+                <span>
+                    Attendance
+                </span>
+
+            </a>
+
+
+            <a href="students.html" class="nav-item">
+
+                <span aria-hidden="true">
+                    &#x1F465;
+                </span>
+
+                <span>
+                    Students
+                </span>
+
+            </a>
+
+
+            <a href="reports.html" class="nav-item">
+
+                <span aria-hidden="true">
+                    &#x1F4C8;
+                </span>
+
+                <span>
+                    Reports
+                </span>
+
+            </a>
+
+
+            <a href="profile.html" class="nav-item active">
+
+                <span aria-hidden="true">
+                    &#x1F464;
+                </span>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- LOGOUT -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn">
+
+                <span aria-hidden="true">
+                    &#x1F6AA;
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="page-kicker">
+                    FACULTY PORTAL
+                </span>
+
+                <h1>
+                    My Profile
+                </h1>
+
+                <p>
+                    View your faculty information and academic details.
+                </p>
+
+            </div>
+
+
+            <!-- FACULTY USER -->
+
+            <div class="faculty-user">
+
+                <div
+                    class="faculty-avatar"
+                    id="facultyInitial">
+
+                    D
+
+                </div>
+
+
+                <div>
+
+                    <strong id="facultyName">
+                        Dr. Ramesh Kumar
+                    </strong>
+
+                    <span id="facultyDesignation">
+                        Associate Professor
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PROFILE HERO
+        ================================================== -->
+
+        <section class="profile-hero faculty-card">
+
+            <div
+                class="profile-large-avatar"
+                id="profileAvatar">
+
+                D
+
+            </div>
+
+
+            <div class="profile-hero-info">
+
+                <div class="profile-role">
+                    FACULTY MEMBER
+                </div>
+
+                <h2 id="profileName">
+                    Dr. Ramesh Kumar
+                </h2>
+
+                <p id="profileDesignation">
+                    Associate Professor
+                </p>
+
+                <div class="profile-status">
+
+                    <span class="status-dot"></span>
+
+                    Active Faculty
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PROFILE INFORMATION
+        ================================================== -->
+
+        <section class="profile-grid">
+
+
+            <!-- =================================================
+                 PERSONAL INFORMATION
+            ================================================== -->
+
+            <div class="faculty-card profile-card">
+
+                <div class="profile-card-header">
+
+                    <div>
+
+                        <div class="profile-section-label">
+                            PERSONAL INFORMATION
+                        </div>
+
+                        <h2>
+                            Faculty Details
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-details">
+
+
+                    <div class="profile-detail">
+
+                        <span>
+                            Faculty ID
+                        </span>
+
+                        <strong id="facultyId">
+                            FAC001
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-detail">
+
+                        <span>
+                            Full Name
+                        </span>
+
+                        <strong id="detailName">
+                            Dr. Ramesh Kumar
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-detail">
+
+                        <span>
+                            Email Address
+                        </span>
+
+                        <strong id="facultyEmail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-detail">
+
+                        <span>
+                            Phone Number
+                        </span>
+
+                        <strong id="facultyPhone">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-detail">
+
+                        <span>
+                            Designation
+                        </span>
+
+                        <strong id="facultyDesignationDetail">
+                            Associate Professor
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-detail">
+
+                        <span>
+                            Department
+                        </span>
+
+                        <strong id="facultyDepartment">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ACADEMIC INFORMATION
+            ================================================== -->
+
+            <div class="faculty-card profile-card">
+
+                <div class="profile-card-header">
+
+                    <div>
+
+                        <div class="profile-section-label">
+                            ACADEMIC INFORMATION
+                        </div>
+
+                        <h2>
+                            Teaching Overview
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="academic-overview">
+
+
+                    <div class="academic-stat">
+
+                        <div
+                            class="academic-stat-value"
+                            id="totalStudents">
+
+                            0
+
+                        </div>
+
+                        <div class="academic-stat-label">
+                            Students
+                        </div>
+
+                    </div>
+
+
+                    <div class="academic-stat">
+
+                        <div
+                            class="academic-stat-value"
+                            id="totalSubjects">
+
+                            0
+
+                        </div>
+
+                        <div class="academic-stat-label">
+                            Subjects
+                        </div>
+
+                    </div>
+
+
+                    <div class="academic-stat">
+
+                        <div
+                            class="academic-stat-value"
+                            id="attendancePercentage">
+
+                            0%
+
+                        </div>
+
+                        <div class="academic-stat-label">
+                            Class Attendance
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-department-box">
+
+                    <span>
+                        Department
+                    </span>
+
+                    <strong id="departmentName">
+                        -
+                    </strong>
+
+                </div>
+
+
+                <div class="profile-department-box">
+
+                    <span>
+                        Faculty Status
+                    </span>
+
+                    <strong class="active-text">
+                        Active
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACCOUNT SECURITY
+        ================================================== -->
+
+        <section class="faculty-card security-card">
+
+            <div>
+
+                <div class="profile-section-label">
+                    ACCOUNT SECURITY
+                </div>
+
+                <h2>
+                    Login &amp; Security
+                </h2>
+
+                <p>
+                    Your account is protected using JWT authentication.
+                </p>
+
+            </div>
+
+
+            <div class="security-status">
+
+                <span
+                    class="security-icon"
+                    aria-hidden="true">
+
+                    &#x2705;
+
+                </span>
+
+
+                <div>
+
+                    <strong>
+                        Secure Authentication
+                    </strong>
+
+                    <span>
+                        JWT authentication is enabled
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             MESSAGE
+        ================================================== -->
+
+        <div
+            id="profileMessage"
+            class="profile-message"
+            style="display: none;">
+
+        </div>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="faculty-footer">
+
+            AI Attend
+            <span aria-hidden="true">&#8226;</span>
+            Faculty Portal
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="./profile.js"></script>
+</body>
+
+</html>

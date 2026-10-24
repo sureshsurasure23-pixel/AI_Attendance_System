@@ -1,0 +1,708 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports | AI Attend Faculty Portal</title>
+
+<link rel="stylesheet" href="./faculty.css">
+</head>
+
+<body>
+
+<div class="faculty-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                AI
+            </div>
+
+            <div>
+                <strong>AI Attend</strong>
+                <span>Faculty Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+    <a href="dashboard.html" class="nav-item">
+
+        <span aria-hidden="true">
+            &#x1F4CA;
+        </span>
+
+        <span>
+            Dashboard
+        </span>
+
+    </a>
+
+
+    <a href="attendance.html" class="nav-item">
+
+        <span aria-hidden="true">
+            &#x1F4CB;
+        </span>
+
+        <span>
+            Attendance
+        </span>
+
+    </a>
+
+
+    <a href="students.html" class="nav-item">
+
+        <span aria-hidden="true">
+            &#x1F465;
+        </span>
+
+        <span>
+            Students
+        </span>
+
+    </a>
+
+
+    <a href="reports.html" class="nav-item active">
+
+        <span aria-hidden="true">
+            &#x1F4C8;
+        </span>
+
+        <span>
+            Reports
+        </span>
+
+    </a>
+
+
+    <a href="profile.html" class="nav-item">
+
+        <span aria-hidden="true">
+            &#x1F464;
+        </span>
+
+        <span>
+            My Profile
+        </span>
+
+    </a>
+
+</nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn">
+
+                <span aria-hidden="true">&#x1F6AA;</span>
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="page-kicker">
+                    FACULTY PORTAL
+                </span>
+
+                <h1>
+                    Reports
+                </h1>
+
+                <p>
+                    Analyze attendance performance and generate academic reports.
+                </p>
+
+            </div>
+
+
+            <div class="faculty-user">
+
+                <div
+                    class="faculty-avatar"
+                    id="facultyInitial">
+                    D
+                </div>
+
+                <div>
+
+                    <strong id="facultyName">
+                        Dr. Ramesh Kumar
+                    </strong>
+
+                    <span id="facultyDesignation">
+                        Associate Professor
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =====================================================
+             REPORT ACTIONS
+        ====================================================== -->
+
+        <section class="report-toolbar faculty-card">
+
+            <div>
+
+                <h2>
+                    Attendance Report
+                </h2>
+
+                <p>
+                    Review your class attendance statistics.
+                </p>
+
+            </div>
+
+
+            <div class="report-actions">
+
+                <button
+                    type="button"
+                    class="report-btn secondary"
+                    id="refreshReportBtn">
+
+                    &#x21BB; Refresh
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="report-btn primary"
+                    id="printReportBtn">
+
+                    &#x1F5A8; Print Report
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             SUMMARY
+        ====================================================== -->
+
+        <section class="report-summary-grid">
+
+
+            <div class="report-stat-card">
+
+                <div class="report-stat-icon">
+                    &#x1F465;
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Students
+                    </span>
+
+                    <strong id="reportStudents">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-stat-card">
+
+                <div class="report-stat-icon">
+                    &#x1F4DA;
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Subjects
+                    </span>
+
+                    <strong id="reportSubjects">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-stat-card">
+
+                <div class="report-stat-icon">
+                    &#x2705;
+                </div>
+
+                <div>
+
+                    <span>
+                        Present
+                    </span>
+
+                    <strong
+                        id="reportPresent"
+                        class="success-number">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-stat-card">
+
+                <div class="report-stat-icon">
+                    &#x274C;
+                </div>
+
+                <div>
+
+                    <span>
+                        Absent
+                    </span>
+
+                    <strong
+                        id="reportAbsent"
+                        class="danger-number">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =====================================================
+             OVERALL ATTENDANCE
+        ====================================================== -->
+
+        <section class="faculty-card report-overview">
+
+            <div class="report-section-title">
+
+                <div>
+
+                    <span class="report-label">
+                        OVERALL PERFORMANCE
+                    </span>
+
+                    <h2>
+                        Class Attendance
+                    </h2>
+
+                </div>
+
+                <strong
+                    id="overallPercentage"
+                    class="overall-percentage">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="large-progress">
+
+                <div
+                    id="overallProgress"
+                    class="large-progress-fill"
+                    style="width: 0%;">
+                </div>
+
+            </div>
+
+
+            <div class="report-overview-details">
+
+                <span>
+                    Present:
+                    <strong id="overviewPresent">0</strong>
+                </span>
+
+                <span>
+                    Absent:
+                    <strong id="overviewAbsent">0</strong>
+                </span>
+
+                <span>
+                    Total Records:
+                    <strong id="overviewTotal">0</strong>
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             TWO COLUMN REPORTS
+        ====================================================== -->
+
+        <div class="reports-grid">
+
+
+            <!-- SUBJECT REPORT -->
+
+            <section class="faculty-card report-panel">
+
+                <div class="report-panel-header">
+
+                    <div>
+
+                        <span class="report-label">
+                            SUBJECT ANALYSIS
+                        </span>
+
+                        <h2>
+                            Subject-wise Attendance
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="subjectReport"
+                    class="subject-report-list">
+
+                    <div class="report-loading">
+                        Loading subject report...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- RISK REPORT -->
+
+            <section class="faculty-card report-panel">
+
+                <div class="report-panel-header">
+
+                    <div>
+
+                        <span class="report-label">
+                            AI MONITORING
+                        </span>
+
+                        <h2>
+                            Attendance Risk
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="risk-report-list">
+
+                    <div class="risk-report-row">
+
+                        <div class="risk-report-left">
+
+                            <span class="risk-dot low"></span>
+
+                            <span>
+                                Low Risk
+                            </span>
+
+                        </div>
+
+                        <strong id="reportLowRisk">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="risk-report-row">
+
+                        <div class="risk-report-left">
+
+                            <span class="risk-dot medium"></span>
+
+                            <span>
+                                Medium Risk
+                            </span>
+
+                        </div>
+
+                        <strong id="reportMediumRisk">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="risk-report-row">
+
+                        <div class="risk-report-left">
+
+                            <span class="risk-dot high"></span>
+
+                            <span>
+                                High Risk
+                            </span>
+
+                        </div>
+
+                        <strong id="reportHighRisk">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="risk-report-row">
+
+                        <div class="risk-report-left">
+
+                            <span class="risk-dot nodata"></span>
+
+                            <span>
+                                No Data
+                            </span>
+
+                        </div>
+
+                        <strong id="reportNoData">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="riskMessage"
+                    class="risk-message">
+
+                    Attendance risk is calculated from current attendance performance.
+
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             STUDENT PERFORMANCE
+        ====================================================== -->
+
+        <section class="faculty-card report-panel">
+
+            <div class="report-panel-header">
+
+                <div>
+
+                    <span class="report-label">
+                        STUDENT ANALYSIS
+                    </span>
+
+                    <h2>
+                        Student Attendance Performance
+                    </h2>
+
+                    <p>
+                        Students are ranked by their current attendance percentage.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-table-wrapper">
+
+                <table class="report-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                USN
+                            </th>
+
+                            <th>
+                                Attendance
+                            </th>
+
+                            <th>
+                                Present
+                            </th>
+
+                            <th>
+                                Absent
+                            </th>
+
+                            <th>
+                                Risk
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentReportBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =====================================================
+             RECENT ATTENDANCE
+        ====================================================== -->
+
+        <section class="faculty-card report-panel">
+
+            <div class="report-panel-header">
+
+                <div>
+
+                    <span class="report-label">
+                        RECENT ACTIVITY
+                    </span>
+
+                    <h2>
+                        Recent Attendance Records
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="report-table-wrapper">
+
+                <table class="report-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Date
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                Subject
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="recentReportBody">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="faculty-footer">
+
+            AI Attend
+            <span aria-hidden="true">&#8226;</span>
+            Faculty Portal
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="./reports.js"></script></body>
+
+</html>
+
+
+
+
+

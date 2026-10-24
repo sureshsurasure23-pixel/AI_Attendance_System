@@ -1,0 +1,920 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Attendance | AI Attend Admin</title>
+<link rel="stylesheet" href="../public/admin.css">
+
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     ADMIN LAYOUT
+========================================================= -->
+
+<div class="admin-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+<aside
+    id="adminSidebar"
+    class="admin-sidebar"
+>
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                AI
+            </div>
+
+            <div>
+
+                <h2>
+                    AI Attend
+                </h2>
+
+                <span>
+                    Admin Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="admin-nav">
+
+
+            <a href="dashboard.html">
+                <span>▣</span>
+                Dashboard
+            </a>
+
+
+            <a href="students.html">
+                <span>♟</span>
+                Students
+            </a>
+
+
+            <a href="faculty.html">
+                <span>♟</span>
+                Faculty
+            </a>
+
+
+            <a
+                href="attendance.html"
+                class="active"
+            >
+                <span>✓</span>
+                Attendance
+            </a>
+
+
+            <a href="ai-analytics.html">
+                <span>✦</span>
+                AI Analytics
+            </a>
+
+
+            <a href="reports.html">
+                <span>▤</span>
+                Reports
+            </a>
+
+
+            <a href="alerts.html">
+                <span>!</span>
+                Alerts
+            </a>
+
+
+            <a href="settings.html">
+                <span>⚙</span>
+                Settings
+            </a>
+
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+
+            <div class="admin-user-card">
+
+                <div class="admin-user-avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span>
+                        System Admin
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                id="logoutBtn"
+                class="admin-logout-btn"
+                type="button"
+            >
+
+                ↪ Logout
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+<!-- MOBILE SIDEBAR OVERLAY -->
+
+<div
+    id="mobileNavOverlay"
+    class="admin-mobile-overlay"
+    aria-hidden="true"
+></div>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="admin-main">
+        <!-- MOBILE MENU BUTTON -->
+
+<button
+    type="button"
+    id="mobileMenuBtn"
+    class="admin-mobile-menu-btn"
+    aria-label="Open navigation menu"
+    aria-controls="adminSidebar"
+    aria-expanded="false"
+>
+    ☰
+</button>
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="admin-topbar">
+
+            <div>
+
+                <h1>
+                    Attendance Management
+                </h1>
+
+                <p>
+                    Monitor and manage student attendance records.
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE CONTENT
+        ================================================== -->
+
+        <section class="admin-content">
+
+
+            <!-- =============================================
+                 SUMMARY CARDS
+            ============================================== -->
+
+            <div class="admin-summary-grid">
+
+
+                <div class="admin-summary-card">
+
+                    <div class="summary-label">
+                        Total Attendance
+                    </div>
+
+                    <div
+                        id="totalAttendance"
+                        class="summary-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="admin-summary-card">
+
+                    <div class="summary-label">
+                        Present
+                    </div>
+
+                    <div
+                        id="presentAttendance"
+                        class="summary-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="admin-summary-card">
+
+                    <div class="summary-label">
+                        Absent
+                    </div>
+
+                    <div
+                        id="absentAttendance"
+                        class="summary-value"
+                    >
+                        0
+                    </div>
+
+                </div>
+
+
+                <div class="admin-summary-card">
+
+                    <div class="summary-label">
+                        Attendance Rate
+                    </div>
+
+                    <div
+                        id="attendanceRate"
+                        class="summary-value"
+                    >
+                        0%
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =============================================
+                 FILTER SECTION
+            ============================================== -->
+
+            <div class="admin-section">
+
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <h2>
+                            Attendance Records
+                        </h2>
+
+                        <p>
+                            Search, filter and update attendance.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        id="refreshAttendanceBtn"
+                        class="admin-refresh-btn"
+                        type="button"
+                    >
+                        ↻ Refresh
+                    </button>
+
+                </div>
+
+
+
+                <div class="attendance-filter-row">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="attendance-search-box">
+
+                        <span>
+                            ⌕
+                        </span>
+
+                        <input
+                            type="text"
+                            id="attendanceSearch"
+                            placeholder="Search by student or ID"
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+
+                    <!-- STATUS -->
+
+                    <div class="attendance-filter-control">
+
+                        <select
+                            id="attendanceStatusFilter"
+                        >
+
+                            <option value="">
+                                All Status
+                            </option>
+
+                            <option value="Present">
+                                Present
+                            </option>
+
+                            <option value="Absent">
+                                Absent
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- DATE -->
+
+                    <div class="attendance-filter-control">
+
+                        <input
+                            type="date"
+                            id="attendanceDateFilter"
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =============================================
+                 TABLE SECTION
+            ============================================== -->
+
+            <div class="admin-section">
+
+
+                <div class="attendance-record-count">
+
+                    Showing
+                    <strong id="filteredAttendanceCount">
+                        0
+                    </strong>
+                    attendance records
+
+                </div>
+
+
+
+                <div class="admin-table-wrapper">
+
+
+                    <table class="admin-table">
+
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    Student
+                                </th>
+
+                                <th>
+                                    Student ID
+                                </th>
+
+                                <th>
+                                    Subject
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="attendanceTableBody">
+
+
+                            <tr>
+
+                                <td
+                                    colspan="7"
+                                    class="admin-table-loading"
+                                >
+                                    Loading attendance records...
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+
+                    </table>
+
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     ATTENDANCE DETAILS MODAL
+========================================================= -->
+
+<div
+    id="attendanceModal"
+    class="admin-modal"
+    hidden
+>
+
+
+    <div class="admin-modal-content">
+
+
+        <!-- =============================================
+             MODAL HEADER
+        ============================================== -->
+
+        <div class="admin-modal-header">
+
+
+            <div class="attendance-modal-profile">
+
+
+                <div
+                    id="modalAttendanceAvatar"
+                    class="attendance-modal-avatar"
+                >
+                    S
+                </div>
+
+
+                <div>
+
+                    <h2 id="modalStudentName">
+                        Student
+                    </h2>
+
+                    <span id="modalStudentId">
+                        -
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+
+            <button
+                id="closeAttendanceModal"
+                class="admin-modal-close"
+                type="button"
+                aria-label="Close"
+            >
+                ×
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =============================================
+             MODAL DETAILS
+        ============================================== -->
+
+        <div class="attendance-modal-body">
+
+
+            <div class="attendance-modal-grid">
+
+
+                <!-- CURRENT STATUS -->
+
+                <div class="attendance-detail-card">
+
+
+                    <span class="attendance-detail-label">
+                        Current Status
+                    </span>
+
+
+                    <strong
+                        id="modalAttendanceStatus"
+                        class="attendance-detail-value"
+                    >
+                        -
+                    </strong>
+
+
+                </div>
+
+
+
+                <!-- CHANGE STATUS -->
+
+                <div class="attendance-edit-card">
+
+
+                    <label
+                        for="modalAttendanceStatusSelect"
+                        class="attendance-detail-label"
+                    >
+                        Change Attendance Status
+                    </label>
+
+
+                    <select
+                        id="modalAttendanceStatusSelect"
+                        class="attendance-status-select"
+                    >
+
+                        <option value="Present">
+                            Present
+                        </option>
+
+                        <option value="Absent">
+                            Absent
+                        </option>
+
+                    </select>
+
+
+                    <button
+                        id="saveAttendanceBtn"
+                        class="admin-save-btn"
+                        type="button"
+                    >
+                        Save Attendance
+                    </button>
+
+
+                    <div
+                        id="attendanceUpdateMessage"
+                        class="attendance-update-message"
+                        aria-live="polite"
+                    ></div>
+
+
+                </div>
+
+
+
+                <!-- SUBJECT -->
+
+                <div class="attendance-detail-card">
+
+
+                    <span class="attendance-detail-label">
+                        Subject
+                    </span>
+
+
+                    <strong
+                        id="modalAttendanceSubject"
+                        class="attendance-detail-value"
+                    >
+                        -
+                    </strong>
+
+
+                </div>
+
+
+
+                <!-- DATE -->
+
+                <div class="attendance-detail-card">
+
+
+                    <span class="attendance-detail-label">
+                        Date
+                    </span>
+
+
+                    <strong
+                        id="modalAttendanceDate"
+                        class="attendance-detail-value"
+                    >
+                        -
+                    </strong>
+
+
+                </div>
+
+
+
+                <!-- STUDENT ID -->
+
+                <div class="attendance-detail-card">
+
+
+                    <span class="attendance-detail-label">
+                        Student ID
+                    </span>
+
+
+                    <strong
+                        id="modalAttendanceStudentId"
+                        class="attendance-detail-value"
+                    >
+                        -
+                    </strong>
+
+
+                </div>
+
+
+
+                <!-- MARKED BY -->
+
+                <div class="attendance-detail-card">
+
+
+                    <span class="attendance-detail-label">
+                        Marked By
+                    </span>
+
+
+                    <strong
+                        id="modalAttendanceMarkedBy"
+                        class="attendance-detail-value"
+                    >
+                        -
+                    </strong>
+
+
+                </div>
+
+
+
+                <!-- REMARKS -->
+
+                <div class="attendance-detail-card attendance-detail-full">
+
+
+                    <span class="attendance-detail-label">
+                        Remarks
+                    </span>
+
+
+                    <strong
+                        id="modalAttendanceRemarks"
+                        class="attendance-detail-value"
+                    >
+                        -
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="./attendance.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("adminSidebar");
+
+    const overlay =
+        document.getElementById("mobileNavOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        console.warn(
+            "⚠️ Mobile navigation elements not found."
+        );
+
+        return;
+    }
+
+
+    function openMobileMenu() {
+
+        sidebar.classList.add("mobile-open");
+
+        overlay.classList.add("active");
+
+        document.body.classList.add(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        menuButton.textContent = "×";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+    }
+
+
+    function closeMobileMenu() {
+
+        sidebar.classList.remove("mobile-open");
+
+        overlay.classList.remove("active");
+
+        document.body.classList.remove(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        menuButton.textContent = "☰";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+    }
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            }
+            else {
+
+                openMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+    sidebar
+        .querySelectorAll(".admin-nav-item")
+        .forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                closeMobileMenu
+            );
+
+        });
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 768) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "📱 Attendance mobile navigation initialized."
+    );
+
+});
+
+</script>
+</body>
+
+</html>

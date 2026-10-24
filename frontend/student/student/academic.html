@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="AI Attend Student Academic Performance">
+
+    <title>AI Attend | Academic</title>
+
+<link rel="stylesheet" href="./academic.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                AI
+            </div>
+
+            <div class="logo-text">
+
+                <h2>AI Attend</h2>
+
+                <span>Student Portal</span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <p class="nav-title">
+                MAIN MENU
+            </p>
+
+
+            <a href="dashboard.html"
+               class="nav-item">
+
+                <span class="nav-icon">⌂</span>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="attendance.html"
+               class="nav-item">
+
+                <span class="nav-icon">◷</span>
+
+                <span>Attendance</span>
+
+            </a>
+
+
+            <a href="academic.html"
+               class="nav-item active">
+
+                <span class="nav-icon">▤</span>
+
+                <span>Academic</span>
+
+            </a>
+
+
+            <a href="ai-prediction.html"
+               class="nav-item">
+
+                <span class="nav-icon">✦</span>
+
+                <span>AI Prediction</span>
+
+            </a>
+
+
+            <a href="alerts.html"
+               class="nav-item">
+
+                <span class="nav-icon">⚠</span>
+
+                <span>Alerts</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile.html"
+               class="nav-item">
+
+                <span class="nav-icon">⚙</span>
+
+                <span>Profile</span>
+
+            </a>
+
+
+            <a href="../login.html"
+               id="logoutBtn"
+               class="nav-item logout">
+
+                <span class="nav-icon">↪</span>
+
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <p class="welcome-small">
+                    STUDENT PORTAL
+                </p>
+
+                <h1>
+                    Academic
+                </h1>
+
+                <p>
+                    Track your academic performance and subject results.
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+
+                <button
+                    type="button"
+                    id="refreshBtn"
+                    class="refresh-btn">
+
+                    <span>↻</span>
+
+                    Refresh
+
+                </button>
+
+
+                <div class="profile">
+
+                    <div
+                        class="avatar"
+                        id="studentAvatar">
+
+                        S
+
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <strong id="topStudentName">
+                            Loading...
+                        </strong>
+
+                        <span>
+                            Student
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             ACADEMIC HERO
+        ================================================== -->
+
+        <section class="welcome-card">
+
+            <div class="welcome-content">
+
+                <span class="welcome-label">
+                    ACADEMIC PERFORMANCE
+                </span>
+
+
+                <h2>
+                    Your academic overview
+                </h2>
+
+
+                <p>
+                    Review your average marks, subjects and
+                    current academic performance level.
+                </p>
+
+
+                <div class="student-id">
+
+                    <span>
+                        Student:
+                    </span>
+
+                    <strong id="academicStudentName">
+                        Loading...
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="overall-status">
+
+                <span class="status-label">
+                    Academic Risk
+                </span>
+
+
+                <div
+                    id="riskBadge"
+                    class="risk-badge">
+
+                    -
+
+                </div>
+
+
+                <small>
+                    AI-powered assessment
+                </small>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PERFORMANCE OVERVIEW
+        ================================================== -->
+
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <h2>
+                        Performance Overview
+                    </h2>
+
+                    <p>
+                        Your current academic statistics
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+
+                <!-- AVERAGE MARKS -->
+
+                <article class="stat-card">
+
+                    <div class="card-top">
+
+                        <div class="icon-box purple">
+                            ★
+                        </div>
+
+                        <span class="card-label">
+                            AVERAGE MARKS
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-value">
+
+                        <span id="averageMarksCard">
+                            0
+                        </span>
+
+                        <small>
+                            %
+                        </small>
+
+                    </div>
+
+
+                    <p class="risk-text">
+                        Current average performance
+                    </p>
+
+
+                    <div class="mini-progress">
+
+                        <div
+                            id="marksProgress"
+                            class="mini-progress-bar">
+                        </div>
+
+                    </div>
+
+
+                    <div class="card-footer">
+
+                        <span>
+                            Average Score
+                        </span>
+
+                        <strong id="averageMarks">
+                            0%
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SUBJECT COUNT -->
+
+                <article class="stat-card">
+
+                    <div class="card-top">
+
+                        <div class="icon-box blue">
+                            ▤
+                        </div>
+
+                        <span class="card-label">
+                            SUBJECTS
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-value">
+
+                        <span id="subjectsCount">
+                            0
+                        </span>
+
+                    </div>
+
+
+                    <p class="risk-text">
+                        Registered academic subjects
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span>
+                            Total Subjects
+                        </span>
+
+                        <strong>
+                            Active
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PERFORMANCE LEVEL -->
+
+                <article class="stat-card">
+
+                    <div class="card-top">
+
+                        <div class="icon-box green">
+                            ✓
+                        </div>
+
+                        <span class="card-label">
+                            PERFORMANCE LEVEL
+                        </span>
+
+                    </div>
+
+
+                    <div
+                        id="academicRisk"
+                        class="stat-value risk-value">
+
+                        -
+
+                    </div>
+
+
+                    <p class="confidence">
+                        AI academic assessment
+                    </p>
+
+
+                    <span
+                        id="academicStatus"
+                        class="status-pill">
+
+                        MONITORING
+
+                    </span>
+
+                </article>
+
+
+
+                <!-- SCORE -->
+
+                <article class="stat-card">
+
+                    <div class="card-top">
+
+                        <div class="icon-box orange">
+                            %
+                        </div>
+
+                        <span class="card-label">
+                            SCORE
+                        </span>
+
+                    </div>
+
+
+                    <div class="stat-value">
+
+                        <span id="averageMarksScore">
+                            0
+                        </span>
+
+                        <small>
+                            %
+                        </small>
+
+                    </div>
+
+
+                    <p class="absence">
+                        Overall academic score
+                    </p>
+
+
+                    <div class="card-footer">
+
+                        <span>
+                            Academic Result
+                        </span>
+
+                        <strong>
+                            Updated
+                        </strong>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUBJECT PERFORMANCE
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <div class="title-icon purple">
+                    ▤
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Subject Performance
+                    </h2>
+
+                    <p>
+                        Marks and performance by subject
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="subjectContainer"
+                class="subject-container">
+
+                <div class="loading-state">
+
+                    Loading subject information...
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACADEMIC INSIGHT
+        ================================================== -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <div class="title-icon blue">
+                    ✦
+                </div>
+
+
+                <div>
+
+                    <h2>
+                        Academic Insight
+                    </h2>
+
+                    <p>
+                        Intelligent performance summary
+                    </p>
+
+                </div>
+
+
+                <span class="ai-powered">
+                    AI POWERED
+                </span>
+
+            </div>
+
+
+            <div class="ai-content">
+
+                <div class="ai-symbol">
+                    ✦
+                </div>
+
+
+                <p id="academicMessage">
+                    Loading academic analysis...
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             ACADEMIC SUMMARY
+        ================================================== -->
+
+        <section class="two-column">
+
+
+            <!-- PERFORMANCE STATUS -->
+
+            <article class="panel">
+
+                <div class="panel-title">
+
+                    <div class="title-icon green">
+                        ✓
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Performance Status
+                        </h2>
+
+                        <p>
+                            Current academic standing
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="prediction">
+
+
+                    <div class="prediction-item">
+
+                        <span>
+                            Average Marks
+                        </span>
+
+                        <strong id="averageMarksSummary">
+                            0%
+                        </strong>
+
+                    </div>
+
+
+                    <div class="prediction-item">
+
+                        <span>
+                            Subjects
+                        </span>
+
+                        <strong id="subjectsSummary">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="prediction-item">
+
+                        <span>
+                            Risk Level
+                        </span>
+
+                        <strong id="riskSummary">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </article>
+
+
+
+            <!-- STUDY RECOMMENDATION -->
+
+            <article class="panel">
+
+                <div class="panel-title">
+
+                    <div class="title-icon warning">
+                        💡
+                    </div>
+
+
+                    <div>
+
+                        <h2>
+                            Study Recommendation
+                        </h2>
+
+                        <p>
+                            Improve your academic performance
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="message-box">
+
+                    <strong>
+                        Stay consistent
+                    </strong>
+
+                    <br>
+
+                    Continue attending classes regularly,
+                    review difficult subjects and maintain
+                    consistent study habits.
+
+                </div>
+
+            </article>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer>
+
+            <span>
+                © 2026 AI Student Attendance Monitoring System
+            </span>
+
+            <span>
+                AI-Powered Academic Analytics
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+====================================================== -->
+
+<script src="./academic.js"></script>
+
+</body>
+
+</html>

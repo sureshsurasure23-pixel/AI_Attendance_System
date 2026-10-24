@@ -1,0 +1,1547 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI Analytics | Admin Portal</title>
+
+    <!-- =====================================================
+         ADMIN CSS
+    ====================================================== -->
+
+    <link rel="stylesheet" href="../public/admin.css">
+
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         ADMIN LAYOUT
+    ====================================================== -->
+
+    <div class="admin-layout">
+
+
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
+<aside
+    id="adminSidebar"
+    class="admin-sidebar"
+>
+
+            <!-- BRAND -->
+
+            <div class="admin-brand">
+
+                <div class="admin-brand-icon">
+                    AI
+                </div>
+
+                <div>
+
+                    <h2>
+                        AI Attendance
+                    </h2>
+
+                    <span>
+                        Admin Portal
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="admin-navigation">
+
+
+                <a
+                    href="dashboard.html"
+                    class="admin-nav-item"
+                >
+
+                    <span class="admin-nav-icon">
+                        🏠
+                    </span>
+
+                    <span>
+                        Dashboard
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="students.html"
+                    class="admin-nav-item"
+                >
+
+                    <span class="admin-nav-icon">
+                        👨‍🎓
+                    </span>
+
+                    <span>
+                        Students
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="faculty.html"
+                    class="admin-nav-item"
+                >
+
+                    <span class="admin-nav-icon">
+                        👨‍🏫
+                    </span>
+
+                    <span>
+                        Faculty
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="attendance.html"
+                    class="admin-nav-item"
+                >
+
+                    <span class="admin-nav-icon">
+                        📋
+                    </span>
+
+                    <span>
+                        Attendance
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="ai-analytics.html"
+                    class="admin-nav-item active"
+                >
+
+                    <span class="admin-nav-icon">
+                        🤖
+                    </span>
+
+                    <span>
+                        AI Analytics
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="marks.html"
+                    class="admin-nav-item"
+                >
+
+                    <span class="admin-nav-icon">
+                        📊
+                    </span>
+
+                    <span>
+                        Marks
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="fees.html"
+                    class="admin-nav-item"
+                >
+
+                    <span class="admin-nav-icon">
+                        💰
+                    </span>
+
+                    <span>
+                        Fees
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="notifications.html"
+                    class="admin-nav-item"
+                >
+
+                    <span class="admin-nav-icon">
+                        🔔
+                    </span>
+
+                    <span>
+                        Notifications
+                    </span>
+
+                </a>
+
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="admin-user-card">
+
+
+                <div class="admin-user-avatar">
+                    A
+                </div>
+
+
+                <div class="admin-user-info">
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span>
+                        Admin
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="logoutBtn"
+                    class="admin-logout-btn"
+                    title="Logout"
+                >
+                    ↪
+                </button>
+
+
+            </div>
+
+
+        </aside>
+        <!-- MOBILE SIDEBAR OVERLAY -->
+<div
+    id="mobileNavOverlay"
+    class="admin-mobile-overlay"
+    aria-hidden="true"
+></div>
+
+
+
+        <!-- =================================================
+             MAIN CONTENT
+        ================================================== -->
+
+<main
+    id="main-content"
+    class="admin-main"
+>
+
+            <!-- =================================================
+                 TOP BAR
+            ================================================== -->
+
+            <header class="admin-topbar">
+
+
+                <div>
+
+                    <h1>
+                        AI Analytics
+                    </h1>
+
+                    <p>
+                        AI-powered student performance and
+                        attendance analysis
+                    </p>
+
+                </div>
+
+
+                <div class="admin-topbar-actions">
+
+
+                    <button
+                        type="button"
+                        id="refreshAIButton"
+                        class="admin-save-btn"
+                    >
+                        🔄 Refresh
+                    </button>
+
+
+                </div>
+
+
+            </header>
+
+
+
+            <!-- =================================================
+                 PAGE CONTENT
+            ================================================== -->
+
+            <section class="admin-content">
+
+
+                <!-- =================================================
+                     STUDENT SELECTION
+                ================================================== -->
+
+                <section class="admin-section">
+
+
+                    <div class="admin-section-header">
+
+                        <div>
+
+                            <h2>
+                                Student AI Analysis
+                            </h2>
+
+                            <p>
+                                Select a student to view AI-generated
+                                attendance and academic insights.
+                            </p>
+
+                        </div>
+
+
+                        <span class="admin-section-badge">
+                            AI
+                        </span>
+
+                    </div>
+
+
+
+                    <div class="attendance-filter-row">
+
+
+                        <div class="attendance-filter-control">
+
+
+                            <label for="studentSelect">
+                                Select Student
+                            </label>
+
+
+                            <select
+                                id="studentSelect"
+                                class="attendance-status-select"
+                            >
+
+                                <option value="">
+                                    Select a student
+                                </option>
+
+                            </select>
+
+
+                        </div>
+
+
+                        <div
+                            id="aiStudentInfo"
+                            class="attendance-record-count"
+                        >
+                            No student selected
+                        </div>
+
+
+                    </div>
+
+
+                </section>
+
+
+
+                <!-- =================================================
+                     LOADING MESSAGE
+                ================================================== -->
+
+                <div
+                    id="aiLoading"
+                    class="admin-card"
+                    style="display:none;"
+                >
+
+                    <div style="
+                        padding:30px;
+                        text-align:center;
+                    ">
+
+                        <strong>
+                            Loading AI analysis...
+                        </strong>
+
+                        <p>
+                            Please wait while the system
+                            analyzes the student data.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ERROR MESSAGE
+                ================================================== -->
+
+                <div
+                    id="aiError"
+                    class="admin-card"
+                    style="display:none;"
+                >
+
+                    <div style="
+                        padding:30px;
+                        text-align:center;
+                    ">
+
+                        <strong>
+                            Unable to load AI analysis
+                        </strong>
+
+                        <p id="aiErrorMessage">
+                            An error occurred while loading
+                            the AI analysis.
+                        </p>
+
+                        <button
+                            type="button"
+                            id="retryAIButton"
+                            class="admin-save-btn"
+                        >
+                            Try Again
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     ANALYTICS CONTENT
+                ================================================== -->
+
+                <div id="aiAnalyticsContent">
+
+
+
+                    <!-- =================================================
+                         STUDENT HEADER
+                    ================================================= -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-card">
+
+
+                            <div
+                                style="
+                                    display:flex;
+                                    align-items:center;
+                                    gap:20px;
+                                    flex-wrap:wrap;
+                                "
+                            >
+
+
+                                <div
+                                    id="aiStudentAvatar"
+                                    class="attendance-modal-avatar"
+                                >
+                                    S
+                                </div>
+
+
+                                <div>
+
+                                    <h2
+                                        id="aiStudentName"
+                                        style="margin:0;"
+                                    >
+                                        Student
+                                    </h2>
+
+
+                                    <p
+                                        id="aiStudentId"
+                                        style="margin:5px 0 0;"
+                                    >
+                                        Student ID: —
+                                    </p>
+
+
+                                    <span
+                                        id="aiPredictionStatus"
+                                        class="admin-section-badge"
+                                    >
+                                        Not analyzed
+                                    </span>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         SUMMARY CARDS
+                    ================================================== -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-section-header">
+
+                            <div>
+
+                                <h2>
+                                    Performance Overview
+                                </h2>
+
+                                <p>
+                                    Current attendance and
+                                    academic performance.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-stat-grid">
+
+
+                            <!-- ATTENDANCE -->
+
+                            <div class="admin-stat-card">
+
+                                <div class="admin-stat-icon">
+                                    📅
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Attendance
+                                    </span>
+
+                                    <strong
+                                        id="aiAttendancePercentage"
+                                    >
+                                        0%
+                                    </strong>
+
+                                    <small
+                                        id="aiAttendanceClasses"
+                                    >
+                                        0 / 0 classes
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- ACADEMIC -->
+
+                            <div class="admin-stat-card">
+
+                                <div class="admin-stat-icon">
+                                    📚
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Academic Average
+                                    </span>
+
+                                    <strong
+                                        id="aiAcademicAverage"
+                                    >
+                                        0%
+                                    </strong>
+
+                                    <small
+                                        id="aiAcademicSubjects"
+                                    >
+                                        0 subjects
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- AI RISK -->
+
+                            <div class="admin-stat-card">
+
+                                <div class="admin-stat-icon">
+                                    🤖
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        AI Risk
+                                    </span>
+
+                                    <strong
+                                        id="aiRiskLevel"
+                                    >
+                                        —
+                                    </strong>
+
+                                    <small
+                                        id="aiConfidence"
+                                    >
+                                        Confidence: —
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- EARLY WARNING -->
+
+                            <div class="admin-stat-card">
+
+                                <div class="admin-stat-icon">
+                                    ⚠️
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Early Warning
+                                    </span>
+
+                                    <strong
+                                        id="aiOverallRisk"
+                                    >
+                                        —
+                                    </strong>
+
+                                    <small
+                                        id="aiRiskScore"
+                                    >
+                                        Risk Score: 0
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         RISK ANALYSIS
+                    ================================================== -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-section-header">
+
+                            <div>
+
+                                <h2>
+                                    Risk Analysis
+                                </h2>
+
+                                <p>
+                                    Attendance, academic and
+                                    AI-based risk information.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-stat-grid">
+
+
+                            <!-- ATTENDANCE RISK -->
+
+                            <div class="admin-card">
+
+                                <div
+                                    style="
+                                        padding:22px;
+                                    "
+                                >
+
+                                    <h3>
+                                        Attendance Risk
+                                    </h3>
+
+                                    <div
+                                        id="aiAttendanceRisk"
+                                        class="admin-section-badge"
+                                    >
+                                        —
+                                    </div>
+
+                                    <p
+                                        id="aiAttendanceRiskText"
+                                    >
+                                        No analysis available.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- ACADEMIC RISK -->
+
+                            <div class="admin-card">
+
+                                <div
+                                    style="
+                                        padding:22px;
+                                    "
+                                >
+
+                                    <h3>
+                                        Academic Risk
+                                    </h3>
+
+                                    <div
+                                        id="aiAcademicRisk"
+                                        class="admin-section-badge"
+                                    >
+                                        —
+                                    </div>
+
+                                    <p
+                                        id="aiAcademicRiskText"
+                                    >
+                                        No analysis available.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- ML RISK -->
+
+                            <div class="admin-card">
+
+                                <div
+                                    style="
+                                        padding:22px;
+                                    "
+                                >
+
+                                    <h3>
+                                        AI / ML Risk Prediction
+                                    </h3>
+
+                                    <div
+                                        id="aiMLRisk"
+                                        class="admin-section-badge"
+                                    >
+                                        —
+                                    </div>
+
+                                    <p
+                                        id="aiMLReason"
+                                    >
+                                        No prediction available.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         ATTENDANCE PREDICTION
+                    ================================================== -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-section-header">
+
+                            <div>
+
+                                <h2>
+                                    Attendance Prediction
+                                </h2>
+
+                                <p>
+                                    Projected attendance based on
+                                    future class attendance.
+                                </p>
+
+                            </div>
+
+
+                            <span class="admin-section-badge">
+                                Prediction
+                            </span>
+
+                        </div>
+
+
+                        <div class="admin-card">
+
+
+                            <div
+                                class="admin-stat-grid"
+                                style="
+                                    padding:20px;
+                                "
+                            >
+
+
+                                <!-- CURRENT -->
+
+                                <div>
+
+                                    <span>
+                                        Current Attendance
+                                    </span>
+
+                                    <strong
+                                        id="predictionCurrent"
+                                    >
+                                        0%
+                                    </strong>
+
+                                </div>
+
+
+                                <!-- NEXT 10 -->
+
+                                <div>
+
+                                    <span>
+                                        If Next 10 Classes Attended
+                                    </span>
+
+                                    <strong
+                                        id="predictionNext10"
+                                    >
+                                        0%
+                                    </strong>
+
+                                </div>
+
+
+                                <!-- NEXT 5 MISSED -->
+
+                                <div>
+
+                                    <span>
+                                        If Next 5 Classes Missed
+                                    </span>
+
+                                    <strong
+                                        id="predictionNext5"
+                                    >
+                                        0%
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         ATTENDANCE RECOVERY
+                    ================================================== -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-section-header">
+
+                            <div>
+
+                                <h2>
+                                    Attendance Recovery
+                                </h2>
+
+                                <p>
+                                    Information about reaching the
+                                    required attendance percentage.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-stat-grid">
+
+
+                            <div class="admin-stat-card">
+
+                                <div class="admin-stat-icon">
+                                    🎯
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Classes Needed
+                                    </span>
+
+                                    <strong
+                                        id="classesNeeded"
+                                    >
+                                        0
+                                    </strong>
+
+                                    <small>
+                                        To reach 75%
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="admin-stat-card">
+
+                                <div class="admin-stat-icon">
+                                    📌
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Classes Can Miss
+                                    </span>
+
+                                    <strong
+                                        id="classesCanMiss"
+                                    >
+                                        0
+                                    </strong>
+
+                                    <small>
+                                        While staying at 75%
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="admin-stat-card">
+
+                                <div class="admin-stat-icon">
+                                    📈
+                                </div>
+
+                                <div>
+
+                                    <span>
+                                        Projected Attendance
+                                    </span>
+
+                                    <strong
+                                        id="projectedAttendance"
+                                    >
+                                        —
+                                    </strong>
+
+                                    <small>
+                                        AI projection
+                                    </small>
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         SUBJECT PERFORMANCE
+                    ================================================== -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-section-header">
+
+                            <div>
+
+                                <h2>
+                                    Subject Performance
+                                </h2>
+
+                                <p>
+                                    Academic performance by subject.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-content-card">
+
+
+                            <div class="admin-table-wrapper">
+
+                                <table class="admin-table">
+
+
+                                    <thead>
+
+                                        <tr>
+
+                                            <th>
+                                                Subject
+                                            </th>
+
+                                            <th>
+                                                Marks
+                                            </th>
+
+                                            <th>
+                                                Percentage
+                                            </th>
+
+                                            <th>
+                                                Performance
+                                            </th>
+
+                                        </tr>
+
+                                    </thead>
+
+
+                                    <tbody
+                                        id="aiSubjectsTableBody"
+                                    >
+
+                                        <tr>
+
+                                            <td colspan="4">
+
+                                                No subject data
+                                                available.
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+
+
+                                </table>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         ACADEMIC MESSAGE
+                    ================================================== -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-card">
+
+
+                            <div
+                                style="
+                                    padding:24px;
+                                "
+                            >
+
+                                <h2>
+                                    Academic Analysis
+                                </h2>
+
+
+                                <p
+                                    id="academicMessage"
+                                >
+                                    Select a student to view
+                                    academic analysis.
+                                </p>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         AI REASON
+                    ================================================== -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-card">
+
+
+                            <div
+                                style="
+                                    padding:24px;
+                                "
+                            >
+
+                                <h2>
+                                    AI Prediction Reason
+                                </h2>
+
+
+                                <p
+                                    id="aiPredictionReason"
+                                >
+                                    Select a student to view
+                                    the AI prediction reason.
+                                </p>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         ATTENDANCE SHORTAGE
+                    ================================================== -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-section-header">
+
+                            <div>
+
+                                <h2>
+                                    Attendance Shortage
+                                </h2>
+
+                                <p>
+                                    AI-generated attendance shortage
+                                    analysis.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="admin-card">
+
+
+                            <div
+                                style="
+                                    padding:24px;
+                                "
+                            >
+
+
+                                <div
+                                    class="admin-stat-grid"
+                                >
+
+
+                                    <div>
+
+                                        <span>
+                                            Required Attendance
+                                        </span>
+
+                                        <strong
+                                            id="shortageRequired"
+                                        >
+                                            75%
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <span>
+                                            Classes To Attend
+                                        </span>
+
+                                        <strong
+                                            id="shortageClasses"
+                                        >
+                                            0
+                                        </strong>
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <span>
+                                            Can Reach Target
+                                        </span>
+
+                                        <strong
+                                            id="shortageCanReach"
+                                        >
+                                            —
+                                        </strong>
+
+                                    </div>
+
+
+                                </div>
+
+
+                                <p
+                                    id="shortageMessage"
+                                >
+                                    Select a student to view
+                                    attendance shortage information.
+                                </p>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                    <!-- =================================================
+                         EARLY WARNING
+                    ================================================== -->
+
+                    <section class="admin-section">
+
+
+                        <div class="admin-section-header">
+
+                            <div>
+
+                                <h2>
+                                    Early Warning System
+                                </h2>
+
+                                <p>
+                                    Early indicators requiring
+                                    academic attention.
+                                </p>
+
+                            </div>
+
+
+                            <span
+                                id="earlyWarningBadge"
+                                class="admin-section-badge"
+                            >
+                                —
+                            </span>
+
+                        </div>
+
+
+                        <div class="admin-card">
+
+
+                            <div
+                                style="
+                                    padding:24px;
+                                "
+                            >
+
+
+                                <h3>
+                                    Recommendations
+                                </h3>
+
+
+                                <ul
+                                    id="aiRecommendations"
+                                >
+
+                                    <li>
+                                        Select a student to view
+                                        recommendations.
+                                    </li>
+
+                                </ul>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </section>
+
+
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+   <script src="ai-analytics.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("adminSidebar");
+
+    const overlay =
+        document.getElementById("mobileNavOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        console.warn(
+            "⚠️ Mobile navigation elements not found."
+        );
+
+        return;
+    }
+
+
+    function openMobileMenu() {
+
+        sidebar.classList.add("mobile-open");
+
+        overlay.classList.add("active");
+
+        document.body.classList.add(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        menuButton.textContent = "×";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+    }
+
+
+    function closeMobileMenu() {
+
+        sidebar.classList.remove("mobile-open");
+
+        overlay.classList.remove("active");
+
+        document.body.classList.remove(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        menuButton.textContent = "☰";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+    }
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            } else {
+
+                openMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+    sidebar
+        .querySelectorAll(".admin-nav-item")
+        .forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                closeMobileMenu
+            );
+
+        });
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 768) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "📱 AI Analytics mobile navigation initialized."
+    );
+
+});
+
+</script>
+</body>
+
+</html>

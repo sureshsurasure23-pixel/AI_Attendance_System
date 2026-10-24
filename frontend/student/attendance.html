@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance | AI Student Attendance System</title>
+
+<link rel="stylesheet" href="attendance.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+
+            <div class="university-logo">
+                SU
+            </div>
+
+            <div>
+                <h2>Srinivas University</h2>
+                <p>AI Attendance System</p>
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                🏠
+                <span>Dashboard</span>
+            </a>
+
+            <a href="attendance.html" class="active">
+                📊
+                <span>Attendance</span>
+            </a>
+
+            <a href="academic.html">
+                📚
+                <span>Academic</span>
+            </a>
+
+            <a href="ai-prediction.html">
+                🤖
+                <span>AI Prediction</span>
+            </a>
+
+            <a href="alerts.html">
+                🔔
+                <span>Alerts</span>
+            </a>
+
+            <a href="#" id="settingsBtn">
+                ⚙️
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <a href="#" id="logoutBtn">
+                🚪
+                <span>Logout</span>
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="top-header">
+
+            <div>
+                <h1>Attendance</h1>
+                <p>
+                    View your attendance percentage and
+                    period-wise attendance history.
+                </p>
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    id="refreshAttendance"
+                    type="button"
+                    class="refresh-btn"
+                >
+                    ↻ Refresh
+                </button>
+
+
+                <div class="student-profile">
+
+                    <div
+                        id="studentAvatar"
+                        class="student-avatar"
+                    >
+                        S
+                    </div>
+
+                    <div>
+
+                        <strong id="studentName">
+                            Loading...
+                        </strong>
+
+                        <span>
+                            Student
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             ATTENDANCE SUMMARY
+        ================================================== -->
+
+        <section class="attendance-summary">
+
+
+            <!-- ATTENDANCE CIRCLE -->
+
+            <div class="summary-card attendance-main-card">
+
+                <div
+                    class="attendance-circle"
+                    style="--attendance: 0%;"
+                >
+
+                    <div class="circle-content">
+
+                        <strong id="attendancePercentage">
+                            0%
+                        </strong>
+
+                        <span>
+                            Attendance
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-details">
+
+                    <h2>Overall Attendance</h2>
+
+                    <p id="attendanceMessage">
+                        Loading attendance status...
+                    </p>
+
+
+                    <div class="risk-status">
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong id="attendanceRisk">
+                            Risk: --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRESENT -->
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        Present Classes
+                    </span>
+
+                    <strong id="presentClasses">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ABSENT -->
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <span>
+                        Absent Classes
+                    </span>
+
+                    <strong id="absentClasses">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL -->
+
+            <div class="summary-card">
+
+                <div class="summary-icon">
+                    #
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Classes
+                    </span>
+
+                    <strong id="totalClasses">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PROGRESS
+        ================================================== -->
+
+        <section class="content-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>Attendance Progress</h2>
+
+                    <p>
+                        Required attendance:
+                        <strong id="requiredPercentage">
+                            75%
+                        </strong>
+                    </p>
+
+                </div>
+
+                <strong id="progressPercentage">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div
+                    id="attendanceProgress"
+                    class="progress-bar"
+                    style="width: 0%;"
+                ></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             AI INSIGHT
+        ================================================== -->
+
+        <section class="content-card ai-insight-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>🤖 AI Attendance Insight</h2>
+
+                    <p>
+                        AI-based attendance analysis
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="ai-insight-content">
+
+                <p id="aiInsight">
+                    Analyzing your attendance...
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RECOMMENDATION
+        ================================================== -->
+
+        <section class="content-card recommendation-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>💡 Recommendation</h2>
+
+                    <p>
+                        Suggested action based on your
+                        attendance.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="recommendation-content">
+
+                <p id="recommendationText">
+                    Keep attending classes regularly.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ATTENDANCE HISTORY
+        ================================================== -->
+
+        <section class="content-card attendance-history-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>Attendance History</h2>
+
+                    <p>
+                        Monday to Saturday period-wise
+                        attendance records.
+                    </p>
+
+                </div>
+
+
+                <div class="filter-container">
+
+                    <label for="attendanceFilter">
+                        Filter:
+                    </label>
+
+                    <select id="attendanceFilter">
+
+                        <option value="all">
+                            All
+                        </option>
+
+                        <option value="present">
+                            Present
+                        </option>
+
+                        <option value="absent">
+                            Absent
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table class="attendance-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Date</th>
+
+                            <th>Day</th>
+
+                            <th>Subject</th>
+
+                            <th>Period</th>
+
+                            <th>Status</th>
+
+                            <th>Percentage</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="attendanceTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="loading-row"
+                            >
+                                Loading attendance data...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="attendance.js"></script>
+
+</body>
+</html>

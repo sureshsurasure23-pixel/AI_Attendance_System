@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Srinivas University Attendance Monitoring System Bangalore
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="login.css"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="page-container">
+
+
+        <!-- =====================================================
+             LEFT SIDE - UNIVERSITY BRANDING
+        ====================================================== -->
+
+        <div class="branding-section">
+
+            <div class="overlay"></div>
+
+            <div class="branding-content">
+
+
+                <!-- UNIVERSITY LOGO -->
+
+                <div class="university-logo">
+
+                    <img
+                        src="https://thecollegesphere.com/wp-content/uploads/2025/07/Screenshot-2025-07-31-135132.png"
+                        alt="Srinivas University Logo"
+                    >
+
+                </div>
+
+
+                <!-- UNIVERSITY NAME -->
+
+                <h1>
+                    Srinivas University
+                </h1>
+
+
+                <!-- SYSTEM NAME -->
+
+                <h2>
+                    Attendance Monitoring System
+                </h2>
+
+
+                <!-- DESCRIPTION -->
+
+                <p>
+                    Smart attendance management for students,
+                    faculty, administrators and parents.
+                </p>
+
+
+                <!-- FEATURES -->
+
+                <div class="feature-list">
+
+
+                    <div class="feature-item">
+
+                        <span>✓</span>
+
+                        <p>
+                            Smart Attendance Tracking
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span>✓</span>
+
+                        <p>
+                            Period-wise Attendance
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span>✓</span>
+
+                        <p>
+                            Attendance Shortage Alerts
+                        </p>
+
+                    </div>
+
+
+                    <div class="feature-item">
+
+                        <span>✓</span>
+
+                        <p>
+                            Student & Parent Monitoring
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =====================================================
+             RIGHT SIDE - LOGIN
+        ====================================================== -->
+
+        <div class="login-section">
+
+
+            <div class="login-card">
+
+
+                <!-- MOBILE LOGO -->
+
+                <div class="mobile-logo">
+
+                    <img
+                        src="https://thecollegesphere.com/wp-content/uploads/2025/07/Screenshot-2025-07-31-135132.png"
+                        alt="Srinivas University Logo"
+                    >
+
+                </div>
+
+
+
+                <!-- LOGIN HEADING -->
+
+                <div class="login-heading">
+
+                    <span class="welcome-text">
+                        Welcome Back
+                    </span>
+
+                    <h2>
+                        Sign In
+                    </h2>
+
+                    <p>
+                        Login to access your attendance dashboard
+                    </p>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     LOGIN FORM
+                ================================================== -->
+
+                <form id="loginForm">
+
+
+                    <!-- USERNAME -->
+
+                    <div class="form-group">
+
+                        <label for="username">
+                            Username
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                👤
+                            </span>
+
+
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Enter your username"
+                                autocomplete="username"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+
+                        <div class="input-wrapper">
+
+                            <span class="input-icon">
+                                🔒
+                            </span>
+
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+
+                            <button
+                                type="button"
+                                id="togglePassword"
+                                class="password-toggle"
+                                aria-label="Show password"
+                            >
+                                👁
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- REMEMBER ME -->
+
+                    <div class="login-options">
+
+                        <label class="remember-me">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            <span>
+                                Remember me
+                            </span>
+
+                        </label>
+
+                    </div>
+
+
+
+                    <!-- ERROR MESSAGE -->
+
+                    <div
+                        id="errorMessage"
+                        class="message error-message"
+                    ></div>
+
+
+
+                    <!-- SUCCESS MESSAGE -->
+
+                    <div
+                        id="successMessage"
+                        class="message success-message"
+                    ></div>
+
+
+
+                    <!-- LOGIN BUTTON -->
+
+                    <button
+                        type="submit"
+                        id="loginButton"
+                        class="login-button"
+                    >
+
+                        <span id="loginButtonText">
+                            Sign In
+                        </span>
+
+                        <span
+                            id="loadingSpinner"
+                            class="spinner"
+                        ></span>
+
+                    </button>
+
+
+                </form>
+
+
+
+                <!-- =================================================
+                     LOGIN INFORMATION
+                ================================================== -->
+
+                <div class="login-info">
+
+
+                    <div class="info-line">
+
+                        <span>
+                            🎓
+                        </span>
+
+                        <p>
+                            Srinivas University
+                        </p>
+
+                    </div>
+
+
+                    <div class="info-line">
+
+                        <span>
+                            🔐
+                        </span>
+
+                        <p>
+                            Secure JWT Authentication
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- COPYRIGHT -->
+
+                <div class="copyright">
+
+                    © 2026 Srinivas University
+
+                    <br>
+
+                    Attendance Monitoring System
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script src="login.js"></script>
+
+
+</body>
+
+</html>

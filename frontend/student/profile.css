@@ -1,0 +1,432 @@
+/* =========================================================
+   AI ATTEND — STUDENT PROFILE
+   Professional University Dashboard Style
+   ========================================================= */
+
+.profile-hero {
+    margin: 24px 30px 20px;
+    padding: 30px 34px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #082f63, #1261a8);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 150px;
+    box-shadow: 0 12px 30px rgba(8, 47, 99, 0.16);
+}
+
+.profile-hero-content {
+    max-width: 720px;
+}
+
+.profile-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+
+.profile-hero h2 {
+    margin: 0 0 8px;
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+
+.profile-hero p {
+    margin: 0;
+    font-size: 14px;
+    opacity: 0.82;
+    line-height: 1.5;
+}
+
+.profile-hero-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.large-avatar {
+    width: 82px;
+    height: 82px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.profile-loading {
+    margin: 30px;
+    min-height: 220px;
+    border-radius: 18px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.profile-loading p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 14px;
+}
+
+.loading-spinner {
+    width: 34px;
+    height: 34px;
+    border: 3px solid #e5e7eb;
+    border-top-color: #1261a8;
+    border-radius: 50%;
+    animation: profileSpin 0.8s linear infinite;
+}
+
+@keyframes profileSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.profile-error {
+    margin: 30px;
+    padding: 28px;
+    border-radius: 18px;
+    background: #fff7f7;
+    border: 1px solid #fecaca;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.03);
+}
+
+.profile-error strong {
+    display: block;
+    color: #991b1b;
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.profile-error p {
+    color: #7f1d1d;
+    font-size: 14px;
+    margin: 0 0 18px;
+    line-height: 1.5;
+}
+
+.profile-error button {
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 18px;
+    background: #082f63;
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 700;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.profile-error button:hover {
+    background: #1261a8;
+    transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   PROFILE CONTENT
+   ========================================================= */
+
+.profile-content {
+    margin: 0 30px 30px;
+}
+
+.profile-section {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 18px;
+    padding: 26px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 22px;
+}
+
+.section-label {
+    display: block;
+    color: #9ca3af;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    margin-bottom: 6px;
+}
+
+.section-heading h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 800;
+    color: #111827;
+}
+
+
+/* =========================================================
+   PROFILE GRID
+   ========================================================= */
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.profile-field {
+    min-height: 76px;
+    padding: 18px;
+    border-radius: 14px;
+    background: #f9fafb;
+    border: 1px solid #f0f1f3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.profile-field:hover {
+    background: #f3f7fc;
+    border-color: #dbe7f4;
+    transform: translateY(-1px);
+}
+
+.profile-field-full {
+    grid-column: 1 / -1;
+}
+
+.field-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-bottom: 7px;
+}
+
+.profile-field strong {
+    font-size: 15px;
+    color: #111827;
+    font-weight: 700;
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   PROFILE STATUS
+   ========================================================= */
+
+.profile-status-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+}
+
+.status-icon {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dcfce7;
+    color: #166534;
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.profile-status-card strong {
+    display: block;
+    color: #166534;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.profile-status-card p {
+    margin: 0;
+    color: #4b5563;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   REFRESH BUTTON
+   ========================================================= */
+
+.refresh-btn {
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.refresh-btn:hover {
+    transform: translateY(-1px);
+}
+
+.refresh-btn.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BUTTON FOCUS
+   ========================================================= */
+
+.profile-error button:focus-visible,
+.refresh-btn:focus-visible {
+    outline: 3px solid rgba(18, 97, 168, 0.25);
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .profile-hero {
+        margin: 20px;
+        padding: 25px;
+    }
+
+    .profile-content {
+        margin: 0 20px 20px;
+    }
+
+    .profile-loading,
+    .profile-error {
+        margin: 20px;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-field-full {
+        grid-column: auto;
+    }
+
+    .large-avatar {
+        width: 68px;
+        height: 68px;
+        font-size: 25px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+    .profile-hero {
+        margin: 15px;
+        padding: 22px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        border-radius: 16px;
+    }
+
+    .profile-hero h2 {
+        font-size: 25px;
+    }
+
+    .profile-hero p {
+        font-size: 13px;
+    }
+
+    .profile-section {
+        padding: 20px;
+        border-radius: 16px;
+    }
+
+    .profile-content {
+        margin: 0 15px 20px;
+    }
+
+    .profile-loading,
+    .profile-error {
+        margin: 15px;
+    }
+
+    .profile-status-card {
+        align-items: flex-start;
+    }
+
+    .section-heading h3 {
+        font-size: 18px;
+    }
+
+    .profile-field {
+        padding: 16px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+    .profile-hero {
+        padding: 18px;
+    }
+
+    .profile-hero h2 {
+        font-size: 22px;
+    }
+
+    .large-avatar {
+        width: 60px;
+        height: 60px;
+        font-size: 22px;
+    }
+
+    .profile-section {
+        padding: 16px;
+    }
+}

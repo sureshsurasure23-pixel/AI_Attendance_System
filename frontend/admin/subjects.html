@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Subjects Management - Admin</title>
+
+    <link rel="stylesheet" href="../public/admin.css">
+
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="admin-sidebar">
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                🎓
+            </div>
+
+            <div>
+                <h2>AI Attendance</h2>
+                <span>Admin Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="admin-navigation">
+
+            <a
+                href="/admin/dashboard.html"
+                class="admin-nav-item"
+            >
+                📊 Dashboard
+            </a>
+
+            <a
+                href="/admin/students.html"
+                class="admin-nav-item"
+            >
+                👨‍🎓 Students
+            </a>
+
+            <a
+                href="/admin/faculty.html"
+                class="admin-nav-item"
+            >
+                👨‍🏫 Faculty
+            </a>
+
+            <a
+                href="/admin/attendance.html"
+                class="admin-nav-item"
+            >
+                📋 Attendance
+            </a>
+
+            <a
+                href="/admin/subjects.html"
+                class="admin-nav-item active"
+            >
+                📚 Subjects
+            </a>
+
+            <a
+                href="/admin/fees.html"
+                class="admin-nav-item"
+            >
+                💰 Fees
+            </a>
+
+            <a
+                href="/admin/ai-analytics.html"
+                class="admin-nav-item"
+            >
+                🤖 AI Analytics
+            </a>
+
+        </nav>
+
+
+        <div class="admin-user-card">
+
+            <div class="admin-user-avatar">
+                A
+            </div>
+
+            <div class="admin-user-info">
+                <strong>Administrator</strong>
+                <span>Admin</span>
+            </div>
+
+            <button
+                id="logoutBtn"
+                class="admin-logout-btn"
+                title="Logout"
+            >
+                🚪
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="admin-main">
+
+
+        <!-- =================================================
+             TOP BAR
+        ================================================== -->
+
+        <header class="admin-topbar">
+
+            <div>
+
+                <h1>Subjects Management</h1>
+
+                <p>
+                    Manage subjects, departments and faculty
+                    assignments.
+                </p>
+
+            </div>
+
+
+            <button
+                id="addSubjectBtn"
+                class="admin-primary-btn"
+            >
+                ➕ Add Subject
+            </button>
+
+        </header>
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================== -->
+
+        <section class="admin-summary-grid">
+
+            <div class="admin-summary-card">
+
+                <span class="admin-summary-label">
+                    Total Subjects
+                </span>
+
+                <strong
+                    id="totalSubjects"
+                    class="admin-summary-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="admin-summary-card">
+
+                <span class="admin-summary-label">
+                    Semesters
+                </span>
+
+                <strong
+                    id="totalSemesters"
+                    class="admin-summary-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="admin-summary-card">
+
+                <span class="admin-summary-label">
+                    Departments
+                </span>
+
+                <strong
+                    id="totalDepartments"
+                    class="admin-summary-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="admin-summary-card">
+
+                <span class="admin-summary-label">
+                    Assigned Faculty
+                </span>
+
+                <strong
+                    id="assignedFaculty"
+                    class="admin-summary-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SUBJECT TABLE CARD
+        ================================================== -->
+
+        <section class="admin-content-card">
+
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <h2>Subject Records</h2>
+
+                    <span
+                        id="subjectRecordCount"
+                        class="admin-section-badge"
+                    >
+                        0 records
+                    </span>
+
+                </div>
+
+
+                <button
+                    id="refreshSubjectsBtn"
+                    class="admin-secondary-btn"
+                >
+                    🔄 Refresh
+                </button>
+
+            </div>
+
+
+            <!-- FILTER BAR -->
+
+            <div class="admin-filter-bar">
+
+
+                <div class="admin-search-box">
+
+                    <span>🔍</span>
+
+                    <input
+                        type="text"
+                        id="subjectSearch"
+                        placeholder="Search subject, code or ID..."
+                    >
+
+                </div>
+
+
+                <div class="admin-filter-group">
+
+                    <label for="semesterFilter">
+                        Semester
+                    </label>
+
+                    <select id="semesterFilter">
+
+                        <option value="">
+                            All Semesters
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="admin-filter-group">
+
+                    <label for="departmentFilter">
+                        Department
+                    </label>
+
+                    <select id="departmentFilter">
+
+                        <option value="">
+                            All Departments
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="admin-filter-group">
+
+                    <label for="facultyFilter">
+                        Faculty
+                    </label>
+
+                    <select id="facultyFilter">
+
+                        <option value="">
+                            All Faculty
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Subject ID
+                            </th>
+
+                            <th>
+                                Code
+                            </th>
+
+                            <th>
+                                Subject Name
+                            </th>
+
+                            <th>
+                                Credits
+                            </th>
+
+                            <th>
+                                Semester
+                            </th>
+
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Faculty
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="subjectsTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="8"
+                                style="text-align:center;"
+                            >
+                                Loading subjects...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     SUBJECT MODAL
+====================================================== -->
+
+<div
+    id="subjectModal"
+    class="admin-modal"
+    style="display:none;"
+>
+
+    <div class="admin-modal-content">
+
+
+        <div class="admin-modal-header">
+
+            <div>
+
+                <h2 id="subjectModalTitle">
+                    Add Subject
+                </h2>
+
+                <p>
+                    Enter subject information below.
+                </p>
+
+            </div>
+
+
+            <button
+                id="closeSubjectModal"
+                class="admin-modal-close"
+            >
+                ✕
+            </button>
+
+        </div>
+
+
+        <div class="admin-modal-body">
+
+
+            <form id="subjectForm">
+
+
+                <!-- SUBJECT ID -->
+
+                <div class="admin-form-group">
+
+                    <label for="subjectId">
+                        Subject ID
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subjectId"
+                        placeholder="Example: SUB001"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SUBJECT CODE -->
+
+                <div class="admin-form-group">
+
+                    <label for="subjectCode">
+                        Subject Code
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subjectCode"
+                        placeholder="Example: BCA301"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SUBJECT NAME -->
+
+                <div class="admin-form-group">
+
+                    <label for="subjectName">
+                        Subject Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subjectName"
+                        placeholder="Example: Database Management System"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CREDITS -->
+
+                <div class="admin-form-group">
+
+                    <label for="subjectCredits">
+                        Credits
+                    </label>
+
+                    <input
+                        type="number"
+                        id="subjectCredits"
+                        min="1"
+                        max="20"
+                        value="4"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- SEMESTER -->
+
+                <div class="admin-form-group">
+
+                    <label for="subjectSemester">
+                        Semester
+                    </label>
+
+                    <input
+                        type="number"
+                        id="subjectSemester"
+                        min="1"
+                        max="10"
+                        placeholder="Example: 5"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- DEPARTMENT -->
+
+                <div class="admin-form-group">
+
+                    <label for="subjectDepartment">
+                        Department
+                    </label>
+
+                    <select
+                        id="subjectDepartment"
+                        required
+                    >
+
+                        <option value="">
+                            Select Department
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- FACULTY -->
+
+                <div class="admin-form-group">
+
+                    <label for="subjectFaculty">
+                        Faculty
+                    </label>
+
+                    <select id="subjectFaculty">
+
+                        <option value="">
+                            Select Faculty
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="subjectFormMessage"
+                    class="attendance-update-message"
+                    style="display:none;"
+                ></div>
+
+
+                <!-- BUTTONS -->
+
+                <div class="admin-form-actions">
+
+                    <button
+                        type="button"
+                        id="cancelSubjectBtn"
+                        class="admin-secondary-btn"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        id="saveSubjectBtn"
+                        class="admin-save-btn"
+                    >
+                        Save Subject
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="/admin/subjects.js"></script>
+
+</body>
+
+</html>

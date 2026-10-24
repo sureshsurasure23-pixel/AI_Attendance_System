@@ -1,0 +1,983 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Students | AI Attend</title>
+
+<link rel="stylesheet" href="../public/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+<aside
+    id="adminSidebar"
+    class="admin-sidebar"
+>
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                AI
+            </div>
+
+            <div class="admin-brand-text">
+                <strong>AI Attend</strong>
+                <span>Admin Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="admin-navigation">
+
+            <a href="dashboard.html" class="admin-nav-item">
+                <span>▣</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="students.html" class="admin-nav-item active">
+                <span>♙</span>
+                <span>Students</span>
+            </a>
+
+            <a href="faculty.html" class="admin-nav-item">
+                <span>♟</span>
+                <span>Faculty</span>
+            </a>
+
+            <a href="attendance.html" class="admin-nav-item">
+                <span>✓</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="ai-analytics.html" class="admin-nav-item">
+                <span>✦</span>
+                <span>AI Analytics</span>
+            </a>
+
+            <a href="reports.html" class="admin-nav-item">
+                <span>▤</span>
+                <span>Reports</span>
+            </a>
+
+            <a href="alerts.html" class="admin-nav-item">
+                <span>!</span>
+                <span>Alerts</span>
+            </a>
+
+            <a href="settings.html" class="admin-nav-item">
+                <span>⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+            <div class="admin-user">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <span>System Admin</span>
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="logoutBtn"
+                class="admin-logout-btn">
+
+                ↪ Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+    <!-- MOBILE SIDEBAR OVERLAY -->
+
+<div
+    id="mobileNavOverlay"
+    class="admin-mobile-overlay"
+    aria-hidden="true"
+></div>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main class="admin-main">
+        <main
+    class="admin-main"
+>
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button
+        type="button"
+        id="mobileMenuBtn"
+        class="admin-mobile-menu-btn"
+        aria-label="Open navigation menu"
+        aria-controls="adminSidebar"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+
+    <!-- YOUR EXISTING STUDENTS CONTENT -->
+
+
+        <!-- TOP BAR -->
+
+        <header class="admin-topbar">
+
+            <div>
+
+                <div class="admin-eyebrow">
+                    ADMIN PORTAL
+                </div>
+
+                <h1>
+                    Students
+                </h1>
+
+                <p>
+                    Manage student information and monitor
+                    attendance performance.
+                </p>
+
+            </div>
+
+
+            <div class="admin-topbar-user">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <span>System Administrator</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section class="admin-page-header">
+
+            <div>
+
+                <div class="admin-section-label">
+                    STUDENT MANAGEMENT
+                </div>
+
+                <h2>
+                    Student Directory
+                </h2>
+
+                <p>
+                    View student profiles, attendance statistics,
+                    academic details and attendance risk.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+             ================================================= -->
+
+        <section class="admin-summary-grid">
+
+
+            <!-- TOTAL STUDENTS -->
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    ♙
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Students
+                    </span>
+
+                    <strong id="totalStudents">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIVE STUDENTS -->
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        Active Students
+                    </span>
+
+                    <strong id="activeStudents">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- SEMESTERS -->
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    F
+                </div>
+
+                <div>
+
+                    <span>
+                        Semesters
+                    </span>
+
+                    <strong id="totalSemesters">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- LOW ATTENDANCE -->
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <span>
+                        Low Attendance
+                    </span>
+
+                    <strong id="lowAttendance">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- =================================================
+             STUDENT DIRECTORY
+             ================================================= -->
+
+        <section class="admin-content-card">
+
+
+            <div class="admin-content-header">
+
+                <div>
+
+                    <div class="admin-section-label">
+                        DIRECTORY
+                    </div>
+
+                    <h2>
+                        All Students
+                    </h2>
+
+                    <p>
+                        Search and filter registered students.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="refreshStudentsBtn"
+                    class="admin-refresh-btn">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+            <!-- FILTERS -->
+
+            <div class="admin-filter-bar">
+
+
+                <!-- SEARCH -->
+
+                <div class="admin-search-box">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="text"
+                        id="studentSearch"
+                        placeholder="Search by name, USN or student ID">
+
+                </div>
+
+
+                <!-- RISK FILTER -->
+
+                <div class="admin-filter-group">
+
+                    <label for="riskFilter">
+                        Attendance Risk
+                    </label>
+
+                    <select id="riskFilter">
+
+                        <option value="">
+                            All Students
+                        </option>
+
+                        <option value="LOW">
+                            Low Risk
+                        </option>
+
+                        <option value="MEDIUM">
+                            Medium Risk
+                        </option>
+
+                        <option value="HIGH">
+                            High Risk
+                        </option>
+
+                        <option value="NO DATA">
+                            No Data
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- SEMESTER FILTER -->
+
+                <div class="admin-filter-group">
+
+                    <label for="semesterFilter">
+                        Semester
+                    </label>
+
+                    <select id="semesterFilter">
+
+                        <option value="">
+                            All Semesters
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- RESULT COUNT -->
+
+            <div class="admin-result-info">
+
+                Showing
+
+                <strong id="filteredStudentCount">
+                    0
+                </strong>
+
+                students
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                USN
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Semester
+                            </th>
+
+                            <th>
+                                Section
+                            </th>
+
+                            <th>
+                                Attendance
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="9"
+                                class="table-empty">
+
+                                Loading students...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             STUDENT MODAL
+             ================================================= -->
+
+        <div
+            id="studentModal"
+            class="admin-modal"
+            hidden>
+
+
+            <div class="admin-modal-content">
+
+
+                <!-- CLOSE BUTTON -->
+
+                <button
+                    type="button"
+                    id="closeStudentModal"
+                    class="admin-modal-close">
+
+                    ×
+
+                </button>
+
+
+                <!-- STUDENT HEADER -->
+
+                <div class="admin-modal-header">
+
+                    <div
+                        id="modalStudentAvatar"
+                        class="admin-modal-avatar">
+
+                        S
+
+                    </div>
+
+
+                    <div>
+
+                        <h2 id="modalStudentName">
+                            Student
+                        </h2>
+
+                        <span id="modalStudentId">
+                            -
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STUDENT DETAILS -->
+
+                <div class="admin-modal-details">
+
+
+                    <!-- USN -->
+
+                    <div>
+
+                        <small>
+                            USN
+                        </small>
+
+                        <strong id="modalUSN">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div>
+
+                        <small>
+                            Email
+                        </small>
+
+                        <strong id="modalEmail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div>
+
+                        <small>
+                            Phone
+                        </small>
+
+                        <strong id="modalPhone">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- DEPARTMENT -->
+
+                    <div>
+
+                        <small>
+                            Department
+                        </small>
+
+                        <strong id="modalDepartment">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- SEMESTER -->
+
+                    <div>
+
+                        <small>
+                            Semester
+                        </small>
+
+                        <strong id="modalSemester">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- SECTION -->
+
+                    <div>
+
+                        <small>
+                            Section
+                        </small>
+
+                        <strong id="modalSection">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- ATTENDANCE -->
+
+                    <div>
+
+                        <small>
+                            Attendance
+                        </small>
+
+                        <strong id="modalAttendance">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- PRESENT -->
+
+                    <div>
+
+                        <small>
+                            Present
+                        </small>
+
+                        <strong id="modalPresent">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- ABSENT -->
+
+                    <div>
+
+                        <small>
+                            Absent
+                        </small>
+
+                        <strong id="modalAbsent">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- ATTENDANCE RISK -->
+
+                    <div>
+
+                        <small>
+                            Attendance Risk
+                        </small>
+
+                        <strong id="modalRisk">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <!-- ADDRESS -->
+
+                    <div>
+
+                        <small>
+                            Address
+                        </small>
+
+                        <strong id="modalAddress">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="admin-footer">
+
+            AI Attendance Monitoring System
+            ·
+            Student Management
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="students.js"></script>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("adminSidebar");
+
+    const overlay =
+        document.getElementById("mobileNavOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        console.warn(
+            "⚠️ Mobile navigation elements not found."
+        );
+
+        return;
+    }
+
+
+    // =====================================================
+    // OPEN MOBILE MENU
+    // =====================================================
+
+    function openMobileMenu() {
+
+        sidebar.classList.add(
+            "mobile-open"
+        );
+
+        overlay.classList.add(
+            "active"
+        );
+
+        document.body.classList.add(
+            "admin-menu-open"
+        );
+
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        menuButton.textContent = "×";
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+    }
+
+
+    // =====================================================
+    // CLOSE MOBILE MENU
+    // =====================================================
+
+    function closeMobileMenu() {
+
+        sidebar.classList.remove(
+            "mobile-open"
+        );
+
+        overlay.classList.remove(
+            "active"
+        );
+
+        document.body.classList.remove(
+            "admin-menu-open"
+        );
+
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        menuButton.textContent = "☰";
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    }
+
+
+    // =====================================================
+    // MENU BUTTON
+    // =====================================================
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            }
+            else {
+
+                openMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // CLICK OUTSIDE SIDEBAR
+    // =====================================================
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+    // =====================================================
+    // NAVIGATION LINKS
+    // =====================================================
+
+    sidebar
+        .querySelectorAll(
+            ".admin-nav-item"
+        )
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    closeMobileMenu
+                );
+
+            }
+        );
+
+
+    // =====================================================
+    // ESCAPE KEY
+    // =====================================================
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // CLOSE WHEN RETURNING TO DESKTOP
+    // =====================================================
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (
+                window.innerWidth > 768
+            ) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "📱 Students mobile navigation initialized."
+    );
+
+});
+
+</script>
+</body>
+
+</html>

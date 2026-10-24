@@ -1,0 +1,467 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Faculty Attendance | AI Attend</title>
+
+<link rel="stylesheet" href="./faculty.css">
+</head>
+
+<body>
+
+<div class="faculty-app">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="facultySidebar">
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                AI
+            </div>
+
+            <div>
+                <strong>AI Attend</strong>
+                <span>Faculty Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation faculty-nav">
+
+            <a
+                href="dashboard.html"
+                class="nav-item"
+            >
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a
+                href="attendance.html"
+                class="nav-item active"
+            >
+                <span>✓</span>
+                Attendance
+            </a>
+
+            <a
+                href="students.html"
+                class="nav-item"
+            >
+                <span>♙</span>
+                Students
+            </a>
+
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <span>▣</span>
+                Reports
+            </a>
+
+            <a
+                href="profile.html"
+                class="nav-item"
+            >
+                <span>◎</span>
+                My Profile
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                ↪ Logout
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+
+                <div class="eyebrow">
+                    FACULTY PORTAL
+                </div>
+
+                <h1>
+                    Attendance
+                </h1>
+
+             <p id="attendanceDayText">
+    Select subject, date and period before marking students.
+</p>
+
+            </div>
+
+
+            <div class="faculty-user">
+
+                <div
+                    class="avatar"
+                    id="facultyAvatar"
+                >
+                    F
+                </div>
+
+                <div>
+
+                    <strong id="facultyName">
+                        Faculty
+                    </strong>
+
+                    <span id="facultyDesignation">
+                        Faculty
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ATTENDANCE CONTROLS -->
+        <section class="attendance-control-card">
+
+            <div class="attendance-control-header">
+
+                <div>
+
+                    <h2>
+                        Mark Attendance
+                    </h2>
+
+                    <p>
+                        Select a subject and date before marking students.
+                    </p>
+
+                </div>
+
+                <div class="attendance-live-badge">
+                    ● LIVE
+                </div>
+
+            </div>
+
+
+            <div class="attendance-controls">
+
+                <div class="attendance-field">
+                    <div class="attendance-field">
+
+    <label for="periodSelect">
+        Period
+    </label>
+
+    <select id="periodSelect">
+
+        <option value="1">Period 1</option>
+        <option value="2">Period 2</option>
+        <option value="3">Period 3</option>
+        <option value="4">Period 4</option>
+        <option value="5">Period 5</option>
+        <option value="6">Period 6</option>
+        <option value="7">Period 7</option>
+        <option value="8">Period 8</option>
+
+    </select>
+
+</div>
+
+                    <label for="subjectSelect">
+                        Subject
+                    </label>
+
+                    <select id="subjectSelect">
+
+                        <option value="">
+                            Loading subjects...
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="attendance-field">
+
+                    <label for="attendanceDate">
+                        Attendance Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="attendanceDate"
+                    >
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="secondary-btn"
+                    id="loadAttendanceBtn"
+                >
+                    ↻ Load
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+        <section class="attendance-summary-grid">
+
+            <div class="attendance-summary-card">
+
+                <span class="summary-icon blue">
+                    ♙
+                </span>
+
+                <div>
+
+                    <small>
+                        Students
+                    </small>
+
+                    <strong id="studentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="attendance-summary-card">
+
+                <span class="summary-icon green">
+                    ✓
+                </span>
+
+                <div>
+
+                    <small>
+                        Present
+                    </small>
+
+                    <strong id="presentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="attendance-summary-card">
+
+                <span class="summary-icon red">
+                    !
+                </span>
+
+                <div>
+
+                    <small>
+                        Absent
+                    </small>
+
+                    <strong id="absentCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="attendance-summary-card">
+
+                <span class="summary-icon purple">
+                    %
+                </span>
+
+                <div>
+
+                    <small>
+                        Class Attendance
+                    </small>
+
+                    <strong id="classPercentage">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDENT ATTENDANCE -->
+        <section class="attendance-panel">
+
+            <div class="attendance-panel-header">
+
+                <div>
+
+                    <h2>
+                        Student List
+                    </h2>
+
+                    <p id="attendanceSubtitle">
+                        Select a subject to load students.
+                    </p>
+
+                </div>
+
+
+                <div class="attendance-actions">
+
+                    <button
+                        type="button"
+                        class="outline-btn"
+                        id="markAllPresentBtn"
+                    >
+                        ✓ Mark All Present
+                    </button>
+
+                    <button
+                        type="button"
+                        class="outline-btn"
+                        id="markAllAbsentBtn"
+                    >
+                        × Mark All Absent
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div
+                id="messageBox"
+                class="attendance-message"
+                hidden
+            ></div>
+
+
+            <div class="attendance-table-wrapper">
+
+                <table class="attendance-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                USN
+                            </th>
+
+                            <th>
+                                Current Attendance
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="5"
+                                class="attendance-empty"
+                            >
+                                Select a subject to load students.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <div class="save-attendance-bar">
+
+                <div>
+
+                    <strong id="saveSummary">
+                        No attendance selected
+                    </strong>
+
+                    <span>
+                        Review the student status before saving.
+                    </span>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="save-attendance-btn"
+                    id="saveAttendanceBtn"
+                >
+                    Save Attendance
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+            AI Attendance Monitoring System · Faculty Portal
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="/faculty/attendance.js"></script></body>
+</html>
+
+
+
+

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Parent Dashboard | AI Attendance System</title>
+
+    <link rel="stylesheet" href="parent.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="topbar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                SU
+            </div>
+
+            <div>
+                <h2>Srinivas University</h2>
+                <span>Parent Dashboard</span>
+            </div>
+
+        </div>
+
+
+        <div class="header-right">
+
+            <div class="parent-info">
+                <span class="parent-label">Parent Portal</span>
+                <strong id="parentStudentName">Loading...</strong>
+            </div>
+
+            <button id="logoutBtn" class="logout-btn">
+                Logout
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="container">
+
+        <!-- Loading -->
+
+        <div id="loadingMessage" class="loading">
+            Loading parent dashboard...
+        </div>
+
+
+        <!-- Error -->
+
+        <div id="errorMessage" class="error-box hidden">
+        </div>
+
+
+        <!-- Dashboard -->
+
+        <section id="dashboardContent" class="hidden">
+
+
+            <!-- ================= STUDENT PROFILE ================= -->
+
+            <section class="student-card">
+
+                <div class="student-avatar" id="studentAvatar">
+                    S
+                </div>
+
+                <div class="student-details">
+
+                    <h1 id="studentName">
+                        Student Name
+                    </h1>
+
+                    <p>
+                        Student ID:
+                        <strong id="studentId">-</strong>
+                    </p>
+
+                    <p>
+                        USN:
+                        <strong id="studentUsn">-</strong>
+                    </p>
+
+                    <p>
+                        Department:
+                        <strong id="studentDepartment">-</strong>
+                    </p>
+
+                    <p>
+                        Semester:
+                        <strong id="studentSemester">-</strong>
+                        &nbsp; | &nbsp;
+                        Section:
+                        <strong id="studentSection">-</strong>
+                    </p>
+
+                </div>
+
+                <div class="student-contact">
+
+                    <p>
+                        📧 <span id="studentEmail">-</span>
+                    </p>
+
+                    <p>
+                        📱 <span id="studentPhone">-</span>
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ATTENDANCE CARDS ================= -->
+
+            <section class="section-title">
+
+                <h2>Attendance Overview</h2>
+
+                <p>
+                    Monday to Saturday attendance records
+                </p>
+
+            </section>
+
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card attendance-card">
+
+                    <div class="stat-icon">
+                        %
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Attendance
+                        </span>
+
+                        <strong id="attendancePercentage">
+                            0%
+                        </strong>
+
+                        <small id="attendanceStatus">
+                            -
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card present-card">
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Present
+                        </span>
+
+                        <strong id="presentCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card absent-card">
+
+                    <div class="stat-icon">
+                        !
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Absent
+                        </span>
+
+                        <strong id="absentCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card total-card">
+
+                    <div class="stat-icon">
+                        #
+                    </div>
+
+                    <div>
+
+                        <span class="stat-label">
+                            Total Classes
+                        </span>
+
+                        <strong id="totalClasses">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ATTENDANCE ALERT ================= -->
+
+            <section id="attendanceAlert" class="attendance-alert">
+
+                <div class="alert-icon">
+                    ⚠
+                </div>
+
+                <div>
+
+                    <h3 id="alertTitle">
+                        Attendance Alert
+                    </h3>
+
+                    <p id="alertMessage">
+                        Checking attendance...
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ATTENDANCE HISTORY ================= -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>Attendance History</h2>
+
+                        <p>
+                            Period-wise attendance records
+                        </p>
+
+                    </div>
+
+                    <div class="required-badge">
+                        Required: 75%
+                    </div>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+                                <th>#</th>
+                                <th>Date</th>
+                                <th>Subject</th>
+                                <th>Period</th>
+                                <th>Status</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="attendanceTableBody">
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ACADEMIC + FEES ================= -->
+
+            <div class="two-column">
+
+
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h2>Academic Performance</h2>
+
+                            <p>
+                                Overall academic information
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="academic-content">
+
+                        <div class="academic-value">
+
+                            <span>
+                                Average Marks
+                            </span>
+
+                            <strong id="averageMarks">
+                                0%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="prediction-box">
+
+                            <span>
+                                Academic Prediction
+                            </span>
+
+                            <strong id="academicPrediction">
+                                -
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <section class="panel">
+
+                    <div class="panel-header">
+
+                        <div>
+
+                            <h2>Fee Status</h2>
+
+                            <p>
+                                Current pending amount
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="fee-content">
+
+                        <span>
+                            Pending Fee
+                        </span>
+
+                        <strong id="pendingFee">
+                            ₹20,000.00
+                        </strong>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+
+            <!-- ================= NOTIFICATIONS ================= -->
+
+            <section class="panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <h2>Notifications</h2>
+
+                        <p>
+                            Important messages about the student
+                        </p>
+
+                    </div>
+
+                    <span id="notificationCount" class="notification-count">
+                        0
+                    </span>
+
+                </div>
+
+
+                <div id="notificationsContainer"
+                     class="notifications-container">
+
+                </div>
+
+            </section>
+
+
+        </section>
+
+    </main>
+
+
+    <script src="parent.js"></script>
+
+</body>
+</html>

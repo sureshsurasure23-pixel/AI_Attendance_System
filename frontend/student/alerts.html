@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Alerts | AI Attend</title>
+
+    <link rel="stylesheet" href="./alerts.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                AI
+            </div>
+
+            <div class="logo-text">
+                <strong>AI Attend</strong>
+                <span>Student Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <p class="nav-title">
+                MAIN MENU
+            </p>
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="attendance.html" class="nav-item">
+                <span class="nav-icon">◷</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="academic.html" class="nav-item">
+                <span class="nav-icon">▤</span>
+                <span>Academic</span>
+            </a>
+
+            <a href="ai-prediction.html" class="nav-item">
+                <span class="nav-icon">✦</span>
+                <span>AI Prediction</span>
+            </a>
+
+            <a href="alerts.html" class="nav-item active">
+                <span class="nav-icon">⚠</span>
+                <span>Alerts</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile.html" class="nav-item">
+                <span class="nav-icon">⚙</span>
+                <span>Profile</span>
+            </a>
+
+            <a href="login.html"
+               id="logoutBtn"
+               class="nav-item logout">
+
+                <span class="nav-icon">↪</span>
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <p class="welcome-small">
+                    STUDENT PORTAL
+                </p>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button
+                    id="refreshBtn"
+                    class="refresh-btn"
+                    type="button">
+
+                    ↻ Refresh
+
+                </button>
+
+
+                <div class="profile">
+
+                    <div
+                        class="avatar"
+                        id="studentAvatar">
+
+                        R
+
+                    </div>
+
+                    <div class="profile-info">
+
+                        <strong id="topStudentName">
+                            Student
+                        </strong>
+
+                        <span>
+                            Student
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PAGE HERO
+             ================================================= -->
+
+        <section class="alerts-hero">
+
+            <div>
+
+                <span class="alerts-label">
+                    NOTIFICATIONS
+                </span>
+
+                <h1>
+                    Alerts & Notifications
+                </h1>
+
+                <p>
+                    Stay updated with important attendance,
+                    academic and AI-generated alerts.
+                </p>
+
+            </div>
+
+
+            <div class="alert-summary">
+
+                <div class="summary-icon">
+                    ⚠
+                </div>
+
+                <div>
+
+                    <strong id="unreadCount">
+                        0
+                    </strong>
+
+                    <span>
+                        Unread Alerts
+                    </span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             ALERT CONTENT
+             ================================================= -->
+
+        <section class="alerts-section">
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        ALERT CENTER
+                    </span>
+
+                    <h2>
+                        Your Notifications
+                    </h2>
+
+                    <p>
+                        Important messages related to your
+                        student account.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="markAllReadBtn"
+                    class="mark-read-btn"
+                    type="button">
+
+                    ✓ Mark All Read
+
+                </button>
+
+            </div>
+
+
+            <!-- LOADING -->
+
+            <div
+                id="loadingState"
+                class="alerts-state">
+
+                <div class="loading-spinner"></div>
+
+                <p>
+                    Loading notifications...
+                </p>
+
+            </div>
+
+
+            <!-- ERROR -->
+
+            <div
+                id="errorState"
+                class="alerts-state error-state"
+                style="display:none;">
+
+                <div class="state-icon">
+                    ⚠
+                </div>
+
+                <h3>
+                    Unable to load alerts
+                </h3>
+
+                <p id="errorMessage">
+                    Something went wrong.
+                </p>
+
+                <button
+                    id="retryBtn"
+                    type="button">
+
+                    Try Again
+
+                </button>
+
+            </div>
+
+
+            <!-- EMPTY -->
+
+            <div
+                id="emptyState"
+                class="alerts-state empty-state"
+                style="display:none;">
+
+                <div class="empty-icon">
+                    ✓
+                </div>
+
+                <h3>
+                    No alerts
+                </h3>
+
+                <p>
+                    You don't have any notifications right now.
+                </p>
+
+            </div>
+
+
+            <!-- NOTIFICATIONS -->
+
+            <div
+                id="alertsContainer"
+                class="alerts-container">
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="footer">
+
+            © 2026 AI Student Attendance Monitoring System
+
+            <span>
+                AI-Powered Student Analytics
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="./alerts.js"></script>
+
+</body>
+</html>

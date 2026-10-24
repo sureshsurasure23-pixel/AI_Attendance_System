@@ -1,0 +1,826 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard | AI Attend</title>
+
+<link rel="stylesheet" href="../public/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- ================================================= -->
+    <!-- SIDEBAR -->
+    <!-- ================================================= -->
+
+   <aside
+    id="adminSidebar"
+    class="admin-sidebar"
+>
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                AI
+            </div>
+
+            <div>
+                <strong>AI Attend</strong>
+                <span>Admin Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="admin-navigation">
+
+            <a href="dashboard.html" class="admin-nav-item active">
+                Dashboard
+            </a>
+
+            <a href="students.html" class="admin-nav-item">
+                Students
+            </a>
+
+            <a href="faculty.html" class="admin-nav-item">
+                Faculty
+            </a>
+
+            <a href="attendance.html" class="admin-nav-item">
+                Attendance
+            </a>
+
+            <a href="ai-analytics.html" class="admin-nav-item">
+                AI Analytics
+            </a>
+
+            <a href="reports.html" class="admin-nav-item">
+                Reports
+            </a>
+
+            <a href="alerts.html" class="admin-nav-item">
+                Alerts
+            </a>
+
+            <a href="settings.html" class="admin-nav-item">
+                Settings
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+            <div class="admin-user-mini">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong id="adminName">
+                        Administrator
+                    </strong>
+
+                    <span>
+                        System Admin
+                    </span>
+                </div>
+
+            </div>
+
+
+            <button
+                id="logoutBtn"
+                class="admin-logout">
+
+                Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+    <!-- MOBILE SIDEBAR OVERLAY -->
+
+<div
+    id="mobileNavOverlay"
+    class="admin-mobile-overlay"
+    aria-hidden="true"
+></div>
+
+
+    <!-- ================================================= -->
+    <!-- MAIN -->
+    <!-- ================================================= -->
+
+    <main class="admin-main">
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button
+        type="button"
+        id="mobileMenuBtn"
+        class="admin-mobile-menu-btn"
+        aria-label="Open navigation menu"
+        aria-controls="adminSidebar"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+    <!-- YOUR EXISTING DASHBOARD CONTENT -->
+
+
+        <!-- TOPBAR -->
+
+        <header class="admin-topbar">
+
+            <div>
+
+                <span class="admin-kicker">
+                    ADMIN PORTAL
+                </span>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+
+            <div class="admin-topbar-user">
+
+                <div
+                    class="admin-avatar"
+                    id="adminInitial">
+
+                    A
+
+                </div>
+
+                <div>
+
+                    <strong id="topAdminName">
+                        Administrator
+                    </strong>
+
+                    <span>
+                        System Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================================================= -->
+        <!-- WELCOME -->
+        <!-- ================================================= -->
+
+        <section class="admin-welcome">
+
+            <div>
+
+                <span class="admin-welcome-label">
+                    AI ATTENDANCE MONITORING SYSTEM
+                </span>
+
+                <h2>
+                    Welcome back, Administrator
+                </h2>
+
+                <p>
+                    Monitor student attendance, academic
+                    performance, faculty activity and
+                    AI-based attendance risks from one place.
+                </p>
+
+            </div>
+
+
+            <div class="admin-welcome-status">
+
+                <span class="status-dot"></span>
+
+                System Active
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- SUMMARY -->
+        <!-- ================================================= -->
+
+        <section class="admin-stat-grid">
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    S
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Students
+                    </span>
+
+                    <strong id="totalStudents">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    F
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Subjects
+                    </span>
+
+                    <strong id="totalSubjects">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    %
+                </div>
+
+                <div>
+
+                    <span>
+                        Overall Attendance
+                    </span>
+
+                    <strong id="overallAttendance">
+                        0%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <span>
+                        Attendance Records
+                    </span>
+
+                    <strong id="totalRecords">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- ATTENDANCE OVERVIEW -->
+        <!-- ================================================= -->
+
+        <section class="admin-card admin-overview">
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <span>
+                        ATTENDANCE PERFORMANCE
+                    </span>
+
+                    <h2>
+                        Overall Attendance
+                    </h2>
+
+                </div>
+
+                <strong
+                    id="overviewPercentage"
+                    class="admin-big-percentage">
+
+                    0%
+
+                </strong>
+
+            </div>
+
+
+            <div class="admin-large-progress">
+
+                <div
+                    id="attendanceProgress"
+                    class="admin-large-progress-fill"
+                    style="width:0%">
+                </div>
+
+            </div>
+
+
+            <div class="admin-overview-stats">
+
+                <div>
+                    <span>Present</span>
+                    <strong id="presentRecords">0</strong>
+                </div>
+
+                <div>
+                    <span>Absent</span>
+                    <strong id="absentRecords">0</strong>
+                </div>
+
+                <div>
+                    <span>Total Records</span>
+                    <strong id="overviewRecords">0</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- RISK + SUBJECT -->
+        <!-- ================================================= -->
+
+        <section class="admin-content-grid">
+
+
+            <!-- RISK -->
+
+            <section class="admin-card">
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span>
+                            AI MONITORING
+                        </span>
+
+                        <h2>
+                            Attendance Risk
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-risk-list">
+
+
+                    <div class="admin-risk-row">
+
+                        <div class="admin-risk-label">
+                            <span class="risk-dot safe"></span>
+                            Safe Students
+                        </div>
+
+                        <strong id="safeStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="admin-risk-row">
+
+                        <div class="admin-risk-label">
+                            <span class="risk-dot warning"></span>
+                            Warning Students
+                        </div>
+
+                        <strong id="warningStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="admin-risk-row">
+
+                        <div class="admin-risk-label">
+                            <span class="risk-dot critical"></span>
+                            Critical Students
+                        </div>
+
+                        <strong id="criticalStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="admin-risk-row">
+
+                        <div class="admin-risk-label">
+                            <span class="risk-dot nodata"></span>
+                            No Attendance Data
+                        </div>
+
+                        <strong id="noDataStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SUBJECT -->
+
+            <section class="admin-card">
+
+                <div class="admin-section-header">
+
+                    <div>
+
+                        <span>
+                            SUBJECT PERFORMANCE
+                        </span>
+
+                        <h2>
+                            Subject Analysis
+                        </h2>
+
+                    </div>
+
+                </div>
+
+
+                <div id="subjectList">
+
+                    <div class="admin-loading">
+                        Loading subject data...
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- SHORTAGE -->
+        <!-- ================================================= -->
+
+        <section class="admin-card">
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <span>
+                        ATTENDANCE ALERT
+                    </span>
+
+                    <h2>
+                        Students With Attendance Shortage
+                    </h2>
+
+                </div>
+
+                <span
+                    id="shortageCount"
+                    class="admin-section-badge">
+
+                    0 Students
+
+                </span>
+
+            </div>
+
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                USN
+                            </th>
+
+                            <th>
+                                Attendance
+                            </th>
+
+                            <th>
+                                Present
+                            </th>
+
+                            <th>
+                                Absent
+                            </th>
+
+                            <th>
+                                Classes Needed
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="shortageBody">
+
+                        <tr>
+
+                            <td
+                                colspan="7"
+                                class="admin-table-empty">
+
+                                Loading...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================================================= -->
+        <!-- FOOTER -->
+        <!-- ================================================= -->
+
+        <footer class="admin-footer">
+
+            AI Attend &copy; 2026
+            &nbsp; | &nbsp;
+            AI-Based Student Attendance Monitoring System
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="dashboard.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("adminSidebar");
+
+    const overlay =
+        document.getElementById("mobileNavOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        console.warn(
+            "⚠️ Mobile navigation elements not found."
+        );
+
+        return;
+    }
+
+
+    // =====================================================
+    // OPEN MOBILE MENU
+    // =====================================================
+
+    function openMobileMenu() {
+
+        sidebar.classList.add(
+            "mobile-open"
+        );
+
+        overlay.classList.add(
+            "active"
+        );
+
+        document.body.classList.add(
+            "admin-menu-open"
+        );
+
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        menuButton.textContent = "×";
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+    }
+
+
+    // =====================================================
+    // CLOSE MOBILE MENU
+    // =====================================================
+
+    function closeMobileMenu() {
+
+        sidebar.classList.remove(
+            "mobile-open"
+        );
+
+        overlay.classList.remove(
+            "active"
+        );
+
+        document.body.classList.remove(
+            "admin-menu-open"
+        );
+
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        menuButton.textContent = "☰";
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    }
+
+
+    // =====================================================
+    // MENU BUTTON
+    // =====================================================
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            }
+            else {
+
+                openMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // CLICK OUTSIDE SIDEBAR
+    // =====================================================
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+    // =====================================================
+    // NAVIGATION LINKS
+    // =====================================================
+
+    sidebar
+        .querySelectorAll(
+            ".admin-nav-item"
+        )
+        .forEach(
+            function (link) {
+
+                link.addEventListener(
+                    "click",
+                    closeMobileMenu
+                );
+
+            }
+        );
+
+
+    // =====================================================
+    // ESCAPE KEY
+    // =====================================================
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // CLOSE WHEN RETURNING TO DESKTOP
+    // =====================================================
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (
+                window.innerWidth > 768
+            ) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "📱 Dashboard mobile navigation initialized."
+    );
+
+});
+
+</script>
+</body>
+
+</html>

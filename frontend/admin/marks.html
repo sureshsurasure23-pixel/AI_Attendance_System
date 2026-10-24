@@ -1,0 +1,1894 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Marks | AI Attendance Admin</title>
+
+    <link
+        rel="stylesheet"
+        href="../public/admin.css"
+    >
+
+
+<style>
+/* =========================================================
+   MARKS PAGE FINAL LAYOUT FIX
+   ========================================================= */
+
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+@media (min-width: 769px) {
+    .admin-main {
+        margin-left: 245px !important;
+        width: calc(100% - 245px) !important;
+        max-width: none !important;
+    }
+}
+</style>
+
+</head>
+
+
+<body>
+
+<div class="admin-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside
+    id="adminSidebar"
+    class="admin-sidebar"
+    aria-label="Administrator sidebar"
+>
+
+
+        <!-- BRAND -->
+
+        <div class="admin-brand">
+
+            <div
+                class="admin-brand-icon"
+                aria-hidden="true"
+            >
+                AI
+            </div>
+
+            <div class="admin-brand-text">
+
+                <strong>
+                    AI Attendance
+                </strong>
+
+                <span>
+                    Admin Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =================================================
+             NAVIGATION
+             ================================================= -->
+
+        <nav
+            class="admin-navigation"
+            aria-label="Admin navigation"
+        >
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="dashboard.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    🏠
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+
+            <!-- STUDENTS -->
+
+            <a
+                href="students.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    🎓
+                </span>
+
+                <span>
+                    Students
+                </span>
+
+            </a>
+
+
+
+            <!-- FACULTY -->
+
+            <a
+                href="faculty.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    👨‍🏫
+                </span>
+
+                <span>
+                    Faculty
+                </span>
+
+            </a>
+
+
+
+            <!-- ATTENDANCE -->
+
+            <a
+                href="attendance.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    ✓
+                </span>
+
+                <span>
+                    Attendance
+                </span>
+
+            </a>
+
+
+
+            <!-- SUBJECTS -->
+
+            <a
+                href="subjects.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    ▤
+                </span>
+
+                <span>
+                    Subjects
+                </span>
+
+            </a>
+
+
+
+            <!-- MARKS -->
+
+            <a
+                href="marks.html"
+                class="admin-nav-item active"
+                aria-current="page"
+            >
+
+                <span aria-hidden="true">
+                    📊
+                </span>
+
+                <span>
+                    Marks
+                </span>
+
+            </a>
+
+
+
+            <!-- FEES -->
+
+            <a
+                href="fees.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    💰
+                </span>
+
+                <span>
+                    Fees
+                </span>
+
+            </a>
+
+
+
+            <!-- AI ANALYTICS -->
+
+            <a
+                href="ai-analytics.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    🤖
+                </span>
+
+                <span>
+                    AI Analytics
+                </span>
+
+            </a>
+
+
+
+            <!-- NOTIFICATIONS -->
+
+            <a
+                href="alerts.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    🔔
+                </span>
+
+                <span>
+                    Notifications
+                </span>
+
+            </a>
+
+
+
+            <!-- SETTINGS -->
+
+            <a
+                href="settings.html"
+                class="admin-nav-item"
+            >
+
+                <span aria-hidden="true">
+                    ⚙
+                </span>
+
+                <span>
+                    Settings
+                </span>
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =================================================
+             ADMIN USER
+             ================================================= -->
+
+        <div
+            class="admin-sidebar-bottom"
+            aria-label="Administrator account"
+        >
+
+
+            <div class="admin-user">
+
+
+                <div
+                    class="admin-avatar"
+                    aria-hidden="true"
+                >
+                    A
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span>
+                        System Admin
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+            <button
+                type="button"
+                id="logoutBtn"
+                class="admin-logout-btn"
+                aria-label="Log out of administrator account"
+            >
+
+                <span aria-hidden="true">
+                    ↪
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+
+        </div>
+
+
+    </aside>
+    <!-- MOBILE SIDEBAR OVERLAY -->
+
+<div
+    id="mobileNavOverlay"
+    class="admin-mobile-overlay"
+    aria-hidden="true"
+></div>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+    <main
+        class="admin-main"
+        id="main-content"
+    >
+
+    <!-- MOBILE MENU BUTTON -->
+
+    <button
+        type="button"
+        id="mobileMenuBtn"
+        class="admin-mobile-menu-btn"
+        aria-label="Open navigation menu"
+        aria-controls="adminSidebar"
+        aria-expanded="false"
+    >
+        ☰
+    </button>
+
+
+        <!-- =================================================
+             TOP BAR
+             ================================================= -->
+
+        <header
+            class="admin-topbar"
+            aria-labelledby="page-title"
+        >
+
+
+            <div>
+
+                <div class="admin-eyebrow">
+                    ADMIN PORTAL
+                </div>
+
+
+                <h1 id="page-title">
+                    Marks Management
+                </h1>
+
+
+                <p>
+                    Manage student academic marks and performance.
+                </p>
+
+            </div>
+
+
+            <div
+                class="admin-topbar-user"
+                aria-label="Currently signed in administrator"
+            >
+
+
+                <div
+                    class="admin-avatar"
+                    aria-hidden="true"
+                >
+                    A
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span>
+                        System Administrator
+                    </span>
+
+                </div>
+
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- =================================================
+             PAGE HEADER
+             ================================================= -->
+
+        <section
+            class="admin-page-header"
+            aria-labelledby="marks-page-heading"
+        >
+
+
+            <div>
+
+                <div class="admin-section-label">
+                    ACADEMIC MANAGEMENT
+                </div>
+
+
+                <h2 id="marks-page-heading">
+                    Student Marks
+                </h2>
+
+
+                <p>
+                    View, add and manage internal, assignment,
+                    laboratory and semester examination marks.
+                </p>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+             ================================================= -->
+
+        <section
+            class="admin-stat-grid"
+            aria-labelledby="marks-summary-heading"
+        >
+
+
+            <h2
+                id="marks-summary-heading"
+                class="sr-only"
+            >
+                Marks Summary
+            </h2>
+
+
+            <!-- TOTAL RECORDS -->
+
+            <div class="admin-stat-card">
+
+                <div
+                    class="admin-stat-icon"
+                    aria-hidden="true"
+                >
+                    📊
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Mark Records
+                    </span>
+
+                    <strong id="totalMarkRecords">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- AVERAGE -->
+
+            <div class="admin-stat-card">
+
+                <div
+                    class="admin-stat-icon"
+                    aria-hidden="true"
+                >
+                    📈
+                </div>
+
+                <div>
+
+                    <span>
+                        Average Percentage
+                    </span>
+
+                    <strong id="averagePercentage">
+                        0.00%
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PASSED -->
+
+            <div class="admin-stat-card">
+
+                <div
+                    class="admin-stat-icon"
+                    aria-hidden="true"
+                >
+                    ✅
+                </div>
+
+                <div>
+
+                    <span>
+                        Passed
+                    </span>
+
+                    <strong id="passedMarkCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- FAILED -->
+
+            <div class="admin-stat-card">
+
+                <div
+                    class="admin-stat-icon"
+                    aria-hidden="true"
+                >
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <span>
+                        Failed
+                    </span>
+
+                    <strong id="failedMarkCount">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MARK RECORDS
+             ================================================= -->
+
+        <section
+            class="admin-content-card"
+            aria-labelledby="mark-records-heading"
+        >
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="admin-section-header">
+
+
+                <div>
+
+                    <div class="admin-section-label">
+                        DIRECTORY
+                    </div>
+
+
+                    <h2 id="mark-records-heading">
+                        Mark Records
+                    </h2>
+
+
+                    <p>
+                        Search and manage student academic records.
+                    </p>
+
+
+                </div>
+
+
+                <div
+                    style="
+                        display:flex;
+                        gap:10px;
+                        flex-wrap:wrap;
+                    "
+                >
+
+
+                    <!-- REFRESH -->
+
+                    <button
+                        type="button"
+                        id="refreshMarksBtn"
+                        class="admin-secondary-btn"
+                    >
+
+                        <span aria-hidden="true">
+                            ↻
+                        </span>
+
+                        <span>
+                            Refresh
+                        </span>
+
+                    </button>
+
+
+
+                    <!-- ADD -->
+
+                    <button
+                        type="button"
+                        id="addMarkBtn"
+                        class="admin-primary-btn"
+                    >
+
+                        <span aria-hidden="true">
+                            ➕
+                        </span>
+
+                        <span>
+                            Add Marks
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTER BAR
+                 ================================================= -->
+
+            <div
+                class="admin-filter-bar"
+                aria-label="Marks filters"
+            >
+
+
+                <!-- SEARCH -->
+
+                <div class="admin-search-box">
+
+
+                    <span aria-hidden="true">
+                        🔍
+                    </span>
+
+
+                    <label
+                        for="markSearch"
+                        class="sr-only"
+                    >
+                        Search marks
+                    </label>
+
+
+                    <input
+                        type="search"
+                        id="markSearch"
+                        placeholder="Search student, USN or subject..."
+                        autocomplete="off"
+                    >
+
+
+                </div>
+
+
+
+                <!-- GRADE FILTER -->
+
+                <div class="admin-filter-group">
+
+
+                    <label for="gradeFilter">
+                        Grade
+                    </label>
+
+
+                    <select id="gradeFilter">
+
+
+                        <option value="">
+                            All Grades
+                        </option>
+
+
+                        <option value="A+">
+                            A+
+                        </option>
+
+
+                        <option value="A">
+                            A
+                        </option>
+
+
+                        <option value="B">
+                            B
+                        </option>
+
+
+                        <option value="C">
+                            C
+                        </option>
+
+
+                        <option value="D">
+                            D
+                        </option>
+
+
+                        <option value="F">
+                            F
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- SUBJECT FILTER -->
+
+                <div class="admin-filter-group">
+
+
+                    <label for="markSubjectFilter">
+                        Subject
+                    </label>
+
+
+                    <select id="markSubjectFilter">
+
+
+                        <option value="">
+                            All Subjects
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RESULT COUNT -->
+
+            <div
+                class="admin-result-info"
+                aria-live="polite"
+            >
+
+                Showing
+
+                <strong id="filteredMarkCount">
+                    0
+                </strong>
+
+                mark records
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLE
+                 ================================================= -->
+
+            <div class="admin-table-wrapper">
+
+
+                <table
+                    class="admin-table"
+                    aria-describedby="mark-table-description"
+                >
+
+
+                    <caption
+                        id="mark-table-description"
+                        class="sr-only"
+                    >
+                        Student academic marks including student
+                        information, subject, individual mark
+                        components, total marks, percentage,
+                        grade and available actions.
+                    </caption>
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th scope="col">
+                                #
+                            </th>
+
+                            <th scope="col">
+                                Student
+                            </th>
+
+                            <th scope="col">
+                                USN
+                            </th>
+
+                            <th scope="col">
+                                Subject
+                            </th>
+
+                            <th scope="col">
+                                Internal
+                            </th>
+
+                            <th scope="col">
+                                Assignment
+                            </th>
+
+                            <th scope="col">
+                                Lab
+                            </th>
+
+                            <th scope="col">
+                                Semester Exam
+                            </th>
+
+                            <th scope="col">
+                                Total
+                            </th>
+
+                            <th scope="col">
+                                Percentage
+                            </th>
+
+                            <th scope="col">
+                                Grade
+                            </th>
+
+                            <th scope="col">
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <!-- =================================================
+                         TABLE BODY
+                         ================================================= -->
+
+                    <tbody
+                        id="marksTableBody"
+                        aria-busy="true"
+                    >
+
+
+                        <!-- INITIAL LOADING STATE -->
+
+                        <tr>
+
+                            <td
+                                colspan="12"
+                                class="table-empty"
+                            >
+
+                                <div
+                                    class="marks-loading-state"
+                                    role="status"
+                                    aria-live="polite"
+                                    aria-atomic="true"
+                                >
+
+                                    <div
+                                        class="marks-loading-spinner"
+                                        aria-hidden="true"
+                                    >
+                                    </div>
+
+
+                                    <strong>
+                                        Loading marks...
+                                    </strong>
+
+
+                                    <span>
+                                        Please wait while student
+                                        marks are retrieved.
+                                    </span>
+
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXPLICIT ERROR STATE
+             ================================================= -->
+
+        <section
+            id="markErrorSection"
+            class="admin-content-card"
+            hidden
+            aria-labelledby="mark-error-heading"
+        >
+
+
+            <div class="marks-error-state">
+
+
+                <div
+                    class="marks-empty-icon"
+                    aria-hidden="true"
+                >
+                    ⚠️
+                </div>
+
+
+                <h2 id="mark-error-heading">
+                    Unable to load marks
+                </h2>
+
+
+                <span id="markErrorMessage">
+                    There was a problem connecting to the
+                    Marks API.
+                </span>
+
+
+                <button
+                    type="button"
+                    id="retryMarksBtn"
+                    class="admin-primary-btn"
+                >
+
+                    <span aria-hidden="true">
+                        ↻
+                    </span>
+
+                    <span>
+                        Try Again
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             EXPLICIT EMPTY STATE
+             ================================================= -->
+
+        <section
+            id="markEmptySection"
+            class="admin-content-card"
+            hidden
+            aria-labelledby="mark-empty-heading"
+        >
+
+
+            <div class="marks-empty-state">
+
+
+                <div
+                    class="marks-empty-icon"
+                    aria-hidden="true"
+                >
+                    📊
+                </div>
+
+
+                <h2 id="mark-empty-heading">
+                    No marks found
+                </h2>
+
+
+                <span>
+                    There are currently no marks records
+                    available in the system.
+                </span>
+
+
+                <button
+                    type="button"
+                    id="emptyAddMarkBtn"
+                    class="admin-primary-btn"
+                >
+
+                    <span aria-hidden="true">
+                        ➕
+                    </span>
+
+                    <span>
+                        Add First Marks Record
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FILTERED EMPTY STATE
+             ================================================= -->
+
+        <section
+            id="markFilteredEmptySection"
+            class="admin-content-card"
+            hidden
+            aria-labelledby="mark-filtered-empty-heading"
+        >
+
+
+            <div class="marks-empty-state">
+
+
+                <div
+                    class="marks-empty-icon"
+                    aria-hidden="true"
+                >
+                    🔍
+                </div>
+
+
+                <h2 id="mark-filtered-empty-heading">
+                    No matching marks
+                </h2>
+
+
+                <span>
+                    No mark records match your current
+                    search or filters.
+                </span>
+
+
+                <button
+                    type="button"
+                    id="clearMarkFiltersBtn"
+                    class="admin-secondary-btn"
+                >
+
+                    Clear Filters
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             STATUS MESSAGE
+             ================================================= -->
+
+        <section
+            id="markMessageSection"
+            class="admin-content-card"
+            hidden
+            aria-labelledby="mark-message-heading"
+        >
+
+
+            <h2
+                id="mark-message-heading"
+                class="sr-only"
+            >
+                Marks Status
+            </h2>
+
+
+            <div
+                id="markMessage"
+                class="marks-state-message"
+                role="status"
+                aria-live="polite"
+                aria-atomic="true"
+            >
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer
+            class="admin-footer"
+            aria-label="System footer"
+        >
+
+            AI Attendance Monitoring System
+            ·
+            Marks Management
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     MARK MODAL
+     ========================================================= -->
+
+<div
+    id="markModal"
+    class="admin-modal"
+    hidden
+    aria-labelledby="markModalTitle"
+    role="dialog"
+    aria-modal="true"
+>
+
+
+    <div class="admin-modal-content">
+
+
+        <!-- MODAL HEADER -->
+
+        <div class="admin-modal-header">
+
+
+            <div>
+
+                <h2 id="markModalTitle">
+                    Add Marks
+                </h2>
+
+
+                <p>
+                    Enter the student's academic marks.
+                </p>
+
+
+            </div>
+
+
+            <button
+                id="closeMarkModal"
+                type="button"
+                class="admin-modal-close"
+                aria-label="Close marks form"
+            >
+
+                ×
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- MODAL BODY -->
+
+        <div class="admin-modal-body">
+
+
+            <form id="markForm">
+
+
+                <!-- HIDDEN ID -->
+
+                <input
+                    type="hidden"
+                    id="markId"
+                >
+
+
+
+                <!-- =================================================
+                     STUDENT
+                     ================================================= -->
+
+                <div class="admin-form-group">
+
+
+                    <label for="markStudent">
+                        Student
+                    </label>
+
+
+                    <select
+                        id="markStudent"
+                        required
+                    >
+
+
+                        <option value="">
+                            Select Student
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     SUBJECT
+                     ================================================= -->
+
+                <div class="admin-form-group">
+
+
+                    <label for="markSubject">
+                        Subject
+                    </label>
+
+
+                    <select
+                        id="markSubject"
+                        required
+                    >
+
+
+                        <option value="">
+                            Select Subject
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FACULTY
+                     ================================================= -->
+
+                <div class="admin-form-group">
+
+
+                    <label for="markFaculty">
+                        Faculty
+                    </label>
+
+
+                    <select
+                        id="markFaculty"
+                        required
+                    >
+
+
+                        <option value="">
+                            Select Faculty
+                        </option>
+
+
+                    </select>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     MARK COMPONENTS
+                     ================================================= -->
+
+                <div class="admin-form-grid">
+
+
+                    <!-- INTERNAL -->
+
+                    <div class="admin-form-group">
+
+
+                        <label for="internalMarks">
+                            Internal Marks
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="internalMarks"
+                            min="0"
+                            max="40"
+                            step="1"
+                            inputmode="numeric"
+                            aria-describedby="internalMarksHelp"
+                            required
+                        >
+
+
+                        <small id="internalMarksHelp">
+                            Maximum: 40 marks.
+                        </small>
+
+
+                    </div>
+
+
+
+                    <!-- ASSIGNMENT -->
+
+                    <div class="admin-form-group">
+
+
+                        <label for="assignmentMarks">
+                            Assignment Marks
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="assignmentMarks"
+                            min="0"
+                            max="20"
+                            step="1"
+                            inputmode="numeric"
+                            aria-describedby="assignmentMarksHelp"
+                            required
+                        >
+
+
+                        <small id="assignmentMarksHelp">
+                            Maximum: 20 marks.
+                        </small>
+
+
+                    </div>
+
+
+
+                    <!-- LAB -->
+
+                    <div class="admin-form-group">
+
+
+                        <label for="labMarks">
+                            Lab Marks
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="labMarks"
+                            min="0"
+                            max="20"
+                            step="1"
+                            inputmode="numeric"
+                            aria-describedby="labMarksHelp"
+                            required
+                        >
+
+
+                        <small id="labMarksHelp">
+                            Maximum: 20 marks.
+                        </small>
+
+
+                    </div>
+
+
+
+                    <!-- SEMESTER EXAM -->
+
+                    <div class="admin-form-group">
+
+
+                        <label for="semesterExam">
+                            Semester Exam
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="semesterExam"
+                            min="0"
+                            max="80"
+                            step="1"
+                            inputmode="numeric"
+                            aria-describedby="semesterExamHelp"
+                            required
+                        >
+
+
+                        <small id="semesterExamHelp">
+                            Maximum: 80 marks.
+                        </small>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CALCULATED RESULT
+                     ================================================= -->
+
+                <div
+                    class="admin-settings-grid"
+                    aria-label="Calculated marks"
+                >
+
+
+                    <!-- TOTAL -->
+
+                    <div class="attendance-detail-card">
+
+
+                        <span class="attendance-detail-label">
+                            Total Marks
+                        </span>
+
+
+                        <strong
+                            id="totalMarksPreview"
+                            class="attendance-detail-value"
+                        >
+                            0 / 160
+                        </strong>
+
+
+                    </div>
+
+
+
+                    <!-- PERCENTAGE -->
+
+                    <div class="attendance-detail-card">
+
+
+                        <span class="attendance-detail-label">
+                            Percentage
+                        </span>
+
+
+                        <strong
+                            id="percentagePreview"
+                            class="attendance-detail-value"
+                        >
+                            0.00%
+                        </strong>
+
+
+                    </div>
+
+
+
+                    <!-- GRADE -->
+
+                    <div class="attendance-detail-card">
+
+
+                        <span class="attendance-detail-label">
+                            Grade
+                        </span>
+
+
+                        <strong
+                            id="gradePreview"
+                            class="attendance-detail-value"
+                        >
+                            -
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     CALCULATION INFORMATION
+                     ================================================= -->
+
+                <p>
+                    Total marks, percentage and grade are
+                    calculated automatically by the backend.
+                </p>
+
+
+
+                <!-- =================================================
+                     FORM MESSAGE
+                     ================================================= -->
+
+                <div
+                    id="markFormMessage"
+                    class="attendance-update-message"
+                    role="alert"
+                    aria-live="assertive"
+                    aria-atomic="true"
+                >
+                </div>
+
+
+
+                <!-- =================================================
+                     ACTIONS
+                     ================================================= -->
+
+                <div class="admin-modal-actions">
+
+
+                    <button
+                        type="button"
+                        id="cancelMarkBtn"
+                        class="admin-secondary-btn"
+                    >
+
+                        Cancel
+
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        id="saveMarkBtn"
+                        class="admin-save-btn"
+                    >
+
+                        <span aria-hidden="true">
+                            💾
+                        </span>
+
+                        <span id="saveMarkBtnText">
+                            Save Marks
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+     ===================================================== -->
+
+<script src="marks.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("adminSidebar");
+
+    const overlay =
+        document.getElementById("mobileNavOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        console.warn(
+            "⚠️ Mobile navigation elements not found."
+        );
+
+        return;
+    }
+
+
+    // =====================================================
+    // OPEN MOBILE MENU
+    // =====================================================
+
+    function openMobileMenu() {
+
+        sidebar.classList.add(
+            "mobile-open"
+        );
+
+        overlay.classList.add(
+            "active"
+        );
+
+        document.body.classList.add(
+            "admin-menu-open"
+        );
+
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+
+        menuButton.textContent = "×";
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+    }
+
+
+    // =====================================================
+    // CLOSE MOBILE MENU
+    // =====================================================
+
+    function closeMobileMenu() {
+
+        sidebar.classList.remove(
+            "mobile-open"
+        );
+
+        overlay.classList.remove(
+            "active"
+        );
+
+        document.body.classList.remove(
+            "admin-menu-open"
+        );
+
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+
+        menuButton.textContent = "☰";
+
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+    }
+
+
+    // =====================================================
+    // MENU BUTTON
+    // =====================================================
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            }
+            else {
+
+                openMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // CLICK OUTSIDE SIDEBAR
+    // =====================================================
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+    // =====================================================
+    // CLOSE AFTER CLICKING NAVIGATION
+    // =====================================================
+
+    const navigationLinks =
+        sidebar.querySelectorAll(
+            ".admin-nav-item"
+        );
+
+
+    navigationLinks.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    closeMobileMenu();
+
+                }
+            );
+
+        }
+    );
+
+
+    // =====================================================
+    // ESCAPE KEY
+    // =====================================================
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Escape"
+            ) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    // =====================================================
+    // CLOSE WHEN RETURNING TO DESKTOP
+    // =====================================================
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (
+                window.innerWidth > 768
+            ) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "📱 Mobile navigation initialized."
+    );
+
+});
+
+</script>
+
+</body>
+
+</html>

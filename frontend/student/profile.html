@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Profile | AI Attend</title>
+
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="./profile.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                AI
+            </div>
+
+            <div class="logo-text">
+                <strong>AI Attend</strong>
+                <span>Student Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <p class="nav-title">
+                MAIN MENU
+            </p>
+
+
+            <a href="dashboard.html" class="nav-item">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+
+            <a href="attendance.html" class="nav-item">
+                <span class="nav-icon">◷</span>
+                <span>Attendance</span>
+            </a>
+
+
+            <a href="academic.html" class="nav-item">
+                <span class="nav-icon">▤</span>
+                <span>Academic</span>
+            </a>
+
+
+            <a href="ai-prediction.html" class="nav-item">
+                <span class="nav-icon">✦</span>
+                <span>AI Prediction</span>
+            </a>
+
+
+            <a href="alerts.html" class="nav-item">
+                <span class="nav-icon">⚠</span>
+                <span>Alerts</span>
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a href="profile.html" class="nav-item active">
+                <span class="nav-icon">⚙</span>
+                <span>Profile</span>
+            </a>
+
+
+            <a href="login.html"
+               id="logoutBtn"
+               class="nav-item logout">
+
+                <span class="nav-icon">↪</span>
+                <span>Logout</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN
+         ===================================================== -->
+
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+             ================================================= -->
+
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <p class="welcome-small">
+                    STUDENT PORTAL
+                </p>
+
+                <h1>
+                    My Profile
+                </h1>
+
+            </div>
+
+
+            <div class="top-actions">
+
+                <button
+                    id="refreshBtn"
+                    class="refresh-btn"
+                    type="button">
+
+                    ↻ Refresh
+
+                </button>
+
+
+                <div class="profile">
+
+                    <div
+                        class="avatar"
+                        id="studentAvatar">
+
+                        R
+
+                    </div>
+
+
+                    <div class="profile-info">
+
+                        <strong id="topStudentName">
+                            Rahul
+                        </strong>
+
+                        <span>
+                            Student
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             PROFILE HERO
+             ================================================= -->
+
+        <section class="profile-hero">
+
+            <div class="profile-hero-content">
+
+                <span class="profile-label">
+                    STUDENT PROFILE
+                </span>
+
+                <h2>
+                    Personal Information
+                </h2>
+
+                <p>
+                    View and manage your student information.
+                </p>
+
+            </div>
+
+
+            <div class="profile-hero-avatar">
+
+                <div
+                    class="large-avatar"
+                    id="profileAvatar">
+
+                    R
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             LOADING
+             ================================================= -->
+
+        <div
+            id="loadingState"
+            class="profile-loading">
+
+            <div class="loading-spinner"></div>
+
+            <p>
+                Loading profile...
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             ERROR
+             ================================================= -->
+
+        <div
+            id="errorState"
+            class="profile-error"
+            style="display:none;">
+
+            <strong>
+                Unable to load profile
+            </strong>
+
+            <p id="errorMessage">
+                Something went wrong.
+            </p>
+
+            <button
+                id="retryBtn"
+                type="button">
+
+                Try Again
+
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             PROFILE CONTENT
+             ================================================= -->
+
+        <section
+            id="profileContent"
+            class="profile-content"
+            style="display:none;">
+
+
+            <!-- =============================================
+                 BASIC INFORMATION
+                 ============================================= -->
+
+            <section class="profile-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            BASIC INFORMATION
+                        </span>
+
+                        <h3>
+                            Student Details
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-grid">
+
+
+                    <div class="profile-field">
+
+                        <span class="field-label">
+                            Student ID
+                        </span>
+
+                        <strong id="studentId">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-field">
+
+                        <span class="field-label">
+                            USN
+                        </span>
+
+                        <strong id="usn">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-field">
+
+                        <span class="field-label">
+                            Full Name
+                        </span>
+
+                        <strong id="studentName">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-field">
+
+                        <span class="field-label">
+                            Department
+                        </span>
+
+                        <strong id="departmentName">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-field">
+
+                        <span class="field-label">
+                            Semester
+                        </span>
+
+                        <strong id="semester">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-field">
+
+                        <span class="field-label">
+                            Section
+                        </span>
+
+                        <strong id="section">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =============================================
+                 CONTACT INFORMATION
+                 ============================================= -->
+
+            <section class="profile-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            CONTACT INFORMATION
+                        </span>
+
+                        <h3>
+                            Contact Details
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-grid">
+
+
+                    <div class="profile-field">
+
+                        <span class="field-label">
+                            Email Address
+                        </span>
+
+                        <strong id="email">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-field">
+
+                        <span class="field-label">
+                            Phone Number
+                        </span>
+
+                        <strong id="phone">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profile-field profile-field-full">
+
+                        <span class="field-label">
+                            Address
+                        </span>
+
+                        <strong id="address">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =============================================
+                 ACCOUNT INFORMATION
+                 ============================================= -->
+
+            <section class="profile-section">
+
+                <div class="section-heading">
+
+                    <div>
+
+                        <span class="section-label">
+                            ACCOUNT INFORMATION
+                        </span>
+
+                        <h3>
+                            Profile Status
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-status-card">
+
+                    <div class="status-icon">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Student Profile Active
+                        </strong>
+
+                        <p>
+                            Your student profile is currently active
+                            in the attendance monitoring system.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </section>
+
+
+        <!-- =================================================
+             FOOTER
+             ================================================= -->
+
+        <footer class="footer">
+
+            <span>
+                © 2026 AI Student Attendance Monitoring System
+            </span>
+
+            <span>
+                AI-Powered Student Analytics
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="./profile.js"></script>
+
+</body>
+
+</html>

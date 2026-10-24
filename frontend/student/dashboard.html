@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Srinivas University | Student Attendance Monitoring System
+    </title>
+
+<link rel="stylesheet" href="dashboard.css"></head>
+
+<body>
+
+<div class="student-app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <aside class="sidebar">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+                <!-- Put the official Srinivas University logo here -->
+                <img
+                    src="assets/srinivas-university-logo.png"
+                    alt="Srinivas University Logo"
+                    onerror="this.style.display='none';"
+                >
+
+                <div class="logo-fallback">
+                    SU
+                </div>
+            </div>
+
+            <div class="brand-text">
+                <strong>Srinivas University</strong>
+                <span>Student Attendance Monitoring System</span>
+            </div>
+
+        </div>
+
+        <div class="student-portal-label">
+            STUDENT PORTAL
+        </div>
+
+        <nav class="navigation">
+
+            <a href="dashboard.html" class="nav-item active">
+                <span class="nav-icon">⌂</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="attendance.html" class="nav-item">
+                <span class="nav-icon">◷</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="academic.html" class="nav-item">
+                <span class="nav-icon">▤</span>
+                <span>Academic</span>
+            </a>
+
+            <a href="ai-prediction.html" class="nav-item">
+                <span class="nav-icon">✦</span>
+                <span>AI Prediction</span>
+            </a>
+
+            <a href="alerts.html" class="nav-item">
+                <span class="nav-icon">⚠</span>
+                <span>Alerts</span>
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="#"
+                class="nav-item"
+                id="settingsLink"
+            >
+                <span class="nav-icon">⚙</span>
+                <span>Settings</span>
+            </a>
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                <span class="nav-icon">↪</span>
+                <span>Logout</span>
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="topbar-title">
+
+                <span class="page-kicker">
+                    SRINIVAS UNIVERSITY
+                </span>
+
+                <h1>
+                    Student Dashboard
+                </h1>
+
+                <p>
+                    Monitor your attendance, academic performance
+                    and AI-based student risk analysis.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="refresh-btn"
+                id="refreshBtn"
+            >
+                <span class="refresh-icon">↻</span>
+                <span>Refresh</span>
+            </button>
+
+        </header>
+
+
+        <!-- STUDENT PROFILE -->
+        <section class="student-header">
+
+            <div
+                class="student-avatar"
+                id="studentAvatar"
+            >
+                S
+            </div>
+
+            <div class="student-info">
+
+                <h2 id="studentName">
+                    Student
+                </h2>
+
+                <span id="studentRole">
+                    BCA Professional Student
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             WELCOME
+        ================================================== -->
+        <section class="welcome-card">
+
+            <div class="welcome-pattern"></div>
+
+            <div class="welcome-content">
+
+                <span class="welcome-label">
+                    WELCOME BACK
+                </span>
+
+                <h2>
+                    Hello,
+                    <span id="welcomeStudentName">
+                        Student
+                    </span>
+                </h2>
+
+                <p>
+                    View your latest attendance, academic
+                    performance and AI-based monitoring results.
+                </p>
+
+                <div class="student-id-display">
+                    Student ID:
+                    <strong id="studentId">--</strong>
+                </div>
+
+            </div>
+
+            <div class="welcome-risk">
+
+                <span>OVERALL STATUS</span>
+
+                <strong id="overallRisk">
+                    --
+                </strong>
+
+                <small>
+                    Attendance & academic monitoring
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             PERFORMANCE
+        ================================================== -->
+        <section class="section">
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="section-label">
+                        ACADEMIC MONITORING
+                    </span>
+
+                    <h2>
+                        Performance Overview
+                    </h2>
+
+                    <p>
+                        Your current academic statistics
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+                <!-- ATTENDANCE -->
+                <div class="stat-card attendance-card">
+
+                    <div class="stat-card-top">
+                        <span class="stat-icon">◷</span>
+                        <span>ATTENDANCE</span>
+                    </div>
+
+                    <strong
+                        id="attendancePercentage"
+                        class="stat-value"
+                    >
+                        0%
+                    </strong>
+
+                    <div class="stat-risk">
+                        Risk:
+                        <strong id="attendanceRisk">
+                            --
+                        </strong>
+                    </div>
+
+                    <div class="stat-footer">
+
+                        <span>
+                            Present
+                            <strong id="presentCount">0</strong>
+                        </span>
+
+                        <span>
+                            Total
+                            <strong id="attendanceTotal">0</strong>
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACADEMIC -->
+                <div class="stat-card academic-card">
+
+                    <div class="stat-card-top">
+                        <span class="stat-icon">★</span>
+                        <span>ACADEMIC</span>
+                    </div>
+
+                    <strong
+                        id="academicPercentage"
+                        class="stat-value"
+                    >
+                        0%
+                    </strong>
+
+                    <div class="stat-risk">
+                        Risk:
+                        <strong id="academicRisk">
+                            --
+                        </strong>
+                    </div>
+
+                    <div class="stat-footer">
+
+                        <span>
+                            Average Marks
+                        </span>
+
+                        <strong id="averageMarks">
+                            0%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AI -->
+                <div class="stat-card ai-card">
+
+                    <div class="stat-card-top">
+                        <span class="stat-icon">✦</span>
+                        <span>AI RISK PREDICTION</span>
+                    </div>
+
+                    <strong
+                        id="aiRisk"
+                        class="stat-value"
+                    >
+                        --
+                    </strong>
+
+                    <div class="stat-risk">
+                        Confidence:
+                        <strong id="aiConfidence">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div class="stat-footer">
+
+                        <span>Status</span>
+
+                        <strong id="aiStatus">
+                            ACTIVE
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CLASSES -->
+                <div class="stat-card classes-card">
+
+                    <div class="stat-card-top">
+                        <span class="stat-icon">▣</span>
+                        <span>CLASSES</span>
+                    </div>
+
+                    <strong
+                        id="classesCount"
+                        class="stat-value"
+                    >
+                        0 / 0
+                    </strong>
+
+                    <div class="stat-risk">
+                        Absent:
+                        <strong id="absentCount">
+                            0
+                        </strong>
+                    </div>
+
+                    <div class="stat-footer">
+                        <span>
+                            Attendance classes
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             WARNING + PREDICTION
+        ================================================== -->
+        <section class="dashboard-grid">
+
+            <!-- WARNING -->
+            <div class="dashboard-card warning-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="card-kicker">
+                            ⚠
+                        </span>
+
+                        <h3>
+                            Early Warning System
+                        </h3>
+
+                        <p>
+                            Student monitoring status
+                        </p>
+
+                    </div>
+
+                    <span class="status-badge">
+                        MONITORING
+                    </span>
+
+                </div>
+
+                <div class="risk-display">
+
+                    <div>
+
+                        <span>
+                            Current Risk
+                        </span>
+
+                        <strong id="warningRisk">
+                            LOW
+                        </strong>
+
+                    </div>
+
+                    <div class="risk-score">
+
+                        <span id="riskScore">
+                            0%
+                        </span>
+
+                        <small>
+                            Risk Score
+                        </small>
+
+                    </div>
+
+                </div>
+
+                <div
+                    class="warning-message"
+                    id="warningMessage"
+                >
+                    Continue maintaining good academic performance.
+                </div>
+
+            </div>
+
+
+            <!-- PREDICTION -->
+            <div class="dashboard-card prediction-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="card-kicker">
+                            📊
+                        </span>
+
+                        <h3>
+                            Attendance Prediction
+                        </h3>
+
+                        <p>
+                            Attendance requirement analysis
+                        </p>
+
+                    </div>
+
+                    <span class="required-badge">
+                        REQUIRED 75%
+                    </span>
+
+                </div>
+
+                <div class="prediction-grid">
+
+                    <div>
+                        <span>Current</span>
+
+                        <strong id="currentAttendance">
+                            0%
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Required</span>
+
+                        <strong>
+                            75%
+                        </strong>
+                    </div>
+
+                    <div>
+                        <span>Classes to Attend</span>
+
+                        <strong id="classesToAttend">
+                            0
+                        </strong>
+                    </div>
+
+                </div>
+
+                <p
+                    class="prediction-message"
+                    id="predictionMessage"
+                >
+                    Attendance requirement analysis.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             AI ANALYSIS
+        ================================================== -->
+        <section class="dashboard-card ai-analysis-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-kicker">
+                        ✦
+                    </span>
+
+                    <h3>
+                        AI Analysis
+                    </h3>
+
+                    <p>
+                        Intelligent performance insights
+                    </p>
+
+                </div>
+
+                <span class="ai-powered">
+                    AI POWERED
+                </span>
+
+            </div>
+
+            <div class="ai-analysis-content">
+
+                <div class="ai-symbol">
+                    ✦
+                </div>
+
+                <p id="aiAnalysisMessage">
+                    Prediction generated using attendance
+                    and academic performance data.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             NOTIFICATIONS
+        ================================================== -->
+        <section class="dashboard-card notifications-card">
+
+            <div class="card-header">
+
+                <div>
+
+                    <span class="card-kicker">
+                        🔔
+                    </span>
+
+                    <h3>
+                        Attendance Notifications
+                    </h3>
+
+                    <p>
+                        Important attendance alerts and updates
+                    </p>
+
+                </div>
+
+                <span
+                    class="notification-count-badge"
+                    id="notificationCount"
+                >
+                    0
+                </span>
+
+            </div>
+
+            <div
+                id="notificationsContainer"
+                class="notifications-container"
+            >
+
+                <div class="notification-empty">
+
+                    <span class="notification-empty-icon">
+                        🔔
+                    </span>
+
+                    <strong>
+                        No new notifications
+                    </strong>
+
+                    <p>
+                        You are currently up to date.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOADING -->
+        <div
+            id="loadingMessage"
+            class="loading-message"
+        >
+            Loading dashboard...
+        </div>
+
+
+        <!-- ERROR -->
+        <div
+            id="errorMessage"
+            class="error-message"
+        ></div>
+
+
+        <!-- FOOTER -->
+        <footer class="dashboard-footer">
+
+            <div>
+                <strong>
+                    Srinivas University
+                </strong>
+
+                <span>
+                    Student Attendance Monitoring System
+                </span>
+            </div>
+
+            <span>
+                Student Portal • 2026
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<script src="dashboard.js"></script>
+
+<script>
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const currentPage =
+            window.location.pathname
+                .split("/")
+                .pop()
+                .toLowerCase();
+
+        document
+            .querySelectorAll(".nav-item")
+            .forEach(function (item) {
+
+                const href =
+                    item.getAttribute("href");
+
+                if (!href || href === "#") {
+                    return;
+                }
+
+                const linkPage =
+                    href
+                        .split("/")
+                        .pop()
+                        .toLowerCase();
+
+                if (linkPage === currentPage) {
+                    item.classList.add("active");
+                } else {
+                    item.classList.remove("active");
+                }
+
+            });
+
+
+        const settingsLink =
+            document.getElementById("settingsLink");
+
+        if (settingsLink) {
+
+            settingsLink.addEventListener(
+                "click",
+                function (event) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Settings page will be available soon."
+                    );
+
+                }
+            );
+
+        }
+
+    }
+
+);
+
+</script>
+
+</body>
+</html>

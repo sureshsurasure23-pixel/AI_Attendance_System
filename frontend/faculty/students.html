@@ -1,0 +1,658 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Students | AI Attend Faculty Portal</title>
+
+    <!-- Shared Faculty CSS -->
+<link rel="stylesheet" href="./faculty.css"></head>
+
+<body>
+
+<div class="faculty-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+    <aside class="sidebar">
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                AI
+            </div>
+
+            <div>
+                <strong>AI Attend</strong>
+                <span>Faculty Portal</span>
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="navigation">
+
+            <a href="dashboard.html" class="nav-item">
+
+                <span aria-hidden="true">
+                    &#x1F4CA;
+                </span>
+
+                <span>
+                    Dashboard
+                </span>
+
+            </a>
+
+
+            <a href="attendance.html" class="nav-item">
+
+                <span aria-hidden="true">
+                    &#x1F4CB;
+                </span>
+
+                <span>
+                    Attendance
+                </span>
+
+            </a>
+
+
+            <a href="students.html" class="nav-item active">
+
+                <span aria-hidden="true">
+                    &#x1F465;
+                </span>
+
+                <span>
+                    Students
+                </span>
+
+            </a>
+
+
+            <a href="reports.html" class="nav-item">
+
+                <span aria-hidden="true">
+                    &#x1F4C8;
+                </span>
+
+                <span>
+                    Reports
+                </span>
+
+            </a>
+
+
+            <a href="profile.html" class="nav-item">
+
+                <span aria-hidden="true">
+                    &#x1F464;
+                </span>
+
+                <span>
+                    My Profile
+                </span>
+
+            </a>
+
+        </nav>
+
+
+        <!-- LOGOUT -->
+
+        <div class="sidebar-bottom">
+
+            <button
+                type="button"
+                class="logout-btn"
+                id="logoutBtn">
+
+                <span aria-hidden="true">
+                    &#x1F6AA;
+                </span>
+
+                <span>
+                    Logout
+                </span>
+
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="main-content">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+
+        <header class="topbar">
+
+            <div>
+
+                <span class="page-kicker">
+                    FACULTY PORTAL
+                </span>
+
+                <h1>
+                    Students
+                </h1>
+
+                <p>
+                    View student attendance and academic monitoring information.
+                </p>
+
+            </div>
+
+
+            <!-- FACULTY USER -->
+
+            <div class="faculty-user">
+
+                <div
+                    class="faculty-avatar"
+                    id="facultyInitial">
+
+                    D
+
+                </div>
+
+
+                <div>
+
+                    <strong id="facultyName">
+                        Dr. Ramesh Kumar
+                    </strong>
+
+                    <span id="facultyDesignation">
+                        Associate Professor
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             STUDENT DIRECTORY
+        ================================================== -->
+
+        <section class="faculty-card students-management-card">
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="students-heading">
+
+                <div>
+
+                    <h2>
+                        Student Directory
+                    </h2>
+
+                    <p>
+                        Monitor attendance performance and identify
+                        students who may require attention.
+                    </p>
+
+                </div>
+
+
+                <span class="live-badge">
+
+                    <span aria-hidden="true">
+                        &#9679;
+                    </span>
+
+                    LIVE
+
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTERS
+            ================================================== -->
+
+            <div class="student-filters">
+
+
+                <!-- SEARCH -->
+
+                <div class="student-search">
+
+                    <label for="studentSearch">
+                        Search Students
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentSearch"
+                        placeholder="Search by name, USN or student ID..."
+                        autocomplete="off">
+
+                </div>
+
+
+                <!-- RISK FILTER -->
+
+                <div class="student-filter">
+
+                    <label for="riskFilter">
+                        Risk Level
+                    </label>
+
+                    <select id="riskFilter">
+
+                        <option value="ALL">
+                            All Students
+                        </option>
+
+                        <option value="LOW">
+                            Low Risk
+                        </option>
+
+                        <option value="MEDIUM">
+                            Medium Risk
+                        </option>
+
+                        <option value="HIGH">
+                            High Risk
+                        </option>
+
+                        <option value="NO DATA">
+                            No Data
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 SUMMARY CARDS
+            ================================================== -->
+
+            <div class="student-summary">
+
+
+                <div class="student-summary-item">
+
+                    <span>
+                        Total Students
+                    </span>
+
+                    <strong id="totalStudents">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="student-summary-item">
+
+                    <span>
+                        Low Risk
+                    </span>
+
+                    <strong id="lowRisk">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="student-summary-item">
+
+                    <span>
+                        Medium Risk
+                    </span>
+
+                    <strong id="mediumRisk">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="student-summary-item">
+
+                    <span>
+                        High Risk
+                    </span>
+
+                    <strong id="highRisk">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 MESSAGE
+            ================================================== -->
+
+            <div
+                id="studentMessage"
+                class="student-message"
+                style="display: none;">
+
+            </div>
+
+
+
+            <!-- =================================================
+                 STUDENT TABLE
+            ================================================== -->
+
+            <div class="student-table-wrapper">
+
+                <table class="student-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>#</th>
+
+                            <th>Student</th>
+
+                            <th>USN</th>
+
+                            <th>Semester</th>
+
+                            <th>Attendance</th>
+
+                            <th>Present</th>
+
+                            <th>Absent</th>
+
+                            <th>Risk</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentsTableBody">
+
+                        <!-- JavaScript inserts students here -->
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 EMPTY STATE
+            ================================================== -->
+
+            <div
+                id="emptyStudents"
+                class="students-empty"
+                style="display: none;">
+
+                <div
+                    class="empty-icon"
+                    aria-hidden="true">
+
+                    &#x1F465;
+
+                </div>
+
+                <h3>
+                    No students found
+                </h3>
+
+                <p>
+                    Try changing your search or risk filter.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="faculty-footer">
+
+            AI Attend
+            <span aria-hidden="true">&#8226;</span>
+            Faculty Portal
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     STUDENT DETAILS MODAL
+========================================================= -->
+
+<div
+    id="studentModal"
+    class="student-modal-overlay"
+    style="display: none;">
+
+    <div class="student-modal">
+
+
+        <!-- CLOSE -->
+
+        <button
+            type="button"
+            class="student-modal-close"
+            id="closeStudentModal"
+            aria-label="Close student details">
+
+            &times;
+
+        </button>
+
+
+        <!-- MODAL HEADER -->
+
+        <div class="student-modal-header">
+
+            <div
+                class="student-modal-avatar"
+                id="modalAvatar">
+
+                R
+
+            </div>
+
+
+            <div>
+
+                <h2 id="modalStudentName">
+                    Student
+                </h2>
+
+                <p id="modalStudentId">
+                    STU000
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- STUDENT DETAILS -->
+
+        <div class="student-detail-grid">
+
+
+            <div>
+
+                <span>
+                    USN
+                </span>
+
+                <strong id="modalUSN">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Email
+                </span>
+
+                <strong id="modalEmail">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Phone
+                </span>
+
+                <strong id="modalPhone">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Semester
+                </span>
+
+                <strong id="modalSemester">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Section
+                </span>
+
+                <strong id="modalSection">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Attendance
+                </span>
+
+                <strong id="modalAttendance">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Present
+                </span>
+
+                <strong id="modalPresent">
+                    -
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    Absent
+                </span>
+
+                <strong id="modalAbsent">
+                    -
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- RISK -->
+
+        <div class="modal-risk-box">
+
+            <span>
+                Attendance Risk
+            </span>
+
+            <strong id="modalRisk">
+                LOW
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script src="./students.js"></script>
+</body>
+
+</html>

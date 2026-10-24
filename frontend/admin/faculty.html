@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Faculty | AI Attend</title>
+
+<link rel="stylesheet" href="../public/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+
+<aside
+    id="adminSidebar"
+    class="admin-sidebar"
+>
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                AI
+            </div>
+
+            <div class="admin-brand-text">
+
+                <strong>
+                    AI Attend
+                </strong>
+
+                <span>
+                    Admin Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <nav class="admin-navigation">
+
+            <a href="dashboard.html" class="admin-nav-item">
+                <span>▣</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="students.html" class="admin-nav-item">
+                <span>♙</span>
+                <span>Students</span>
+            </a>
+
+            <a href="faculty.html" class="admin-nav-item active">
+                <span>♟</span>
+                <span>Faculty</span>
+            </a>
+
+            <a href="attendance.html" class="admin-nav-item">
+                <span>✓</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="ai-analytics.html" class="admin-nav-item">
+                <span>✦</span>
+                <span>AI Analytics</span>
+            </a>
+
+            <a href="reports.html" class="admin-nav-item">
+                <span>▤</span>
+                <span>Reports</span>
+            </a>
+
+            <a href="alerts.html" class="admin-nav-item">
+                <span>!</span>
+                <span>Alerts</span>
+            </a>
+
+            <a href="settings.html" class="admin-nav-item">
+                <span>⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <!-- SIDEBAR BOTTOM -->
+
+        <div class="admin-sidebar-bottom">
+
+            <div class="admin-user">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span>
+                        System Admin
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="logoutBtn"
+                class="admin-logout-btn">
+
+                ↪ Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+    <!-- MOBILE SIDEBAR OVERLAY -->
+
+<div
+    id="mobileNavOverlay"
+    class="admin-mobile-overlay"
+    aria-hidden="true"
+></div>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main class="admin-main">
+        <!-- MOBILE MENU BUTTON -->
+
+<button
+    type="button"
+    id="mobileMenuBtn"
+    class="admin-mobile-menu-btn"
+    aria-label="Open navigation menu"
+    aria-controls="adminSidebar"
+    aria-expanded="false"
+>
+    ☰
+</button>
+
+
+        <!-- TOP BAR -->
+
+        <header class="admin-topbar">
+
+            <div>
+
+                <div class="admin-eyebrow">
+                    ADMIN PORTAL
+                </div>
+
+                <h1>
+                    Faculty
+                </h1>
+
+                <p>
+                    Manage faculty information and monitor teaching staff.
+                </p>
+
+            </div>
+
+
+            <div class="admin-topbar-user">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+
+                    <strong>
+                        Administrator
+                    </strong>
+
+                    <span>
+                        System Administrator
+                    </span>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="admin-page-header">
+
+            <div>
+
+                <div class="admin-section-label">
+                    FACULTY MANAGEMENT
+                </div>
+
+                <h2>
+                    Faculty Directory
+                </h2>
+
+                <p>
+                    View faculty profiles, departments, subjects and account status.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+        ================================================== -->
+
+        <section class="admin-summary-grid">
+
+
+            <!-- TOTAL FACULTY -->
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    ♟
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Faculty
+                    </span>
+
+                    <strong id="totalFaculty">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ACTIVE FACULTY -->
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        Active Faculty
+                    </span>
+
+                    <strong id="activeFaculty">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- DEPARTMENTS -->
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    D
+                </div>
+
+                <div>
+
+                    <span>
+                        Departments
+                    </span>
+
+                    <strong id="totalDepartments">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SUBJECTS -->
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    S
+                </div>
+
+                <div>
+
+                    <span>
+                        Subjects
+                    </span>
+
+                    <strong id="totalSubjects">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FACULTY DIRECTORY
+        ================================================== -->
+
+        <section class="admin-content-card">
+
+
+            <!-- HEADER -->
+
+            <div class="admin-content-header">
+
+                <div>
+
+                    <div class="admin-section-label">
+                        DIRECTORY
+                    </div>
+
+                    <h2>
+                        All Faculty
+                    </h2>
+
+                    <p>
+                        Search and filter registered faculty members.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="refreshFacultyBtn"
+                    class="admin-refresh-btn">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTER BAR
+            ================================================== -->
+
+            <div class="admin-filter-bar">
+
+
+                <!-- SEARCH -->
+
+                <div class="admin-search-box">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="text"
+                        id="facultySearch"
+                        placeholder="Search by name, faculty ID or email">
+
+                </div>
+
+
+
+                <!-- DEPARTMENT FILTER -->
+
+                <div class="admin-filter-group">
+
+                    <label for="departmentFilter">
+                        Department
+                    </label>
+
+                    <select id="departmentFilter">
+
+                        <option value="">
+                            All Departments
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- STATUS FILTER -->
+
+                <div class="admin-filter-group">
+
+                    <label for="statusFilter">
+                        Status
+                    </label>
+
+                    <select id="statusFilter">
+
+                        <option value="">
+                            All Faculty
+                        </option>
+
+                        <option value="ACTIVE">
+                            Active
+                        </option>
+
+                        <option value="INACTIVE">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- RESULT COUNT -->
+
+            <div class="admin-result-info">
+
+                Showing
+
+                <strong id="filteredFacultyCount">
+                    0
+                </strong>
+
+                faculty members
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FACULTY TABLE
+            ================================================== -->
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Faculty
+                            </th>
+
+                            <th>
+                                Faculty ID
+                            </th>
+
+                            <th>
+                                Email
+                            </th>
+
+                            <th>
+                                Department
+                            </th>
+
+                            <th>
+                                Designation
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="facultyTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="8"
+                                class="table-empty">
+
+                                Loading faculty...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FACULTY DETAILS MODAL
+        ================================================== -->
+
+        <div
+            id="facultyModal"
+            class="admin-modal"
+            hidden>
+
+
+            <div class="admin-modal-content">
+
+
+                <!-- CLOSE -->
+
+                <button
+                    type="button"
+                    id="closeFacultyModal"
+                    class="admin-modal-close">
+
+                    ×
+
+                </button>
+
+
+
+                <!-- MODAL HEADER -->
+
+                <div class="admin-modal-header">
+
+
+                    <div
+                        id="modalFacultyAvatar"
+                        class="admin-modal-avatar">
+
+                        F
+
+                    </div>
+
+
+                    <div>
+
+                        <h2 id="modalFacultyName">
+                            Faculty
+                        </h2>
+
+                        <span id="modalFacultyId">
+                            -
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- MODAL DETAILS -->
+
+                <div class="admin-modal-details">
+
+
+                    <div>
+
+                        <small>
+                            Faculty ID
+                        </small>
+
+                        <strong id="modalFacultyCode">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Email
+                        </small>
+
+                        <strong id="modalFacultyEmail">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Phone
+                        </small>
+
+                        <strong id="modalFacultyPhone">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Department
+                        </small>
+
+                        <strong id="modalFacultyDepartment">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Designation
+                        </small>
+
+                        <strong id="modalFacultyDesignation">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Qualification
+                        </small>
+
+                        <strong id="modalFacultyQualification">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Subjects
+                        </small>
+
+                        <strong id="modalFacultySubjects">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Status
+                        </small>
+
+                        <strong id="modalFacultyStatus">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Joined
+                        </small>
+
+                        <strong id="modalFacultyJoined">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Address
+                        </small>
+
+                        <strong id="modalFacultyAddress">
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="admin-footer">
+
+            AI Attendance Monitoring System
+            ·
+            Faculty Management
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script src="faculty.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("adminSidebar");
+
+    const overlay =
+        document.getElementById("mobileNavOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        console.warn(
+            "⚠️ Mobile navigation elements not found."
+        );
+
+        return;
+    }
+
+
+    function openMobileMenu() {
+
+        sidebar.classList.add("mobile-open");
+
+        overlay.classList.add("active");
+
+        document.body.classList.add(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        menuButton.textContent = "×";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+    }
+
+
+    function closeMobileMenu() {
+
+        sidebar.classList.remove("mobile-open");
+
+        overlay.classList.remove("active");
+
+        document.body.classList.remove(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        menuButton.textContent = "☰";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+    }
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            } else {
+
+                openMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+    sidebar
+        .querySelectorAll(".admin-nav-item")
+        .forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                closeMobileMenu
+            );
+
+        });
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 768) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "📱 Faculty mobile navigation initialized."
+    );
+
+});
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Alerts | AI Attend</title>
+
+    <link rel="stylesheet" href="../public/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- SIDEBAR -->
+
+<aside
+    id="adminSidebar"
+    class="admin-sidebar"
+>
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                AI
+            </div>
+
+            <div class="admin-brand-text">
+                <strong>AI Attend</strong>
+                <span>Admin Portal</span>
+            </div>
+
+        </div>
+
+
+        <nav class="admin-navigation">
+
+            <a href="dashboard.html" class="admin-nav-item">
+                <span>▣</span>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="students.html" class="admin-nav-item">
+                <span>♙</span>
+                <span>Students</span>
+            </a>
+
+            <a href="faculty.html" class="admin-nav-item">
+                <span>♟</span>
+                <span>Faculty</span>
+            </a>
+
+            <a href="attendance.html" class="admin-nav-item">
+                <span>✓</span>
+                <span>Attendance</span>
+            </a>
+
+            <a href="ai-analytics.html" class="admin-nav-item">
+                <span>✦</span>
+                <span>AI Analytics</span>
+            </a>
+
+            <a href="reports.html" class="admin-nav-item">
+                <span>▤</span>
+                <span>Reports</span>
+            </a>
+
+            <a href="alerts.html" class="admin-nav-item active">
+                <span>!</span>
+                <span>Alerts</span>
+            </a>
+
+            <a href="settings.html" class="admin-nav-item">
+                <span>⚙</span>
+                <span>Settings</span>
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-bottom">
+
+            <div class="admin-user">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <span>System Admin</span>
+                </div>
+
+            </div>
+
+
+            <button
+                type="button"
+                id="logoutBtn"
+                class="admin-logout-btn">
+
+                ↪ Logout
+
+            </button>
+
+        </div>
+
+    </aside>
+    <!-- MOBILE SIDEBAR OVERLAY -->
+<div
+    id="mobileNavOverlay"
+    class="admin-mobile-overlay"
+    aria-hidden="true"
+></div>
+
+
+    <!-- MAIN CONTENT -->
+
+<main
+    id="main-content"
+    class="admin-main"
+>
+
+        <!-- TOP BAR -->
+
+        <header class="admin-topbar">
+
+            <div>
+
+                <div class="admin-eyebrow">
+                    ADMIN PORTAL
+                </div>
+
+                <h1>
+                    Alerts & Notifications
+                </h1>
+
+                <p>
+                    Manage student notifications and attendance alerts.
+                </p>
+
+            </div>
+
+
+            <div class="admin-topbar-user">
+
+                <div class="admin-avatar">
+                    A
+                </div>
+
+                <div>
+                    <strong>Administrator</strong>
+                    <span>System Administrator</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- PAGE HEADER -->
+
+        <section class="admin-page-header">
+
+            <div>
+
+                <div class="admin-section-label">
+                    NOTIFICATION MANAGEMENT
+                </div>
+
+                <h2>
+                    Student Notifications
+                </h2>
+
+                <p>
+                    Create, view and manage notifications sent to students.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SUMMARY -->
+
+        <section class="admin-summary-grid">
+
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    !
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Notifications
+                    </span>
+
+                    <strong id="totalNotifications">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    ●
+                </div>
+
+                <div>
+
+                    <span>
+                        Unread
+                    </span>
+
+                    <strong id="unreadNotifications">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="admin-summary-card">
+
+                <div class="admin-summary-icon">
+                    ✓
+                </div>
+
+                <div>
+
+                    <span>
+                        Read
+                    </span>
+
+                    <strong id="readNotifications">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+        <!-- NOTIFICATION DIRECTORY -->
+
+        <section class="admin-content-card">
+
+
+            <div class="admin-content-header">
+
+                <div>
+
+                    <div class="admin-section-label">
+                        ALERTS
+                    </div>
+
+                    <h2>
+                        All Notifications
+                    </h2>
+
+                    <p>
+                        Search and manage student notifications.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="createNotificationBtn"
+                    class="admin-refresh-btn">
+
+                    + Create Notification
+
+                </button>
+
+            </div>
+
+
+            <!-- FILTER BAR -->
+
+            <div class="admin-filter-bar">
+
+
+                <div class="admin-search-box">
+
+                    <span>
+                        ⌕
+                    </span>
+
+                    <input
+                        type="text"
+                        id="notificationSearch"
+                        placeholder="Search by student, USN, title or message">
+
+                </div>
+
+
+                <div class="admin-filter-group">
+
+                    <label for="notificationStatusFilter">
+                        Status
+                    </label>
+
+                    <select id="notificationStatusFilter">
+
+                        <option value="">
+                            All
+                        </option>
+
+                        <option value="unread">
+                            Unread
+                        </option>
+
+                        <option value="read">
+                            Read
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    id="refreshNotificationsBtn"
+                    class="admin-refresh-btn">
+
+                    ↻ Refresh
+
+                </button>
+
+            </div>
+
+
+            <!-- RESULT COUNT -->
+
+            <div class="admin-result-info">
+
+                Showing
+
+                <strong id="filteredNotificationCount">
+                    0
+                </strong>
+
+                notifications
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                #
+                            </th>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                USN
+                            </th>
+
+                            <th>
+                                Title
+                            </th>
+
+                            <th>
+                                Message
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Created
+                            </th>
+
+                            <th>
+                                Action
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="notificationTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="8"
+                                class="table-empty">
+
+                                Loading notifications...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- CREATE / EDIT MODAL -->
+
+        <div
+            id="notificationModal"
+            class="admin-modal"
+            hidden>
+
+
+            <div class="admin-modal-content">
+
+
+                <button
+                    type="button"
+                    id="closeNotificationModal"
+                    class="admin-modal-close">
+
+                    ×
+
+                </button>
+
+
+                <div class="admin-modal-header">
+
+                    <div class="admin-modal-avatar">
+                        !
+                    </div>
+
+                    <div>
+
+                        <h2 id="notificationModalTitle">
+                            Create Notification
+                        </h2>
+
+                        <span>
+                            Student notification
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <form id="notificationForm">
+
+
+                    <input
+                        type="hidden"
+                        id="notificationId">
+
+
+                    <div class="admin-form-group">
+
+                        <label for="notificationStudent">
+                            Student
+                        </label>
+
+                        <select
+                            id="notificationStudent"
+                            required>
+
+                            <option value="">
+                                Select Student
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="admin-form-group">
+
+                        <label for="notificationTitle">
+                            Title
+                        </label>
+
+                        <input
+                            type="text"
+                            id="notificationTitle"
+                            maxlength="100"
+                            placeholder="Enter notification title"
+                            required>
+
+                    </div>
+
+
+                    <div class="admin-form-group">
+
+                        <label for="notificationMessage">
+                            Message
+                        </label>
+
+                        <textarea
+                            id="notificationMessage"
+                            rows="5"
+                            placeholder="Enter notification message"
+                            required></textarea>
+
+                    </div>
+
+
+                    <div class="admin-form-group">
+
+                        <label for="notificationRead">
+
+                            <input
+                                type="checkbox"
+                                id="notificationRead">
+
+                            Mark as read
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="admin-modal-actions">
+
+                        <button
+                            type="button"
+                            id="cancelNotificationBtn"
+                            class="admin-secondary-btn">
+
+                            Cancel
+
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="admin-primary-btn">
+
+                            Save Notification
+
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- VIEW MODAL -->
+
+        <div
+            id="viewNotificationModal"
+            class="admin-modal"
+            hidden>
+
+
+            <div class="admin-modal-content">
+
+
+                <button
+                    type="button"
+                    id="closeViewNotificationModal"
+                    class="admin-modal-close">
+
+                    ×
+
+                </button>
+
+
+                <div class="admin-modal-header">
+
+                    <div class="admin-modal-avatar">
+                        !
+                    </div>
+
+                    <div>
+
+                        <h2 id="viewNotificationTitle">
+                            Notification
+                        </h2>
+
+                        <span id="viewNotificationStudent">
+                            -
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-modal-details">
+
+
+                    <div>
+
+                        <small>
+                            Student
+                        </small>
+
+                        <strong id="viewStudentName">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            USN
+                        </small>
+
+                        <strong id="viewStudentUSN">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Status
+                        </small>
+
+                        <strong id="viewNotificationStatus">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Created
+                        </small>
+
+                        <strong id="viewNotificationCreated">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Message
+                        </small>
+
+                        <strong id="viewNotificationMessage">
+                            -
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER -->
+
+        <footer class="admin-footer">
+
+            AI Attendance Monitoring System
+            ·
+            Alerts & Notifications
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+<script src="alerts.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("adminSidebar");
+
+    const overlay =
+        document.getElementById("mobileNavOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        console.warn(
+            "⚠️ Mobile navigation elements not found."
+        );
+
+        return;
+    }
+
+
+    function openMobileMenu() {
+
+        sidebar.classList.add("mobile-open");
+
+        overlay.classList.add("active");
+
+        document.body.classList.add(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        menuButton.textContent = "×";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+    }
+
+
+    function closeMobileMenu() {
+
+        sidebar.classList.remove("mobile-open");
+
+        overlay.classList.remove("active");
+
+        document.body.classList.remove(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        menuButton.textContent = "☰";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+    }
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            } else {
+
+                openMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+    sidebar
+        .querySelectorAll(".admin-nav-item")
+        .forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                closeMobileMenu
+            );
+
+        });
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 768) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "📱 Alerts mobile navigation initialized."
+    );
+
+});
+
+</script>
+</body>
+
+</html>

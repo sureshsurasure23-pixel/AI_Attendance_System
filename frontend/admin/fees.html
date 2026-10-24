@@ -1,0 +1,1048 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Fees | AI Attendance Admin</title>
+
+    <link rel="stylesheet" href="../public/admin.css">
+
+
+</head>
+
+
+<body>
+
+<!-- =====================================================
+     MOBILE MENU BUTTON
+     ===================================================== -->
+
+<button
+    type="button"
+    id="mobileMenuBtn"
+    class="admin-mobile-menu-btn"
+    aria-label="Open navigation menu"
+    aria-expanded="false"
+    aria-controls="adminSidebar"
+>
+    ☰
+</button>
+
+
+<div class="admin-layout">
+
+
+    <!-- =====================================================
+         SIDEBAR
+         ===================================================== -->
+
+<aside
+    id="adminSidebar"
+    class="admin-sidebar"
+>
+
+        <!-- BRAND -->
+
+        <div class="admin-brand">
+
+            <div class="admin-brand-icon">
+                AI
+            </div>
+
+            <div>
+
+                <h1>
+                    AI Attendance
+                </h1>
+
+                <span>
+                    Admin Portal
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+
+        <nav class="admin-navigation">
+
+
+            <a
+                href="/admin/dashboard.html"
+                class="admin-nav-item"
+            >
+                🏠 Dashboard
+            </a>
+
+
+            <a
+                href="/admin/students.html"
+                class="admin-nav-item"
+            >
+                🎓 Students
+            </a>
+
+
+            <a
+                href="/admin/faculty.html"
+                class="admin-nav-item"
+            >
+                👨‍🏫 Faculty
+            </a>
+
+
+            <a
+                href="/admin/attendance.html"
+                class="admin-nav-item"
+            >
+                📋 Attendance
+            </a>
+
+
+            <a
+                href="/admin/ai-analytics.html"
+                class="admin-nav-item"
+            >
+                🤖 AI Analytics
+            </a>
+
+
+            <a
+                href="/admin/marks.html"
+                class="admin-nav-item"
+            >
+                📊 Marks
+            </a>
+
+
+            <a
+                href="/admin/fees.html"
+                class="admin-nav-item active"
+            >
+                💰 Fees
+            </a>
+
+
+            <a
+                href="/admin/alerts.html"
+                class="admin-nav-item"
+            >
+                🔔 Notifications
+            </a>
+
+        </nav>
+
+
+        <!-- ADMIN USER -->
+
+        <div class="admin-user">
+
+            <div class="admin-user-avatar">
+                A
+            </div>
+
+            <div>
+
+                <strong>
+                    Administrator
+                </strong>
+
+                <span>
+                    Admin
+                </span>
+
+            </div>
+
+            <button
+                id="logoutBtn"
+                class="admin-logout-btn"
+                type="button"
+            >
+                ↪
+            </button>
+
+        </div>
+
+    </aside>
+    <!-- MOBILE SIDEBAR OVERLAY -->
+<div
+    id="mobileNavOverlay"
+    class="admin-mobile-overlay"
+    aria-hidden="true"
+></div>
+
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+         ===================================================== -->
+
+<main
+    id="main-content"
+    class="admin-main"
+>
+
+        <!-- TOP BAR -->
+
+        <header class="admin-topbar">
+
+            <div>
+
+                <h1>
+                    Fees Management
+                </h1>
+
+                <p>
+                    Manage student fee records and payments
+                </p>
+
+            </div>
+
+
+            <button
+                id="refreshFeesBtn"
+                class="admin-primary-btn"
+                type="button"
+            >
+                🔄 Refresh
+            </button>
+
+        </header>
+
+
+
+        <!-- =================================================
+             SUMMARY CARDS
+             ================================================= -->
+
+        <section class="admin-stat-grid">
+
+
+            <!-- TOTAL RECORDS -->
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    💰
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Fee Records
+                    </span>
+
+                    <strong id="totalFeeRecords">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- TOTAL FEE -->
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    💵
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Fee
+                    </span>
+
+                    <strong id="totalFeeAmount">
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- PAID -->
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Paid
+                    </span>
+
+                    <strong id="totalPaidAmount">
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- BALANCE -->
+
+            <div class="admin-stat-card">
+
+                <div class="admin-stat-icon">
+                    ⚠️
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Balance
+                    </span>
+
+                    <strong id="totalBalanceAmount">
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEE STATUS SUMMARY
+             ================================================= -->
+
+        <section class="admin-summary-grid">
+
+
+            <div class="admin-summary-card">
+
+                <span class="summary-label">
+                    Paid
+                </span>
+
+                <strong
+                    id="paidFeeCount"
+                    class="summary-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="admin-summary-card">
+
+                <span class="summary-label">
+                    Partial
+                </span>
+
+                <strong
+                    id="partialFeeCount"
+                    class="summary-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="admin-summary-card">
+
+                <span class="summary-label">
+                    Pending
+                </span>
+
+                <strong
+                    id="pendingFeeCount"
+                    class="summary-value"
+                >
+                    0
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             FEE RECORDS
+             ================================================= -->
+
+        <section class="admin-content-card">
+
+
+            <!-- SECTION HEADER -->
+
+            <div class="admin-section-header">
+
+                <div>
+
+                    <h2>
+                        Fee Records
+                    </h2>
+
+                    <p>
+                        View and manage student fee information.
+                    </p>
+
+                </div>
+
+
+                <button
+                    id="addFeeBtn"
+                    class="admin-primary-btn"
+                    type="button"
+                >
+                    ➕ Add Fee
+                </button>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 FILTER BAR
+                 ================================================= -->
+
+            <div class="admin-filter-bar">
+
+
+                <!-- SEARCH -->
+
+                <div class="admin-search-box">
+
+                    <span>
+                        🔍
+                    </span>
+
+                    <input
+                        type="text"
+                        id="feeSearch"
+                        placeholder="Search student, USN or receipt number..."
+                    >
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="admin-filter-group">
+
+                    <label for="feeStatusFilter">
+                        Status
+                    </label>
+
+                    <select
+                        id="feeStatusFilter"
+                    >
+
+                        <option value="all">
+                            All Status
+                        </option>
+
+                        <option value="Paid">
+                            Paid
+                        </option>
+
+                        <option value="Partial">
+                            Partial
+                        </option>
+
+                        <option value="Pending">
+                            Pending
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="admin-filter-group">
+
+                    <label for="feeDateFilter">
+                        Due Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="feeDateFilter"
+                    >
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RESULT COUNT -->
+
+            <div class="admin-result-info">
+
+                <span>
+                    Showing
+                    <strong id="filteredFeeCount">
+                        0
+                    </strong>
+                    fee records
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 TABLE
+                 ================================================= -->
+
+            <div class="admin-table-wrapper">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Student
+                            </th>
+
+                            <th>
+                                USN
+                            </th>
+
+                            <th>
+                                Total Fee
+                            </th>
+
+                            <th>
+                                Paid
+                            </th>
+
+                            <th>
+                                Balance
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Due Date
+                            </th>
+
+                            <th>
+                                Receipt
+                            </th>
+
+                            <th>
+                                Actions
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="feesTableBody">
+
+                        <tr>
+
+                            <td
+                                colspan="9"
+                                style="text-align:center;"
+                            >
+                                Loading fee records...
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             EMPTY / ERROR MESSAGE
+             ================================================= -->
+
+        <section
+            id="feeMessageSection"
+            class="admin-content-card"
+            style="display:none;"
+        >
+
+            <div
+                id="feeMessage"
+                style="text-align:center; padding:30px;"
+            >
+            </div>
+
+        </section>
+
+
+    </main>
+
+</div>
+
+
+
+<!-- =========================================================
+     FEE MODAL
+     ========================================================= -->
+
+<div
+    id="feeModal"
+    class="admin-modal"
+    style="display:none;"
+>
+
+
+    <div class="admin-modal-content">
+
+
+        <!-- MODAL HEADER -->
+
+        <div class="admin-modal-header">
+
+            <div>
+
+                <h2 id="feeModalTitle">
+                    Add Fee
+                </h2>
+
+                <p>
+                    Enter student fee information.
+                </p>
+
+            </div>
+
+
+            <button
+                id="closeFeeModal"
+                type="button"
+                class="admin-modal-close"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+
+        <!-- MODAL BODY -->
+
+        <div class="admin-modal-body">
+
+
+            <form id="feeForm">
+
+
+                <!-- =================================================
+                     STUDENT
+                     ================================================= -->
+
+                <div class="admin-form-group">
+
+                    <label for="feeStudent">
+                        Student
+                    </label>
+
+                    <select
+                        id="feeStudent"
+                        required
+                    >
+
+                        <option value="">
+                            Select Student
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FEE AMOUNTS
+                     ================================================= -->
+
+                <div class="admin-form-grid">
+
+
+                    <div class="admin-form-group">
+
+                        <label for="totalFee">
+                            Total Fee
+                        </label>
+
+                        <input
+                            type="number"
+                            id="totalFee"
+                            min="0"
+                            step="0.01"
+                            placeholder="Enter total fee"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="admin-form-group">
+
+                        <label for="paidFee">
+                            Paid Fee
+                        </label>
+
+                        <input
+                            type="number"
+                            id="paidFee"
+                            min="0"
+                            step="0.01"
+                            value="0"
+                            placeholder="Enter paid amount"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     BALANCE PREVIEW
+                     ================================================= -->
+
+                <div class="attendance-detail-card">
+
+                    <span class="attendance-detail-label">
+                        Balance Fee
+                    </span>
+
+                    <strong
+                        id="balanceFeePreview"
+                        class="attendance-detail-value"
+                    >
+                        ₹0.00
+                    </strong>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     DATES
+                     ================================================= -->
+
+                <div class="admin-form-grid">
+
+
+                    <div class="admin-form-group">
+
+                        <label for="paymentDate">
+                            Payment Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="paymentDate"
+                        >
+
+                    </div>
+
+
+                    <div class="admin-form-group">
+
+                        <label for="dueDate">
+                            Due Date
+                        </label>
+
+                        <input
+                            type="date"
+                            id="dueDate"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     RECEIPT
+                     ================================================= -->
+
+                <div class="admin-form-group">
+
+                    <label for="receiptNumber">
+                        Receipt Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="receiptNumber"
+                        maxlength="50"
+                        placeholder="Enter receipt number"
+                    >
+
+                </div>
+
+
+
+                <!-- =================================================
+                     REMARKS
+                     ================================================= -->
+
+                <div class="admin-form-group">
+
+                    <label for="feeRemarks">
+                        Remarks
+                    </label>
+
+                    <textarea
+                        id="feeRemarks"
+                        rows="4"
+                        placeholder="Enter remarks..."
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- MESSAGE -->
+
+                <div
+                    id="feeFormMessage"
+                    class="attendance-update-message"
+                >
+                </div>
+
+
+
+                <!-- ACTIONS -->
+
+                <div class="admin-modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancelFeeBtn"
+                        class="admin-secondary-btn"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        id="saveFeeBtn"
+                        class="admin-save-btn"
+                    >
+                        💾 Save Fee
+                    </button>
+
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script src="/admin/fees.js"></script>
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const menuButton =
+        document.getElementById("mobileMenuBtn");
+
+    const sidebar =
+        document.getElementById("adminSidebar");
+
+    const overlay =
+        document.getElementById("mobileNavOverlay");
+
+
+    if (!menuButton || !sidebar || !overlay) {
+
+        console.warn(
+            "⚠️ Mobile navigation elements not found."
+        );
+
+        return;
+    }
+
+
+    function openMobileMenu() {
+
+        sidebar.classList.add("mobile-open");
+
+        overlay.classList.add("active");
+
+        document.body.classList.add(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Close navigation menu"
+        );
+
+        menuButton.textContent = "×";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+    }
+
+
+    function closeMobileMenu() {
+
+        sidebar.classList.remove("mobile-open");
+
+        overlay.classList.remove("active");
+
+        document.body.classList.remove(
+            "admin-menu-open"
+        );
+
+        menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+        menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+        );
+
+        menuButton.textContent = "☰";
+
+        overlay.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+    }
+
+
+    menuButton.addEventListener(
+        "click",
+        function () {
+
+            if (
+                sidebar.classList.contains(
+                    "mobile-open"
+                )
+            ) {
+
+                closeMobileMenu();
+
+            } else {
+
+                openMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    overlay.addEventListener(
+        "click",
+        closeMobileMenu
+    );
+
+
+    sidebar
+        .querySelectorAll(".admin-nav-item")
+        .forEach(function (link) {
+
+            link.addEventListener(
+                "click",
+                closeMobileMenu
+            );
+
+        });
+
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    window.addEventListener(
+        "resize",
+        function () {
+
+            if (window.innerWidth > 768) {
+
+                closeMobileMenu();
+
+            }
+
+        }
+    );
+
+
+    console.log(
+        "📱 Fees mobile navigation initialized."
+    );
+
+});
+
+</script>
+</body>
+
+</html>
